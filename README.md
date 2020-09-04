@@ -1,5 +1,7 @@
 # RctCalc
 
+A collection of useful calculators for use with OpenRCT2, Roller Coaster Tycoon 1, Roller Coaster Tycoon 2, and Roller Coaster Tycoon Classic. Able to calculate a park's soft guest cap given a list of rides, and calculate an individual ride's recommended max ticket price based on its stats and some park settings.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.8.
 
 ## Development server
