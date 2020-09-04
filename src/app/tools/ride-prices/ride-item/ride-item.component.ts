@@ -73,12 +73,4 @@ export class RideItemComponent implements OnInit, OnDestroy {
   deleteRide = () => {
     this.rideDelete.emit();
   }
-
-  getRatings = () => {
-    return JSON.stringify(this.ride.getRatings());
-  }
-  getAgeValue = () => {
-    return JSON.stringify(this.ride.getAgeValue());
-  }
-
 }
