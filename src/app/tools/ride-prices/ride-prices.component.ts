@@ -117,12 +117,13 @@ export class RidePricesComponent implements OnInit {
     }
 
     // Iterate thru rides and set isDuplicate values according to if duplicates were found
-    this.placedRides.forEach(pr => {
+    this.placedRides.forEach((pr, idx) => {
       if (pr.getId() === ride.getId()) {
         pr.isDuplicate = dupes;
       }
       // Recalculate individual ride price
       pr.calculateRidePrice(this.isOpenRCT2, this.isPaidEntry);
+      this.placedRides[idx] = new RidePrice(pr);
     })
 
     // Update rides list in local storage
@@ -147,5 +148,6 @@ export class RidePricesComponent implements OnInit {
     this.placedRides.splice(0, this.placedRides.length);
     this.setGame(true);
     this.paidEntryForm.setValue(false);
+    this.showConfirm(false);
   }
 }
