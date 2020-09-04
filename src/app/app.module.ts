@@ -8,7 +8,7 @@ import { AboutComponent } from './about/about.component';
 import { GuestCapComponent } from './tools/guest-cap/guest-cap.component';
 import { RidePricesComponent } from './tools/ride-prices/ride-prices.component';
 import { RideDropdownComponent } from './common/ride-dropdown/ride-dropdown.component';
-import { ToolbarComponent } from './common/toolbar/toolbar.component';
+import { HeaderComponent } from './common/header/header.component';
 import { RideItemComponent } from './tools/ride-prices/ride-item/ride-item.component';
 
 @NgModule({
@@ -18,7 +18,7 @@ import { RideItemComponent } from './tools/ride-prices/ride-item/ride-item.compo
     RidePricesComponent,
     AboutComponent,
     RideDropdownComponent,
-    ToolbarComponent,
+    HeaderComponent,
     RideItemComponent
   ],
   imports: [

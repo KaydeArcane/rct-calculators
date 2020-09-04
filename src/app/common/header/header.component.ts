@@ -1,11 +1,11 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 
 @Component({
-  selector: 'app-toolbar',
-  templateUrl: './toolbar.component.html',
-  styleUrls: ['./toolbar.component.css']
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss']
 })
-export class ToolbarComponent implements OnInit {
+export class HeaderComponent implements OnInit {
   public tabindex = 0;
   @HostListener('window:resize', ['$event'])
   onResize(event) {
