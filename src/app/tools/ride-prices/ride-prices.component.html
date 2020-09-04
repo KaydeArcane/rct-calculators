@@ -31,11 +31,11 @@
   <div *ngIf="!confirm" class="display_flex justify-content_space-between align-items_baseline">
     <h3>Park Rides</h3>
     <div>
-      <button class="danger" (click)="showConfirm(true)">Clear Park</button>
+      <button class="danger" (click)="showConfirm(true)" [disabled]="placedRides.length < 1">Clear Park</button>
     </div>
   </div>
-  <div *ngIf="confirm" class="display_flex justify-content_space-between align-items_baseline flex-wrap">
-    <h3>Are you sure you want to reset your park?</h3>
+  <div *ngIf="confirm" class="card danger-card display_flex justify-content_space-between align-items_baseline flex-wrap">
+    <h3>Are you sure you want to clear your park?</h3>
     <div class="button-confirm">
       <button class="danger" (click)="clear()">Yes, Clear Park</button>
       <button (click)="showConfirm(false)">Cancel</button>
