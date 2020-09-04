@@ -16,12 +16,14 @@
   </div>
   <div class="display_flex-vertical">
     <label [for]="'ride-age' + ride.getUniqueId()">Ride Age</label>
-    <select [id]="'ride-age' + ride.getUniqueId()" formControlName="age">
-      <option value="" disabled>Select age...</option>
-      <option *ngFor="let age of ageList" [ngValue]="age">
-        {{age.getAge()}}
-      </option>
-    </select>
+    <span class="select">
+      <select [id]="'ride-age' + ride.getUniqueId()" formControlName="age">
+        <option value="" disabled>Select age...</option>
+        <option *ngFor="let age of ageList" [ngValue]="age">
+          {{age.getAge()}}
+        </option>
+      </select>
+    </span>
   </div>
   <div class="display_flex-vertical">
     <label [for]="'ride-excitement' + ride.getUniqueId()">Excitement</label>
