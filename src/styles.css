@@ -1,0 +1,130 @@
+/* You can add global styles to this file, and also import other style files */
+:host {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 14px;
+  color: #333;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 8px 0;
+}
+
+p {
+  margin-top: 0;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #ababab;
+  width: 50vw;
+}
+
+a,
+a:visited,
+a:hover {
+  color: #1976d2;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #125699;
+}
+
+.display_flex {
+  display: flex !important;
+}
+
+.display_flex-vertical {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.align-items_center {
+  align-items: center !important;
+}
+
+.align-items_baseline {
+  align-items: baseline !important;
+}
+
+.justify-content_center {
+  justify-content: center !important;
+}
+
+.justify-content_space-between {
+  justify-content: space-between;
+}
+
+.flex-fill {
+  flex-grow: 1;
+}
+
+.text-align_center {
+  text-align: center !important;
+}
+
+.width-100 {
+  width: 100% !important;
+}
+
+.margin-top {
+  margin-top: 1rem;
+}
+
+.margin-bottom {
+  margin-bottom: 1rem;
+}
+
+.margin-left {
+  margin-left: 1rem;
+}
+
+.margin-right {
+  margin-right: 1rem;
+}
+
+.content {
+  margin: 4rem auto 1rem;
+  padding: 0 1rem;
+}
+
+/* .circle-link {
+  height: 40px;
+  width: 40px;
+  border-radius: 40px;
+  margin: 8px;
+  background-color: white;
+  border: 1px solid #eeeeee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: 1s ease-out;
+}
+
+.circle-link:hover {
+  transform: translateY(-0.25rem);
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+} */
+
+footer {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 20px;
+}
