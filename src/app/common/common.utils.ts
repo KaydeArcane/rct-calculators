@@ -20,7 +20,6 @@ export class CommonUtils {
   static scrollElemToTop = (id) => {
     setTimeout(function() {
       if (document.getElementById(id)) {
-        console.log(document.getElementById(id));
         const elementScrollTop = document.getElementById(id).offsetTop;
         window.scrollTo({top: elementScrollTop - 210, behavior: 'smooth'});
       }
