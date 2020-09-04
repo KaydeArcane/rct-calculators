@@ -1,0 +1,131 @@
+@import "variables";
+
+// Base button
+button {
+  background-color: #e2e2e2;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 0.9em;
+  cursor: pointer;
+  transition: 0.2s;
+  white-space: nowrap;
+
+  // Hover styles
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: #cccccc;
+    
+    &:disabled {
+      background-color: inherit;
+    }
+  }
+
+  // Outline buttons
+  &.transparent {
+    background-color: transparent;
+    border: 2px solid #1976d2;
+
+    &:hover,
+    &:focus {
+      background-color: #1976d2;
+      color: white;
+
+      &:disabled {
+        background-color: transparent;
+        color: rgba(0,0,0,0.7);
+      }
+    }
+  }
+  
+  // Primary buttons
+  &.primary{
+    background-color: #1976d2;
+    color: white;
+    
+    &:hover,
+    &:focus {
+      background-color: #0b5fb3;
+      border-color: #0b5fb3;
+      
+      &:disabled {
+        background-color: #1976d2;
+        border-color: #1976d2;
+        color: white;
+      }
+    }
+  }
+
+  // Danger buttons
+  &.danger {
+    background-color: #df2b1e;
+    color: white;
+    &:hover,
+    &:focus {
+      background-color: #c52c21;
+    }
+  
+    &:disabled {
+      background-color: #df2b1e;
+    }
+  }
+}
+
+
+// Button groups
+.button-group {
+  margin: 0 0.5rem;
+  
+  > button {
+    border-radius: 0;
+    
+    &:first-child {
+      border-radius: 0.25rem 0 0 0.25rem;
+    }
+    &:last-child {
+      border-radius: 0 0.25rem 0.25rem 0;
+    }
+
+    &.active {
+      background-color: #1976d2;
+      color: white;
+
+      &:hover,
+      &:focus {
+        background-color: #0b5fb3;
+        border-color: #0b5fb3;
+
+        &:disabled {
+          background-color: #1976d2;
+          border-color: #1976d2;
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+// Buttons in a confirm card
+.button-confirm {
+  white-space: nowrap;
+  margin: 0 0 0 auto;
+
+  > button {
+    margin: 0 0.25rem;
+
+    &:first-child {
+      margin-left: 0;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

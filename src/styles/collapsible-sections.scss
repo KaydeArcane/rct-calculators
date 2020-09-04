@@ -1,0 +1,72 @@
+
+section.collapsible {
+  overflow: hidden;
+  position: relative;
+
+  > button {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 2rem;
+    padding: 0;
+    border-radius: 0 0 0.25rem 0.25rem;
+    font-size: 0.9em;
+    background-color: transparent;
+
+    &:hover,
+    &:focus {
+      background-color: rgba(226,226,226, 0.5);
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('/assets/caret.svg');
+      background-position: center;
+      background-size: 1rem;
+      background-repeat: no-repeat;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  section.collapsible {
+    height: 4rem;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    transition: height 0.4s ease-in-out;
+
+    &:after {
+      position: absolute;
+      bottom: 0;  
+      height: 3rem;
+      width: 100%;
+      content: "";
+      background: linear-gradient(rgba(255,255,255, 0), rgb(255, 255, 255, 0.75) 50%, white);
+      pointer-events: none;
+    }
+
+    > button {
+      display: block;
+
+      &::before {
+        rotate: 180deg;
+      }
+    }
+
+    &.open {
+      height: auto;
+
+      &:after {
+        display: none;
+      }
+    }
+  }
+}

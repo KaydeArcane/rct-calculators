@@ -9,7 +9,7 @@ import { Ride } from '@models/ride.model';
 @Component({
   selector: 'app-ride-item',
   templateUrl: './ride-item.component.html',
-  styleUrls: ['./ride-item.component.css']
+  styleUrls: ['./ride-item.component.scss']
 })
 export class RideItemComponent implements OnInit, OnDestroy {
   @Input() ride: RidePrice;

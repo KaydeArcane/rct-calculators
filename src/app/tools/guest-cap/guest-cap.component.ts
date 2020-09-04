@@ -10,7 +10,7 @@ import { FormControl } from '@angular/forms';
 @Component({
   selector: 'app-guest-cap',
   templateUrl: './guest-cap.component.html',
-  styleUrls: ['./guest-cap.component.css']
+  styleUrls: ['./guest-cap.component.scss']
 })
 export class GuestCapComponent implements OnInit, OnDestroy {
 

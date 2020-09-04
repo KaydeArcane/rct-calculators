@@ -1,0 +1,31 @@
+.ride-item {
+  > div:not(.footer) {
+    margin-bottom: 0.5rem;
+  }
+  
+  > div,
+  > div input:not([type="checkbox"]),
+  > div select {
+    width: 100%;
+  }
+}
+
+.name-and-price {
+  align-items: stretch;
+
+  > strong {
+    background-color: white;
+    border: 2px solid #cbcbcb;
+    border-right: none;
+    border-radius: 0.25rem 0 0 0.25rem;
+    padding: 0.5rem;
+  }
+
+  > span {
+    background-color: #1976d2;
+    color: white;
+    border: 2px solid #1976d2;
+    border-radius: 0 0.25rem 0.25rem 0;
+    padding: 0.5rem;
+  }
+}

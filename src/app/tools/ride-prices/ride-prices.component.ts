@@ -9,7 +9,7 @@ import { ridesList } from '@assets/ridesList';
 @Component({
   selector: 'app-ride-prices',
   templateUrl: './ride-prices.component.html',
-  styleUrls: ['./ride-prices.component.css']
+  styleUrls: ['./ride-prices.component.scss']
 })
 export class RidePricesComponent implements OnInit {
 

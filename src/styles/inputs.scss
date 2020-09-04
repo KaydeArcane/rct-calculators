@@ -1,0 +1,102 @@
+label {
+  font-weight: bold;
+}
+
+input,
+select {
+  background-color:white;
+  border-radius: 0.25rem;
+  border: 2px solid #cbcbcb;
+  padding: 0.25rem;
+  cursor: pointer;
+
+  &:disabled {
+    background-color: #e2e2e2;
+    cursor: not-allowed;
+  }
+  &:hover,
+  &:focus {
+    border-color: #1976d2;
+  
+    &:disabled {
+      border-color: #cbcbcb;
+    }
+  }
+}
+
+option {
+  cursor: pointer;
+}
+
+input[type="checkbox"] {
+  &.large {
+    -webkit-appearance:none;
+    width:20px;
+    height:20px;
+    margin-top: 0.3rem;
+
+    &:checked {
+      background-color: #4CAF50;
+      border-color: #338136;
+
+      &:hover,
+      &:focus {
+        border-color: #1976d2;
+      }
+    }
+  }
+
+  + label {
+    margin-left: 0.25rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    font-weight: normal;
+  }
+
+  &:disabled + label {
+    cursor: not-allowed;
+  }
+}
+
+table input[type="checkbox"].large {
+  margin-top: 0.5rem;
+}
+
+/* Custom style for select arrow */
+.select {
+  position: relative;
+  display: inline-block;
+
+  &:after {
+    content: '<>';
+    font: 17px "Consolas", monospace;
+    color: #333;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+    right: 4px;
+    top: 4px;
+    padding: 0 0 2px;
+    border-bottom: 1px solid #999;
+    position: absolute;
+    pointer-events: none;
+  }
+
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+}
+
+/* Hide number input arrows */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
