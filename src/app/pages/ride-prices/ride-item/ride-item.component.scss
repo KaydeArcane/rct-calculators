@@ -1,0 +1,38 @@
+@import "variables";
+
+.ride-item {
+  margin: 0.5rem 0;
+  > div:not(.footer) {
+    margin-bottom: 0.5rem;
+  }
+  
+  > div,
+  > div input:not([type="checkbox"]),
+  > div select {
+    width: 100%;
+  }
+}
+
+.name-and-price {
+  align-items: stretch;
+
+  > .name {
+    background-color: $white;
+    border: 2px solid $drk-gray;
+    border-right: none;
+    border-radius: $border-radius 0 0 $border-radius;
+    padding: 0.5rem;
+  }
+
+  > .price {
+    background-color: $primary-color;
+    color: $white;
+    border: 2px solid $primary-color;
+    border-radius: 0 $border-radius $border-radius 0;
+    padding: 0.5rem;
+  }
+}
+
+.tooltip {
+  margin: 0 0.25rem;
+}

@@ -6,7 +6,7 @@ import { ridesList } from '@assets/ridesList';
 @Component({
   selector: 'app-ride-dropdown',
   templateUrl: './ride-dropdown.component.html',
-  styleUrls: ['./ride-dropdown.component.css']
+  styleUrls: ['./ride-dropdown.component.scss']
 })
 export class RideDropdownComponent implements OnInit, OnDestroy {
   @Input() rideType = undefined;

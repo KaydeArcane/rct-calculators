@@ -1,8 +1,10 @@
 <form [formGroup]="ridesDropdown">
-  <select id="select-ride-input" formControlName="ride">
-    <option value="" disabled>Select {{rideType ? rideType : 'ride/stall'}}...</option>
-    <option *ngFor="let ride of rides" [ngValue]="ride">
-      {{ride.getName()}}
-    </option>
-  </select>
+  <span class="select">
+    <select id="select-ride-input" formControlName="ride" aria-label="Select Ride/Stall Input">
+      <option value="" disabled>Select {{rideType ? rideType : 'ride/stall'}}...</option>
+      <option *ngFor="let ride of rides" [ngValue]="ride">
+        {{ride.getName()}}
+      </option>
+    </select>
+  </span>
 </form>

@@ -20,23 +20,23 @@ export class RidePrice extends Ride {
       if (obj['nickname']) {
         this.nickname = obj['nickname'];
       }
-      if (obj['e']) {
+      if (!isNaN(obj['e'])) {
         this.e = obj['e'];
       }
-      if (obj['i']) {
+      if (!isNaN(obj['i'])) {
         this.i = obj['i'];
       }
-      if (obj['n']) {
+      if (!isNaN(obj['n'])) {
         this.n = obj['n'];
       }
       this.isDuplicate = obj['isDuplicate'];
       if (obj['age']) {
         this.age = obj['age'];
       }
-      if (obj['rideValue']) {
+      if (!isNaN(obj['rideValue'])) {
         this.rideValue = obj['rideValue'];
       }
-      if (obj['price']) {
+      if (!isNaN(obj['price'])) {
         this.price = obj['price'];
       }
     }
