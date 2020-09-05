@@ -12,8 +12,8 @@ section.collapsible {
     width: 100%;
     height: 2rem;
     padding: 0;
-    border-radius: 0 0 0.25rem 0.25rem;
-    font-size: 0.9em;
+    border-radius: 0 0 $border-radius $border-radius;
+    font-size: $font-small;
     background-color: transparent;
 
     &:hover,
@@ -36,12 +36,11 @@ section.collapsible {
   }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: $screen-md) {
   section.collapsible {
     height: 4rem;
     padding-bottom: 1rem;
     margin-bottom: 1rem;
-    transition: height 0.4s ease-in-out;
 
     &:after {
       position: absolute;
@@ -49,16 +48,12 @@ section.collapsible {
       height: 3rem;
       width: 100%;
       content: "";
-      background: linear-gradient(rgba(255,255,255, 0), rgb(255, 255, 255, 0.75) 50%, white);
+      background: linear-gradient(rgba(255,255,255, 0), rgb(255, 255, 255, 0.75) 50%, $white);
       pointer-events: none;
     }
 
     > button {
       display: block;
-
-      &::before {
-        rotate: 180deg;
-      }
     }
 
     &.open {
@@ -66,6 +61,10 @@ section.collapsible {
 
       &:after {
         display: none;
+      }
+
+      > button::before {
+        rotate: 180deg;
       }
     }
   }

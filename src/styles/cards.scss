@@ -1,7 +1,7 @@
 .card {
   border-radius: 4px;
-  border: 1px solid #e2e2e2;
-  background-color: #f5f5f5;
+  border: 1px solid $md-gray;
+  background-color: $lt-gray;
   min-height: 40px;
   min-width: 200px;
   margin: 0.5rem;
@@ -10,7 +10,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  transition: all 0.2s ease-in-out;
+  transition: all $transition-duration ease-in-out;
   line-height: 24px;
 
   input,
@@ -29,8 +29,8 @@
   }
 
   &.highlight-card {
-    background-color: #1976d289;
-    color: white;
+    background-color: $primary-bg;
+    color: $white;
     font-weight: 600;
     border: none;
     width: auto;
@@ -39,7 +39,7 @@
   }
 
   &.danger-card {
-    background-color: #df2b1e70;
+    background-color: $danger-bg;
     font-weight: 600;
     border: none;
     width: auto;
@@ -56,7 +56,7 @@
 }
 
 /* Responsive Styles */
-@media screen and (max-width: 767px) {
+@media screen and (max-width: $screen-md) {
   .card.highlight-card span {
     margin-left: 72px;
   }

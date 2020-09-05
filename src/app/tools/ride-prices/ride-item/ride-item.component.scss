@@ -1,3 +1,5 @@
+@import "variables";
+
 .ride-item {
   > div:not(.footer) {
     margin-bottom: 0.5rem;
@@ -14,18 +16,18 @@
   align-items: stretch;
 
   > strong {
-    background-color: white;
-    border: 2px solid #cbcbcb;
+    background-color: $white;
+    border: 2px solid $drk-gray;
     border-right: none;
-    border-radius: 0.25rem 0 0 0.25rem;
+    border-radius: $border-radius 0 0 $border-radius;
     padding: 0.5rem;
   }
 
   > span {
-    background-color: #1976d2;
-    color: white;
-    border: 2px solid #1976d2;
-    border-radius: 0 0.25rem 0.25rem 0;
+    background-color: $primary-color;
+    color: $white;
+    border: 2px solid $primary-color;
+    border-radius: 0 $border-radius $border-radius 0;
     padding: 0.5rem;
   }
 }

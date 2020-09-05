@@ -4,22 +4,22 @@ label {
 
 input,
 select {
-  background-color:white;
+  background-color:$white;
   border-radius: 0.25rem;
-  border: 2px solid #cbcbcb;
+  border: 2px solid $drk-gray;
   padding: 0.25rem;
   cursor: pointer;
 
   &:disabled {
-    background-color: #e2e2e2;
+    background-color: $md-gray;
     cursor: not-allowed;
   }
   &:hover,
   &:focus {
-    border-color: #1976d2;
+    border-color: $primary-color;
   
     &:disabled {
-      border-color: #cbcbcb;
+      border-color: $drk-gray;
     }
   }
 }
@@ -36,19 +36,19 @@ input[type="checkbox"] {
     margin-top: 0.3rem;
 
     &:checked {
-      background-color: #4CAF50;
-      border-color: #338136;
+      background-color: $success-color;
+      border-color: $success-dark;
 
       &:hover,
       &:focus {
-        border-color: #1976d2;
+        border-color: $primary-color;
       }
     }
   }
 
   + label {
     margin-left: 0.25rem;
-    font-size: 0.9rem;
+    font-size: $font-small;
     cursor: pointer;
     font-weight: normal;
   }
@@ -70,7 +70,7 @@ table input[type="checkbox"].large {
   &:after {
     content: '<>';
     font: 17px "Consolas", monospace;
-    color: #333;
+    color: $text-color;
     -webkit-transform: rotate(90deg);
     -moz-transform: rotate(90deg);
     -ms-transform: rotate(90deg);

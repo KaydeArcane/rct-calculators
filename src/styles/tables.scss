@@ -4,7 +4,7 @@ table {
 
   thead {
     tr {
-      border-bottom: 1px solid #cbcbcb;
+      border-bottom: 1px solid $drk-gray;
     }
 
     th {
@@ -18,7 +18,7 @@ table {
       line-height: 1.5rem;
 
       &:nth-child(2n-1) {
-        background-color: #e2e2e2;
+        background-color: $md-gray;
       }
     }
 

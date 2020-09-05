@@ -2,17 +2,17 @@
 
 // Base button
 button {
-  background-color: #e2e2e2;
+  background-color: $md-gray;
   border: none;
-  border-radius: 0.25rem;
+  border-radius: $border-radius;
   padding: 0.5rem 1rem;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 0.9em;
+  font-size: $font-small;
   cursor: pointer;
-  transition: 0.2s;
-  white-space: nowrap;
+  transition: $transition-duration;
+  $white-space: nowrap;
 
   // Hover styles
   &:disabled {
@@ -32,12 +32,12 @@ button {
   // Outline buttons
   &.transparent {
     background-color: transparent;
-    border: 2px solid #1976d2;
+    border: 2px solid $primary-color;
 
     &:hover,
     &:focus {
-      background-color: #1976d2;
-      color: white;
+      background-color: $primary-color;
+      color: $white;
 
       &:disabled {
         background-color: transparent;
@@ -48,33 +48,33 @@ button {
   
   // Primary buttons
   &.primary{
-    background-color: #1976d2;
-    color: white;
+    background-color: $primary-color;
+    color: $white;
     
     &:hover,
     &:focus {
-      background-color: #0b5fb3;
-      border-color: #0b5fb3;
+      background-color: $primary-dark;
+      border-color: $primary-dark;
       
       &:disabled {
-        background-color: #1976d2;
-        border-color: #1976d2;
-        color: white;
+        background-color: $primary-color;
+        border-color: $primary-color;
+        color: $white;
       }
     }
   }
 
   // Danger buttons
   &.danger {
-    background-color: #df2b1e;
-    color: white;
+    background-color: $danger-color;
+    color: $white;
     &:hover,
     &:focus {
-      background-color: #c52c21;
+      background-color: $danger-dark;
     }
   
     &:disabled {
-      background-color: #df2b1e;
+      background-color: $danger-color;
     }
   }
 }
@@ -88,25 +88,25 @@ button {
     border-radius: 0;
     
     &:first-child {
-      border-radius: 0.25rem 0 0 0.25rem;
+      border-radius: $border-radius 0 0 $border-radius;
     }
     &:last-child {
-      border-radius: 0 0.25rem 0.25rem 0;
+      border-radius: 0 $border-radius $border-radius 0;
     }
 
     &.active {
-      background-color: #1976d2;
-      color: white;
+      background-color: $primary-color;
+      color: $white;
 
       &:hover,
       &:focus {
-        background-color: #0b5fb3;
-        border-color: #0b5fb3;
+        background-color: $primary-dark;
+        border-color: $primary-dark;
 
         &:disabled {
-          background-color: #1976d2;
-          border-color: #1976d2;
-          color: white;
+          background-color: $primary-color;
+          border-color: $primary-color;
+          color: $white;
         }
       }
     }
@@ -115,7 +115,7 @@ button {
 
 // Buttons in a confirm card
 .button-confirm {
-  white-space: nowrap;
+  $white-space: nowrap;
   margin: 0 0 0 auto;
 
   > button {
