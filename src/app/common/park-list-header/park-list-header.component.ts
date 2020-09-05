@@ -1,3 +1,4 @@
+import { CommonUtils } from './../common.utils';
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
@@ -6,7 +7,8 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
   styleUrls: ['./park-list-header.component.scss']
 })
 export class ParkListHeaderComponent implements OnInit {
-  @Input() disabled = false;
+  @Input() types: String = null;
+  @Input() disabled: Boolean = false;
   @Output() clear = new EventEmitter();
 
   public confirm: boolean = false;
@@ -14,6 +16,10 @@ export class ParkListHeaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  capitalize = () => {
+    return CommonUtils.capitalize(this.types);
   }
 
   // Toggles confirmation message for clearing park

@@ -1,5 +1,5 @@
 <div *ngIf="!confirm" class="display_flex justify-content_space-between align-items_baseline">
-  <h3>Park Rides</h3>
+  <h3>Park {{types ? capitalize(types) : 'Rides/Stalls'}}</h3>
   <div>
     <button class="danger" (click)="showConfirm(true)" [disabled]="disabled">Clear Park</button>
   </div>
