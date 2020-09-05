@@ -3,10 +3,10 @@
 #logo {
   position: fixed;
   top: 0;
-  left: 0;
+  left: 4px;
   z-index: 102;
-  height: 60px;
-  width: 60px;
+  height: $icon-size;
+  width: $icon-size;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,7 +22,7 @@ button.menu {
   z-index: 101;
   width: 100%;
   color: $white;
-  height: 60px;
+  height: $icon-size;
 }
 
 .header {
@@ -31,7 +31,7 @@ button.menu {
   left: 0;
   z-index: 100;
   right: 0;
-  height: 60px;
+  height: $icon-size;
   display: flex;
   background-color: $primary-color;
   color: $white;
@@ -41,7 +41,7 @@ button.menu {
     display: flex;
     align-items: center;
     height: 100%;
-    margin-left: 60px;
+    margin-left: calc(#{$icon-size} + 1rem);
 
     > * {
       padding: 0 10px;
@@ -72,13 +72,13 @@ button.menu {
     }
 
     &[aria-pressed="true"] + .header {
-      top: 60px;
+      top: $icon-size;
     }
   }
 
   .header {
     height: 9rem;
-    top: calc(-9rem + 60px);
+    top: calc(-9rem + #{$icon-size});
     transition: top $transition-duration ease-in-out;
 
     #links {
