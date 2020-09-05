@@ -28,7 +28,7 @@
 </div>
 
 <div>
-  <div *ngIf="!confirm" class="display_flex justify-content_space-between align-items_baseline">
+  <div *ngIf="!confirm" class="display_flex justify-content_space-between align-items_baseline rides-list-header">
     <h3>Park Rides</h3>
     <div>
       <button class="danger" (click)="showConfirm(true)" [disabled]="placedRides.length < 1">Clear Park</button>
