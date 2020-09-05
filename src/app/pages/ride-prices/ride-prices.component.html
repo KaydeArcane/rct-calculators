@@ -23,12 +23,12 @@
   </div>
   <div class="card display_flex-vertical">
     <label for="select-ride-input">Add Ride to Park</label>
-    <app-ride-dropdown [rideType]="'ride'" (rideSelected)="addRide($event)"></app-ride-dropdown>
+    <app-ride-dropdown [types]="'ride'" (rideSelected)="addRide($event)"></app-ride-dropdown>
   </div>
 </div>
 
 <div>
-  <app-park-list-header [disabled]="placedRides.length < 1" (clear)="clear()"></app-park-list-header>
+  <app-park-list-header [types]="'ride'" [disabled]="placedRides.length < 1" (clear)="clear()"></app-park-list-header>
   <div *ngFor="let ride of placedRides; index as i">
     <app-ride-item [id]="'ride' + ride.getUniqueId()" [ride]="ride" (rideUpdate)="updateRide($event, i)"
       (rideDelete)="removeRide(i)"></app-ride-item>

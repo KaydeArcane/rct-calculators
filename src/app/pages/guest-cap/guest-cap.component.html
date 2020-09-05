@@ -15,7 +15,7 @@
   <div class="display_flex flex-wrap justify-content_center">
     <div class="card display_flex-vertical">
       <label for="select-ride-input">Add Ride or Stall to Park</label>
-      <app-ride-dropdown [rideType]='null' (rideSelected)="addRide($event)"></app-ride-dropdown>
+      <app-ride-dropdown [types]='null' (rideSelected)="addRide($event)"></app-ride-dropdown>
     </div>
     <div class="card display_flex-vertical">
       <strong>Current Soft Guest Cap</strong>
