@@ -10,6 +10,7 @@ import { RidePricesComponent } from './pages/ride-prices/ride-prices.component';
 import { RideDropdownComponent } from './common/ride-dropdown/ride-dropdown.component';
 import { HeaderComponent } from './common/header/header.component';
 import { RideItemComponent } from './pages/ride-prices/ride-item/ride-item.component';
+import { ParkListHeaderComponent } from './common/park-list-header/park-list-header.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { RideItemComponent } from './pages/ride-prices/ride-item/ride-item.compo
     AboutComponent,
     RideDropdownComponent,
     HeaderComponent,
-    RideItemComponent
+    RideItemComponent,
+    ParkListHeaderComponent
   ],
   imports: [
     BrowserModule,
