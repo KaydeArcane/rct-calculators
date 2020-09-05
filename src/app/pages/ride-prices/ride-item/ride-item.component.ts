@@ -1,10 +1,9 @@
-import { ageValues } from './../../../../assets/ageValues';
-import { AgeValue } from './../../../models/age-value.model';
-import { RidePrice } from './../../../models/ride-price.model';
 import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
-import { Ride } from '@models/ride.model';
+import { AgeValue } from '@models/age-value.model';
+import { RidePrice } from '@models/ride-price.model';
+import { ageValues } from '@assets/ageValues';
 
 @Component({
   selector: 'app-ride-item',

@@ -1,10 +1,10 @@
-import { CommonUtils } from './../../common/common.utils';
-import { LocalStorageService } from './../../services/local-storage.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { LocalStorageService } from '@services/local-storage.service';
+import { CommonUtils } from '@common/common.utils';
 import { Ride } from '@models/ride.model';
 import { GuestCap } from '@models/guest-cap.model';
 import { ridesList } from '@assets/ridesList';
-import { FormControl } from '@angular/forms';
 
 
 @Component({

@@ -1,9 +1,9 @@
-import { CommonUtils } from './../../common/common.utils';
-import { RidePrice } from './../../models/ride-price.model';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { LocalStorageService } from './../../services/local-storage.service';
-import { Ride } from './../../models/ride.model';
+import { LocalStorageService } from '@services/local-storage.service';
+import { CommonUtils } from '@common/common.utils';
+import { RidePrice } from '@models/ride-price.model';
+import { Ride } from '@models/ride.model';
 import { ridesList } from '@assets/ridesList';
 
 @Component({

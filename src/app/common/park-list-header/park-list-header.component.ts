@@ -1,5 +1,5 @@
-import { CommonUtils } from './../common.utils';
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { CommonUtils } from '@common/common.utils';
 
 @Component({
   selector: 'app-park-list-header',

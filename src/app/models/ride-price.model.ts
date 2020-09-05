@@ -1,7 +1,7 @@
-import { CommonUtils } from './../common/common.utils';
-import { ageValues } from './../../assets/ageValues';
-import { AgeValue } from './age-value.model';
+import { CommonUtils } from '@common/common.utils';
 import { Ride } from '@models/ride.model';
+import { AgeValue } from '@models/age-value.model';
+import { ageValues } from '@assets/ageValues';
 export class RidePrice extends Ride {
   private uniqueId: string = CommonUtils.ID();
   public nickname: string;
