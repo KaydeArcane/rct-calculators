@@ -1,7 +1,7 @@
 <form [formGroup]="ridePriceForm" class="card left ride-item flex-wrap">
   <div class="display_flex name-and-price">
-    <strong>{{ride.getName()}}</strong>
-    <span>{{ride.getPrice() | currency}}</span>
+    <strong class="name">{{ride.getName()}}</strong>
+    <strong class="price">{{ride.getPrice() | currency}}</strong>
   </div>
   <div class="display_flex-vertical">
     <label [for]="'ride-name' + ride.getUniqueId()">Ride Name</label>
@@ -12,6 +12,7 @@
       <input [id]="'is-duplicate' + ride.getUniqueId()" name="is-duplicate" type="checkbox" class="large"
         formControlName="isDuplicate" [value]="true" />
       <label [for]="'is-duplicate' + ride.getUniqueId()">Ride Type Duplicate</label>
+      <img src="assets/info.png" class="tooltip" title="Check this if there is more than one ride of this type in your park. This will be auto-checked if you add another ride of the same type to the list." />
     </div>
   </div>
   <div class="display_flex-vertical">

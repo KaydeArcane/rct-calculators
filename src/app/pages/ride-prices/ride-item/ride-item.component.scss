@@ -16,7 +16,7 @@
 .name-and-price {
   align-items: stretch;
 
-  > strong {
+  > .name {
     background-color: $white;
     border: 2px solid $drk-gray;
     border-right: none;
@@ -24,11 +24,15 @@
     padding: 0.5rem;
   }
 
-  > span {
+  > .price {
     background-color: $primary-color;
     color: $white;
     border: 2px solid $primary-color;
     border-radius: 0 $border-radius $border-radius 0;
     padding: 0.5rem;
   }
+}
+
+.tooltip {
+  margin: 0 0.25rem;
 }
