@@ -41,11 +41,10 @@ a,
 a:visited,
 a:hover {
   color: $primary-color;
-  text-decoration: none;
 }
 
 a:hover {
-  color: #125699;
+  color: $primary-dark;
 }
 
 .display_flex {
@@ -121,4 +120,5 @@ footer {
   align-items: center;
   justify-content: center;
   line-height: 20px;
+  text-align: center;
 }
