@@ -9,6 +9,7 @@ select {
   border: 2px solid $drk-gray;
   padding: 0.25rem;
   cursor: pointer;
+  transition: $transition-duration;
 
   &:disabled {
     background-color: $md-gray;
