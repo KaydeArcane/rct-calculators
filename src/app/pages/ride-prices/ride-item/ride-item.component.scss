@@ -1,6 +1,7 @@
 @import "variables";
 
 .ride-item {
+  margin: 0.5rem 0;
   > div:not(.footer) {
     margin-bottom: 0.5rem;
   }
