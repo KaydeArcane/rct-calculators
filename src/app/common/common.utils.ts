@@ -25,4 +25,8 @@ export class CommonUtils {
       }
     })
   }
+
+  static capitalize = (str: String) => {
+    return str.substring(0,1).toUpperCase() + str.substring(1, str.length);
+  }
 }

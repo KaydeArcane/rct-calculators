@@ -1,9 +1,11 @@
 <div class="display_flex-vertical align-items_center">
   <h1>Soft Guest Cap</h1>
-  <section id="sgc-text" class="collapsible">
-    <p>Calculate how many guests your park can naturally attract before guest spawn rate is reduced by 75%. Works for normal scenarios and scenarios with Harder Guest Generation (HGG).</p>
-    <p>An individual ride meets the HGG requirements if it is a tracked ride, has an Excitement rating of at least 6.00, and has a ride length of over 600 meters (1968 feet).</p>
-    <button id="sgc-text-toggle" (click)="toggleSection($event.target)" aria-pressed="false"></button>
+  <section id="sgc-text">
+    <p>
+      Calculate how many guests your park can naturally attract before guest spawn rate is reduced by 75%. Works for normal scenarios and scenarios with 
+      Harder Guest Generation (HGG).
+      <img src="assets/info.png" class="tooltip" title="Harder Guest Generation is a scenario option that makes it harder to attract guests by putting a hard limit of 1000 guests on parks that don't have rides that meet the specified requirements. An individual ride meets the HGG requirements if it is a tracked ride, has an Excitement rating of at least 6.00, and has a ride length of over 600 meters (1968 feet)." />
+    </p>
   </section>
   <h3>Park Settings</h3>
   <div class="display_flex align-items_center">
@@ -12,7 +14,7 @@
   </div>
   <div class="display_flex flex-wrap justify-content_center">
     <div class="card display_flex-vertical">
-      Add Ride or Stall
+      <label for="select-ride-input">Add Ride or Stall to Park</label>
       <app-ride-dropdown [rideType]='null' (rideSelected)="addRide($event)"></app-ride-dropdown>
     </div>
     <div class="card display_flex-vertical">
@@ -33,7 +35,7 @@
         <th>Ride/Stall Name</th>
         <th>Guest Cap Contribution</th>
         <th *ngIf="harderGenForm.value">Meets HGG Requirements?</th>
-        <th></th>
+        <th aria-label="Delete Buttons Column"></th>
       </tr>
     </thead>
     <tbody>
