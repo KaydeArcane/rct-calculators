@@ -21,8 +21,6 @@ export class RidePricesComponent implements OnInit {
   public paidEntryForm = new FormControl(false);
   private paidEntryFormSubscription;
 
-  public confirm: boolean = false;
-
   constructor(private localStorage: LocalStorageService) {
     // Initialize local storage
     if (!this.localStorage.get('ridePricesList')) this.localStorage.set('ridePricesList', this.placedRides);
@@ -134,16 +132,8 @@ export class RidePricesComponent implements OnInit {
     this.localStorage.set('ridePricesList', this.placedRides);
   }
 
-  // Toggles confirmation message for clearing park
-  showConfirm = (state: boolean) => {
-    this.confirm = state;
-  }
-
   // Clear all rides and reset settings to default values
   clear = () => {
     this.placedRides.splice(0, this.placedRides.length);
-    this.setGame(true);
-    this.paidEntryForm.setValue(false);
-    this.showConfirm(false);
   }
 }

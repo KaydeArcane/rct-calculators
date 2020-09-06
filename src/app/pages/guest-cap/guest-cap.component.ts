@@ -105,6 +105,6 @@ export class GuestCapComponent implements OnInit, OnDestroy {
 
   clear = () => {
     this.placedItems.splice(0, this.placedItems.length);
-    this.harderGenForm.setValue(false);
+    this.calculateSoftGuestCap();
   }
 }
