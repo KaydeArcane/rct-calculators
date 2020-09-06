@@ -78,8 +78,8 @@ export class ShopPricesComponent implements OnInit, OnDestroy {
 
   // Remove shop item from list & update duplicates
   removeShopItem = (idx) => {
-    const ride = this.soldItems[idx];
     this.soldItems.splice(idx, 1);
+    this.localStorage.set('shopPricesList', this.soldItems);
   }
 
   // Recalculate all shop item prices & saves shop items to local storage

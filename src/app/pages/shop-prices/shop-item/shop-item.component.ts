@@ -15,6 +15,10 @@ export class ShopItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  isUmbrella = () => {
+    return this.item.getName() === 'Umbrella';
+  }
+
   deleteItem = () => {
     this.itemDelete.emit();
   }

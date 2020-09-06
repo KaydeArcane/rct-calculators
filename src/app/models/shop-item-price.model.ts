@@ -23,6 +23,8 @@ export class ShopItemPrice extends ShopItem {
   calculatePrice = (weather: object) => {
     // Determine shop item price based on weather
     let price = 0;
+
+    // Check the selected weather conditions and apply the lower of the two corresponding values
     if (weather['temperate']) {
       price = this.getBaseValue();
     }
