@@ -4,6 +4,7 @@ import { LocalStorageService } from '@services/local-storage.service';
 import { Ride } from '@models/ride.model';
 import { GuestCap } from '@models/guest-cap.model';
 import { ridesList } from '@assets/ridesList';
+import { CommonUtils } from '@common/common.utils';
 
 @Component({
   selector: 'app-guest-cap',
@@ -61,6 +62,8 @@ export class GuestCapComponent implements OnInit, OnDestroy {
   // Push new item from items dropdown into placedItems list & recalculate SGC
   addItem = (item: Ride) => {
     this.placedItems.unshift(new GuestCap(this.items[item.getId()]));
+
+    CommonUtils.scrollAddRideToTop();
 
     this.calculateSoftGuestCap();
   }

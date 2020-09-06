@@ -21,7 +21,7 @@
       </div>
     </div>
   </div>
-  <div class="card display_flex-vertical">
+  <div id="select-ride-container" class="card display_flex-vertical">
     <label for="select-ride-input">Add Ride to Park</label>
     <app-ride-dropdown [types]="'ride'" (rideSelected)="addRide($event)"></app-ride-dropdown>
   </div>

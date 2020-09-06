@@ -21,7 +21,17 @@ export class CommonUtils {
     setTimeout(function() {
       if (document.getElementById(id)) {
         const elementScrollTop = document.getElementById(id).offsetTop;
-        window.scrollTo({top: elementScrollTop - 195, behavior: 'smooth'});
+        window.scrollTo({top: elementScrollTop, behavior: 'smooth'});
+      }
+    })
+  }
+  
+  static scrollAddRideToTop = () => {
+    setTimeout(function() {
+      if (document.getElementById('select-ride-container')) {
+        const addRideScrollTop = document.getElementById('select-ride-container').offsetTop;
+        const logoHeight = document.getElementById('logo').offsetHeight;
+        window.scrollTo({top: addRideScrollTop - logoHeight - 8, behavior: 'smooth'});
       }
     })
   }
