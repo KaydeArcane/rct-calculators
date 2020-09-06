@@ -1,7 +1,11 @@
+import { CommonUtils } from '@common/common.utils';
 import { Ratings } from '@models/ratings.model';
+
 export class Ride {
+  private uniqueId: string = CommonUtils.ID();
   private id: string;
   private name: string;
+  public nickname: string;
   private type: string;
   private tracked: boolean;
   private guestCap: number;
@@ -11,6 +15,7 @@ export class Ride {
     if (obj) {
       this.id = obj['id'];
       this.name = obj['name'];
+      this.nickname = obj['nickname'];
       this.type = obj['type'];
       this.tracked = obj['tracked'];
       this.guestCap = obj['guestCap'];
@@ -22,6 +27,7 @@ export class Ride {
     }
   }
 
+  getUniqueId = (): string => this.uniqueId;
   getId = (): string => this.id;
   getName = (): string => this.name;
   getType = (): string => this.type;
