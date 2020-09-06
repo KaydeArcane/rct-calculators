@@ -71,9 +71,20 @@ export class ShopPricesComponent implements OnInit, OnDestroy {
 
   // Push new shop item from shop items dropdown into soldItems list & update duplicates
   addShopItem = (item: ShopItem) => {
-    this.soldItems.unshift(new ShopItemPrice(this.items[item.getId()]));
+    let found = false;
+    this.soldItems.every(si => {
+      if (si.getId() === item.getId()) {
+        found = true;
+        return false;
+      }
+      return true;
+    });
 
-    this.calculateAllShopItemPrices();
+    if (!found) {
+      this.soldItems.unshift(new ShopItemPrice(this.items[item.getId()]));
+  
+      this.calculateAllShopItemPrices();
+    }
   }
 
   // Remove shop item from list & update duplicates
