@@ -15,6 +15,7 @@ import { RidePricesComponent } from '@pages/ride-prices/ride-prices.component';
 import { RideItemComponent } from '@pages/ride-prices/ride-item/ride-item.component';
 import { ShopPricesComponent } from '@pages/shop-prices/shop-prices.component';
 import { ShopItemComponent } from '@pages/shop-prices/shop-item/shop-item.component';
+import { DeleteFooterComponent } from './common/delete-footer/delete-footer.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { ShopItemComponent } from '@pages/shop-prices/shop-item/shop-item.compon
     ShopPricesComponent,
     ShopItemDropdownComponent,
     ShopItemComponent,
+    DeleteFooterComponent,
   ],
   imports: [
     BrowserModule,
