@@ -27,7 +27,7 @@
 <div>
   <app-park-list-header [disabled]="placedItems.length < 1" (clear)="clear()"></app-park-list-header>
   <ng-container *ngFor="let item of placedItems; index as i">
-    <app-guest-cap-item [id]="'item' + item.getUniqueId()" [item]="item" (itemUpdate)="updateItem($event, i)"
+    <app-guest-cap-item [id]="'item' + item.getUniqueId()" [item]="item" [isHGG]="harderGenForm.value" (itemUpdate)="updateItem($event, i)"
     (itemDelete)="removeItem(i)"></app-guest-cap-item>
   </ng-container>
 </div>

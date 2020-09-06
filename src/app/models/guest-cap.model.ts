@@ -18,4 +18,9 @@ export class GuestCap extends Ride {
   }
 
   getUniqueId = (): string => this.uniqueId;
+
+  // Returns an individual item's SGC contribution
+  getGuestCapValue = () => {
+    return this.getGuestCap().toString() + (this.passesHarderGen ? ' + ' + this.getGuestCap() * 2 : '');
+  }
 }

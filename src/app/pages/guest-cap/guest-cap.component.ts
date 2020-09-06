@@ -68,14 +68,7 @@ export class GuestCapComponent implements OnInit, OnDestroy {
     this.calculateSoftGuestCap();
   }
 
-  // Set an individual item's passesHarderGen value based on table checkbox & recalculate SGC
-  toggleItemHGG = (item: GuestCap, idx) => {
-    item.passesHarderGen = (<HTMLInputElement>document.getElementById('item-' + idx)).checked;
-
-    this.calculateSoftGuestCap();
-  }
-
-  // Update item stats, recalculate individual item guest cap, & save item to local storage
+  // Update item, recalculate guest cap, & save list to local storage
   updateItem = (item, idx) => {
     this.placedItems[idx] = new GuestCap(item);
 
@@ -88,11 +81,6 @@ export class GuestCapComponent implements OnInit, OnDestroy {
     this.placedItems.splice(idx, 1);
 
     this.calculateSoftGuestCap();
-  }
-
-  // Returns an individual item's SGC contribution
-  itemGuestCap = (item: GuestCap) => {
-    return item.getGuestCap() * (item.passesHarderGen ? 3 : 1)
   }
 
   // Calculates the Soft Guest Cap value

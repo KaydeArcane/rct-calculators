@@ -1,13 +1,13 @@
 <form [formGroup]="guestCapForm" class="card left item flex-wrap">
   <div class="display_flex name-and-price">
     <strong class="name">{{item.getName()}}</strong>
-    <strong class="price">{{item.getGuestCap()}}</strong>
+    <strong class="value">{{item.getGuestCapValue()}}</strong>
   </div>
   <div class="display_flex-vertical">
     <label [for]="'ride-name' + item.getUniqueId()">Ride Name</label>
     <input [id]="'ride-name' + item.getUniqueId()" type="text" formControlName="nickname" />
   </div>
-  <div class="display_flex-vertical">
+  <div class="display_flex-vertical" *ngIf="isHGG">
     <div class="display_flex align-items_center">
       <input [id]="'passes-harder-gen' + item.getUniqueId()" name="passes-harder-gen" type="checkbox" class="large"
         formControlName="passesHarderGen" [value]="true" />

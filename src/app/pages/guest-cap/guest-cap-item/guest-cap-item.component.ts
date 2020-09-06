@@ -10,6 +10,7 @@ import { GuestCap } from '@models/guest-cap.model';
 })
 export class GuestCapItemComponent implements OnInit, OnDestroy {
   @Input() item: GuestCap;
+  @Input() isHGG: boolean;
   @Output() itemUpdate = new EventEmitter<GuestCap>();
   @Output() itemDelete = new EventEmitter();
 
@@ -25,7 +26,7 @@ export class GuestCapItemComponent implements OnInit, OnDestroy {
       'passesHarderGen': [this.item.passesHarderGen]
     });
 
-    this.guestCapFormSubscription = this.guestCapForm.valueChanges.pipe(debounceTime(300))
+    this.guestCapFormSubscription = this.guestCapForm.valueChanges.pipe(debounceTime(100))
       .subscribe(value => {
         this.item.nickname = value.nickname;
         this.item.passesHarderGen = value.passesHarderGen;
