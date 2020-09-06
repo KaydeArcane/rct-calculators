@@ -71,7 +71,7 @@ export class RidePricesComponent implements OnInit {
 
     this.updateDuplicates(ride);
 
-    CommonUtils.scrollElemToTop('ride' + this.placedRides[0].getUniqueId());
+    CommonUtils.scrollAddRideToTop();
   }
 
   // Remove ride from list & update duplicates

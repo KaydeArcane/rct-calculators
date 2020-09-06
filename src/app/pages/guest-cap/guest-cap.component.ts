@@ -4,6 +4,7 @@ import { LocalStorageService } from '@services/local-storage.service';
 import { Ride } from '@models/ride.model';
 import { GuestCap } from '@models/guest-cap.model';
 import { ridesList } from '@assets/ridesList';
+import { CommonUtils } from '@common/common.utils';
 
 @Component({
   selector: 'app-guest-cap',
@@ -62,12 +63,15 @@ export class GuestCapComponent implements OnInit, OnDestroy {
   addItem = (item: Ride) => {
     this.placedItems.unshift(new GuestCap(this.items[item.getId()]));
 
+    CommonUtils.scrollAddRideToTop();
+
     this.calculateSoftGuestCap();
   }
 
   // Update item, recalculate guest cap, & save list to local storage
   updateItem = (item, idx) => {
-    this.placedItems[idx] = new GuestCap(item);
+    this.placedItems[idx].nickname = item.nickname;
+    this.placedItems[idx].passesHarderGen = item.passesHarderGen;
 
     this.calculateSoftGuestCap();
     this.localStorage.set('guestCapList', this.placedItems);

@@ -914,44 +914,44 @@ const stallList = [
   {
     "name": "ATM",
     "id": "2d",
-    "type": "stall",
+    "type": "shop",
     "guestCap": 5
   },
   {
     "name": "Drink Stall",
     "id": "1e",
-    "type": "stall",
+    "type": "shop",
     "guestCap": 15
   },
   {
     "name": "First Aid Room",
     "id": "30",
-    "type": "stall",
+    "type": "shop",
     "guestCap": 5
   },
   {
     "name": "Food Stall",
     "id": "1c",
-    "type": "stall",
+    "type": "shop",
     "guestCap": 15
   },
   {
     "name": "Information Kiosk",
     "id": "23",
-    "type": "stall",
+    "type": "shop",
+    "guestCap": 15
+  },
+  {
+    "name": "Merchandise Shop",
+    "id": "20",
+    "type": "shop",
     "guestCap": 15
   },
   {
     "name": "Restroom",
     "id": "24",
-    "type": "stall",
+    "type": "shop",
     "guestCap": 5
-  },
-  {
-    "name": "Shop Stall",
-    "id": "20",
-    "type": "stall",
-    "guestCap": 15
   },
 ];
 

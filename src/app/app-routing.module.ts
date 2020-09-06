@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AboutComponent } from '@pages/about/about.component';
 import { GuestCapComponent } from '@pages/guest-cap/guest-cap.component';
 import { RidePricesComponent } from '@pages/ride-prices/ride-prices.component';
+import { ShopPricesComponent } from '@pages/shop-prices/shop-prices.component';
 
 export const routes: Routes = [
   {
@@ -13,6 +14,9 @@ export const routes: Routes = [
   },
   {
     path: 'prices/rides', component: RidePricesComponent
+  },
+  {
+    path: 'prices/shops', component: ShopPricesComponent
   },
   {
     path: 'prices', redirectTo: 'prices/rides', pathMatch: 'full'

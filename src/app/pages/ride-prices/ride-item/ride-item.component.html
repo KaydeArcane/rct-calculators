@@ -39,6 +39,6 @@
     <input [id]="'ride-nausea' + ride.getUniqueId()" type="number" step="0.01" min="0" formControlName="n" />
   </div>
   <div class="footer">
-    <button class="danger" type="button" (click)="deleteRide()">Delete</button>
+    <app-delete-footer (delete)="deleteRide()"></app-delete-footer>
   </div>
 </form>

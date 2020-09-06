@@ -3,8 +3,6 @@ import { Ride } from '@models/ride.model';
 import { AgeValue } from '@models/age-value.model';
 import { ageValues } from '@assets/ageValues';
 export class RidePrice extends Ride {
-  private uniqueId: string = CommonUtils.ID();
-  public nickname: string;
   public e: number;
   public i: number;
   public n: number;
@@ -17,9 +15,6 @@ export class RidePrice extends Ride {
     super(obj);
 
     if (obj) {
-      if (obj['nickname']) {
-        this.nickname = obj['nickname'];
-      }
       if (!isNaN(obj['e'])) {
         this.e = obj['e'];
       }
@@ -44,7 +39,6 @@ export class RidePrice extends Ride {
     this.age = new AgeValue(this.age);
   }
 
-  getUniqueId = (): string => this.uniqueId;
   getAgeValue = (): AgeValue => this.age;
   getRideValue = (): number => this.rideValue;
   getPrice = (): number => this.price;

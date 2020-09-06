@@ -1,0 +1,18 @@
+<div class="card left item flex-wrap">
+  <div class="display_flex name-and-price">
+    <strong class="name">{{item.getName()}}</strong>
+    <span class="value" *ngIf="item.getPrice()">
+      <strong>{{(isUmbrella() ? 20 : item.getPrice()) | currency}}</strong>
+      (Profit: {{(isUmbrella() ? 20 - item.getCost() : item.getProfit()) | currency}} per)
+    </span>
+    <span class="value danger-color" *ngIf="!item.getPrice()">
+      No weather selected
+    </span>
+    <div *ngIf="isUmbrella()" class="tooltip-container">
+      <img src="assets/info.png" class="tooltip" title="Guests will pay any price for an umbrella during rainy weather. As such, the recommended price is always the maximum of $20.00. The maximum price in the specified weather conditions for non-rainy weather is {{item.getPrice() | currency}}." />
+    </div>
+  </div>
+  <div class="footer">
+    <app-delete-footer (delete)="deleteItem()"></app-delete-footer>
+  </div>
+</div>
