@@ -1,11 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { LocalStorageService } from '@services/local-storage.service';
-import { CommonUtils } from '@common/common.utils';
 import { Ride } from '@models/ride.model';
 import { GuestCap } from '@models/guest-cap.model';
 import { ridesList } from '@assets/ridesList';
-
 
 @Component({
   selector: 'app-guest-cap',
@@ -62,8 +60,7 @@ export class GuestCapComponent implements OnInit, OnDestroy {
 
   // Push new item from items dropdown into placedItems list & recalculate SGC
   addItem = (item: Ride) => {
-    this.placedItems.push(new GuestCap(this.items[item.getId()]));
-    this.placedItems.sort((a, b) => (a.getName() > b.getName()) ? 1 : -1)
+    this.placedItems.unshift(new GuestCap(this.items[item.getId()]));
 
     this.calculateSoftGuestCap();
   }
