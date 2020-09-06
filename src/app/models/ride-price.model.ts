@@ -44,7 +44,7 @@ export class RidePrice extends Ride {
     this.age = new AgeValue(this.age);
   }
 
-  getUniqueId = (): string => this.uniqueId
+  getUniqueId = (): string => this.uniqueId;
   getAgeValue = (): AgeValue => this.age;
   getRideValue = (): number => this.rideValue;
   getPrice = (): number => this.price;

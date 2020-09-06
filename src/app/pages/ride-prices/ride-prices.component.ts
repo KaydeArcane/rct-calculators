@@ -85,10 +85,6 @@ export class RidePricesComponent implements OnInit {
 
   // Update ride stats, recalculate individual ride price, & save ride to local storage
   updateRide = (ride, idx) => {
-    this.placedRides[idx].e = ride.e;
-    this.placedRides[idx].i = ride.i;
-    this.placedRides[idx].n = ride.n;
-
     this.placedRides[idx].calculateRidePrice(this.isOpenRCT2, this.isPaidEntry);
     this.localStorage.set('ridePricesList', this.placedRides);
   }

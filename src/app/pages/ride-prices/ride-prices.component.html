@@ -29,8 +29,8 @@
 
 <div>
   <app-park-list-header [types]="'ride'" [disabled]="placedRides.length < 1" (clear)="clear()"></app-park-list-header>
-  <div *ngFor="let ride of placedRides; index as i">
+  <ng-container *ngFor="let ride of placedRides; index as i">
     <app-ride-item [id]="'ride' + ride.getUniqueId()" [ride]="ride" (rideUpdate)="updateRide($event, i)"
       (rideDelete)="removeRide(i)"></app-ride-item>
-  </div>
+  </ng-container>
 </div>
