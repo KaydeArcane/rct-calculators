@@ -284,15 +284,15 @@ const merchItems = [
     "hotValue": 0.70,
     "coldValue": 0.80
   },
-  {
-    "id": "21",
-    "name": "Photo",
-    "buyInRain": true,
-    "cost": 0.20,
-    "baseValue": 3.00,
-    "hotValue": 3.00,
-    "coldValue": 3.00
-  },
+  // {
+  //   "id": "21",
+  //   "name": "Photo",
+  //   "buyInRain": true,
+  //   "cost": 0.20,
+  //   "baseValue": 3.00,
+  //   "hotValue": 3.00,
+  //   "coldValue": 3.00
+  // },
   {
     "id": "29",
     "name": "Sunglasses",

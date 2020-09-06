@@ -1,1 +1,33 @@
-<p>shop-prices works!</p>
+<div class="display_flex-vertical align-items_center">
+  <h1>Shop Prices</h1>
+  <section id="rp-text">
+    <p>Calculate how much you can charge for any given food/drink/merch item being sold in your park.</p>
+  </section>
+  <h3>Park Weather Settings</h3>
+  <div class="display_flex flex-wrap justify-content_center">
+    <form [formGroup]="weatherForm" class="settings-item">
+      <div class="display_flex align-items_center">
+        <input id="weather-cold-input" name="weather-cold" type="checkbox" class="large" formControlName="cold"
+          [value]="true" />
+        <label for="weather-cold-input">Under 52F/11C</label>
+        <input id="weather-temperate-input" name="weather-temperate" type="checkbox" class="large"
+          formControlName="temperate" [value]="true" />
+        <label for="weather-temperate-input">52F/11C to 70F/21C</label>
+        <input id="weather-hot-input" name="weather-hot" type="checkbox" class="large" formControlName="hot"
+          [value]="true" />
+        <label for="weather-hot-input">Over 70F/21C</label>
+      </div>
+    </form>
+  </div>
+  <div class="card display_flex-vertical">
+    <label for="select-shop-item-input">Add Shop Item to Park</label>
+    <app-shop-item-dropdown (itemSelected)="addShopItem($event)"></app-shop-item-dropdown>
+  </div>
+</div>
+
+<div>
+  <app-park-list-header [types]="'Shop Items'" [disabled]="soldItems.length < 1" (clear)="clear()"></app-park-list-header>
+  <ng-container *ngFor="let item of soldItems; index as i">
+    <app-shop-item [id]="'item' + item.getId()" [item]="item" (itemDelete)="removeShopItem(i)"></app-shop-item>
+  </ng-container>
+</div>

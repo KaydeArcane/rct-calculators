@@ -77,8 +77,8 @@ button.menu {
   }
 
   .header {
-    height: 9rem;
-    top: calc(-9rem + #{$icon-size});
+    height: 12rem;
+    top: calc(-12rem + #{$icon-size});
     transition: top $transition-duration ease-in-out;
 
     #links {

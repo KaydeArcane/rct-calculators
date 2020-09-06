@@ -1,0 +1,23 @@
+<div class="card left item flex-wrap">
+  <div class="display_flex name-and-price">
+    <strong class="name">{{item.getName()}}</strong>
+    <span class="value" *ngIf="item.getPrice()">
+      <strong>{{item.getPrice() | currency}}</strong>
+      (Profit: {{item.getProfit() | currency}} per)
+    </span>
+    <span class="value danger-color" *ngIf="!item.getPrice()">
+      No weather selected
+    </span>
+  </div>
+  <!-- <div class="display_flex-vertical" *ngIf="isHGG">
+    <div class="display_flex align-items_center">
+      <input [id]="'passes-harder-gen' + item.getUniqueId()" name="passes-harder-gen" type="checkbox" class="large"
+        formControlName="passesHarderGen" [value]="true" />
+      <label [for]="'passes-harder-gen' + item.getUniqueId()">Meets HGG Requirements</label>
+      <img src="assets/info.png" class="tooltip" title="An individual ride meets the HGG requirements if it is a tracked ride, has an Excitement rating of at least 6.00, and has a ride length of over 600 meters (1968 feet)." />
+    </div>
+  </div> -->
+  <div class="footer">
+    <button class="danger" type="button" (click)="deleteItem()">Delete</button>
+  </div>
+</div>

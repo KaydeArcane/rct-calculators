@@ -80,6 +80,11 @@ a:hover {
   flex-grow: 1;
 }
 
+.danger-color {
+  background-color: $danger-color !important;
+  border-color: $danger-color !important;
+}
+
 .text-align_center {
   text-align: center !important;
 }
