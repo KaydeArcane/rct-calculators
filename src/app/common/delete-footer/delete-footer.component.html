@@ -1,0 +1,10 @@
+<ng-container *ngIf="!confirm">
+  <button class="danger" type="button" (click)="showConfirm(true)">Delete</button>
+</ng-container>
+<div *ngIf="confirm" class="display_flex justify-content_space-between align-items_baseline flex-wrap">
+  <strong>Are you sure you want to delete this?</strong>
+  <div class="button-confirm">
+    <button class="danger" (click)="emitDelete()">Confirm</button>
+    <button (click)="showConfirm(false)">Cancel</button>
+  </div>
+</div>

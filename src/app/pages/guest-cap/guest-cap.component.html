@@ -13,8 +13,8 @@
     <label for="harder-gen-input">Harder Guest Generation</label>
   </div>
   <div class="display_flex flex-wrap justify-content_center">
-    <div class="card display_flex-vertical">
-      <label for="select-ride-input">Add Ride or Stall to Park</label>
+    <div id="select-ride-container" class="card display_flex-vertical">
+      <label for="select-ride-input">Add Ride or Shop to Park</label>
       <app-ride-dropdown [types]='null' (rideSelected)="addItem($event)"></app-ride-dropdown>
     </div>
     <div class="card display_flex-vertical">
@@ -36,7 +36,7 @@
   <table>
     <thead>
       <tr>
-        <th>Ride/Stall Name</th>
+        <th>Ride/Shop Name</th>
         <th>Guest Cap Contribution</th>
         <th *ngIf="harderGenForm.value">Meets HGG Requirements?</th>
         <th aria-label="Delete Buttons Column"></th>

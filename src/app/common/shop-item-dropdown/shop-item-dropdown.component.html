@@ -1,0 +1,8 @@
+<span class="select">
+  <select id="select-shop-item-input" [formControl]="itemsDropdown" aria-label="Select Shop Item Input">
+    <option value="" disabled>Select shop item...</option>
+    <option *ngFor="let item of items" [ngValue]="item">
+      {{item.getName()}}
+    </option>
+  </select>
+</span>
