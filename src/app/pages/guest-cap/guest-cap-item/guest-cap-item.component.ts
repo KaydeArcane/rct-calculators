@@ -41,7 +41,7 @@ export class GuestCapItemComponent implements OnInit, OnDestroy {
     }
   }
 
-  deleteRide = () => {
+  deleteItem = () => {
     this.itemDelete.emit();
   }
 }
