@@ -4,7 +4,7 @@
     <p>
       Calculate how many guests your park can naturally attract before guest spawn rate is reduced by 75%. Works for normal scenarios and scenarios with 
       Harder Guest Generation (HGG).
-      <img src="assets/info.png" class="tooltip" title="Harder Guest Generation is a scenario option that makes it harder to attract guests by putting a hard limit of 1000 guests on parks that don't have rides that meet the specified requirements. An individual ride meets the HGG requirements if it is a tracked ride, has an Excitement rating of at least 6.00, and has a ride length of over 600 meters (1968 feet)." />
+      <img src="assets/info.png" class="tooltip" title="Harder Guest Generation is a scenario option that makes it harder to attract guests by putting a hard limit of 1000 guests on parks that don't have rides that meet the specified requirements." />
     </p>
   </section>
   <h3>Park Settings</h3>
@@ -15,20 +15,24 @@
   <div class="display_flex flex-wrap justify-content_center">
     <div class="card display_flex-vertical">
       <label for="select-ride-input">Add Ride or Stall to Park</label>
-      <app-ride-dropdown [rideType]='null' (rideSelected)="addRide($event)"></app-ride-dropdown>
+      <app-ride-dropdown [types]='null' (rideSelected)="addItem($event)"></app-ride-dropdown>
     </div>
     <div class="card display_flex-vertical">
       <strong>Current Soft Guest Cap</strong>
       <strong>{{softGuestCap}}</strong>
     </div>
-    <div class="card display_flex-vertical">
-      Clear Ride List & Start Over
-      <button class="danger" (click)="clear()">Reset</button>
-    </div>
   </div>
 </div>
 
-<div class="table-scroll">
+<div>
+  <app-park-list-header [disabled]="placedItems.length < 1" (clear)="clear()"></app-park-list-header>
+  <ng-container *ngFor="let item of placedItems; index as i">
+    <app-guest-cap-item [id]="'item' + item.getUniqueId()" [item]="item" [isHGG]="harderGenForm.value" (itemUpdate)="updateItem($event, i)"
+    (itemDelete)="removeItem(i)"></app-guest-cap-item>
+  </ng-container>
+</div>
+
+<!-- <div class="table-scroll">
   <table>
     <thead>
       <tr>
@@ -52,4 +56,4 @@
       </tr>
     </tbody>
   </table>
-</div>
+</div> -->

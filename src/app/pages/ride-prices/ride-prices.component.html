@@ -23,26 +23,14 @@
   </div>
   <div class="card display_flex-vertical">
     <label for="select-ride-input">Add Ride to Park</label>
-    <app-ride-dropdown [rideType]="'ride'" (rideSelected)="addRide($event)"></app-ride-dropdown>
+    <app-ride-dropdown [types]="'ride'" (rideSelected)="addRide($event)"></app-ride-dropdown>
   </div>
 </div>
 
 <div>
-  <div *ngIf="!confirm" class="display_flex justify-content_space-between align-items_baseline">
-    <h3>Park Rides</h3>
-    <div>
-      <button class="danger" (click)="showConfirm(true)" [disabled]="placedRides.length < 1">Clear Park</button>
-    </div>
-  </div>
-  <div *ngIf="confirm" class="card danger-card display_flex justify-content_space-between align-items_baseline flex-wrap rides-list-warning">
-    <h3>Are you sure you want to clear your park?</h3>
-    <div class="button-confirm">
-      <button class="danger" (click)="clear()">Yes, Clear Park</button>
-      <button (click)="showConfirm(false)">Cancel</button>
-    </div>
-  </div>
-  <div *ngFor="let ride of placedRides; index as i">
+  <app-park-list-header [types]="'ride'" [disabled]="placedRides.length < 1" (clear)="clear()"></app-park-list-header>
+  <ng-container *ngFor="let ride of placedRides; index as i">
     <app-ride-item [id]="'ride' + ride.getUniqueId()" [ride]="ride" (rideUpdate)="updateRide($event, i)"
       (rideDelete)="removeRide(i)"></app-ride-item>
-  </div>
+  </ng-container>
 </div>

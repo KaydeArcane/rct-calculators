@@ -1,7 +1,7 @@
-<form [formGroup]="ridePriceForm" class="card left ride-item flex-wrap">
+<form [formGroup]="ridePriceForm" class="card left item flex-wrap">
   <div class="display_flex name-and-price">
     <strong class="name">{{ride.getName()}}</strong>
-    <strong class="price">{{ride.getPrice() | currency}}</strong>
+    <strong class="value">{{ride.getPrice() | currency}}</strong>
   </div>
   <div class="display_flex-vertical">
     <label [for]="'ride-name' + ride.getUniqueId()">Ride Name</label>

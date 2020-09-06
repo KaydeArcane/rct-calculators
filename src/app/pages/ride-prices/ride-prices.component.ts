@@ -1,9 +1,9 @@
-import { CommonUtils } from './../../common/common.utils';
-import { RidePrice } from './../../models/ride-price.model';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { LocalStorageService } from './../../services/local-storage.service';
-import { Ride } from './../../models/ride.model';
+import { LocalStorageService } from '@services/local-storage.service';
+import { CommonUtils } from '@common/common.utils';
+import { RidePrice } from '@models/ride-price.model';
+import { Ride } from '@models/ride.model';
 import { ridesList } from '@assets/ridesList';
 
 @Component({
@@ -20,8 +20,6 @@ export class RidePricesComponent implements OnInit {
   public isPaidEntry: boolean = false;
   public paidEntryForm = new FormControl(false);
   private paidEntryFormSubscription;
-
-  public confirm: boolean = false;
 
   constructor(private localStorage: LocalStorageService) {
     // Initialize local storage
@@ -85,10 +83,6 @@ export class RidePricesComponent implements OnInit {
 
   // Update ride stats, recalculate individual ride price, & save ride to local storage
   updateRide = (ride, idx) => {
-    this.placedRides[idx].e = ride.e;
-    this.placedRides[idx].i = ride.i;
-    this.placedRides[idx].n = ride.n;
-
     this.placedRides[idx].calculateRidePrice(this.isOpenRCT2, this.isPaidEntry);
     this.localStorage.set('ridePricesList', this.placedRides);
   }
@@ -138,16 +132,8 @@ export class RidePricesComponent implements OnInit {
     this.localStorage.set('ridePricesList', this.placedRides);
   }
 
-  // Toggles confirmation message for clearing park
-  showConfirm = (state: boolean) => {
-    this.confirm = state;
-  }
-
   // Clear all rides and reset settings to default values
   clear = () => {
     this.placedRides.splice(0, this.placedRides.length);
-    this.setGame(true);
-    this.paidEntryForm.setValue(false);
-    this.showConfirm(false);
   }
 }

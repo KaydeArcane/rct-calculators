@@ -1,11 +1,9 @@
-import { CommonUtils } from './../../common/common.utils';
-import { LocalStorageService } from './../../services/local-storage.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { LocalStorageService } from '@services/local-storage.service';
 import { Ride } from '@models/ride.model';
 import { GuestCap } from '@models/guest-cap.model';
 import { ridesList } from '@assets/ridesList';
-import { FormControl } from '@angular/forms';
-
 
 @Component({
   selector: 'app-guest-cap',
@@ -14,8 +12,8 @@ import { FormControl } from '@angular/forms';
 })
 export class GuestCapComponent implements OnInit, OnDestroy {
 
-  private rides: object = {};
-  public placedRides: GuestCap[] = [];
+  private items: object = {};
+  public placedItems: GuestCap[] = [];
 
   public harderGenForm = new FormControl(this.localStorage.get('guestCapHGG'));
   private harderGenFormSubscription;
@@ -24,21 +22,21 @@ export class GuestCapComponent implements OnInit, OnDestroy {
 
   constructor(private localStorage: LocalStorageService) {
     // Initialize local storage
-    if (!this.localStorage.get('guestCapList')) this.localStorage.set('guestCapList', this.placedRides);
+    if (!this.localStorage.get('guestCapList')) this.localStorage.set('guestCapList', this.placedItems);
     if (this.localStorage.get('guestCapHGG') === null) this.localStorage.set('guestCapHGG', false);
   }
 
   ngOnInit(): void {
-    // Create mapped object of rides
+    // Create mapped object of items
     ridesList.forEach(cap => {
-      this.rides[cap.id] = new Ride(cap);
+      this.items[cap.id] = new Ride(cap);
     });
 
     // Fetch last created list from local storage
-    const lsRides = this.localStorage.get('guestCapList');
-    // Make GuestCap objects for each ride fetched from local storage
-    lsRides.forEach(ride => {
-      this.placedRides.push(new GuestCap(ride));
+    const lsItems = this.localStorage.get('guestCapList');
+    // Make GuestCap objects for each item fetched from local storage
+    lsItems.forEach(item => {
+      this.placedItems.push(new GuestCap(item));
     });
 
     // Calculate initial soft guest cap (SGC)
@@ -46,12 +44,6 @@ export class GuestCapComponent implements OnInit, OnDestroy {
 
     // Update harder guest generation (HGG) toggle
     this.harderGenFormSubscription = this.harderGenForm.valueChanges.subscribe(value => {
-      if (!value) {
-        // Clear passesHarderGen value for rides if HGG is toggling off
-        this.placedRides.forEach(ride => {
-          ride.passesHarderGen = false;
-        })
-      }
       // Recalculate SGC
       this.calculateSoftGuestCap();
       // Store current value of HGG toggle in local storage
@@ -66,62 +58,53 @@ export class GuestCapComponent implements OnInit, OnDestroy {
     }
   }
 
-  toggleSection = (target) => {
-    CommonUtils.toggleSection(target);
-  }
-
-  // Push new ride from rides dropdown into placedRides list & recalculate SGC
-  addRide = (ride: Ride) => {
-    this.placedRides.push(new GuestCap(this.rides[ride.getId()]));
-    this.placedRides.sort((a, b) => (a.getName() > b.getName()) ? 1 : -1)
+  // Push new item from items dropdown into placedItems list & recalculate SGC
+  addItem = (item: Ride) => {
+    this.placedItems.unshift(new GuestCap(this.items[item.getId()]));
 
     this.calculateSoftGuestCap();
   }
 
-  // Set an individual ride's passesHarderGen value based on table checkbox & recalculate SGC
-  toggleRideHGG = (ride: GuestCap, idx) => {
-    ride.passesHarderGen = (<HTMLInputElement>document.getElementById('ride-' + idx)).checked;
+  // Update item, recalculate guest cap, & save list to local storage
+  updateItem = (item, idx) => {
+    this.placedItems[idx] = new GuestCap(item);
 
     this.calculateSoftGuestCap();
+    this.localStorage.set('guestCapList', this.placedItems);
   }
 
-  // Remove a ride from the placedRides list & recalculate SGC
-  clearRide = (idx) => {
-    this.placedRides.splice(idx, 1);
+  // Remove a item from the placedItems list & recalculate SGC
+  removeItem = (idx) => {
+    this.placedItems.splice(idx, 1);
 
     this.calculateSoftGuestCap();
-  }
-
-  // Returns an individual ride's SGC contribution
-  rideGuestCap = (ride: GuestCap) => {
-    return ride.getGuestCap() * (ride.passesHarderGen ? 3 : 1)
   }
 
   // Calculates the Soft Guest Cap value
   calculateSoftGuestCap = () => {
     let cap = 0;
-    // Sums up all individual ride contributions to the soft guest cap
-    this.placedRides.forEach(ride => {
-      cap = cap + ride.getGuestCap();
+    // Sums up all individual item contributions to the soft guest cap
+    this.placedItems.forEach(item => {
+      cap = cap + item.getGuestCap();
     });
     // If HGG is enabled, do additional calculations
     if (this.harderGenForm.value) {
       // Lower value of cap to maximum of 1000
       cap = Math.min(1000, cap);
-      // Add additional contributions from rides that pass HGG requirements
-      this.placedRides.forEach(ride => {
-        if (ride.passesHarderGen) {
-          cap = cap + (ride.getGuestCap() * 2);
+      // Add additional contributions from items that pass HGG requirements
+      this.placedItems.forEach(item => {
+        if (item.passesHarderGen) {
+          cap = cap + (item.getGuestCap() * 2);
         }
       });
     }
-    // Sets soft guest cap and stores list of placedRides in local storage
+    // Sets soft guest cap and stores list of placedItems in local storage
     this.softGuestCap = cap;
-    this.localStorage.set('guestCapList', this.placedRides);
+    this.localStorage.set('guestCapList', this.placedItems);
   }
 
   clear = () => {
-    this.placedRides.splice(0, this.placedRides.length);
-    this.harderGenForm.setValue(false);
+    this.placedItems.splice(0, this.placedItems.length);
+    this.calculateSoftGuestCap();
   }
 }
