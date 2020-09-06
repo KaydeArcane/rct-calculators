@@ -20,10 +20,13 @@ export class CommonUtils {
   static scrollElemToTop = (id) => {
     setTimeout(function() {
       if (document.getElementById(id)) {
-        console.log(document.getElementById(id));
         const elementScrollTop = document.getElementById(id).offsetTop;
-        window.scrollTo({top: elementScrollTop - 210, behavior: 'smooth'});
+        window.scrollTo({top: elementScrollTop - 195, behavior: 'smooth'});
       }
     })
+  }
+
+  static capitalize = (str: String) => {
+    return str.substring(0,1).toUpperCase() + str.substring(1, str.length);
   }
 }

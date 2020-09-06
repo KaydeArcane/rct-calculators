@@ -1,8 +1,8 @@
-import { AboutComponent } from './about/about.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { GuestCapComponent } from './tools/guest-cap/guest-cap.component';
-import { RidePricesComponent } from './tools/ride-prices/ride-prices.component';
+import { AboutComponent } from '@pages/about/about.component';
+import { GuestCapComponent } from '@pages/guest-cap/guest-cap.component';
+import { RidePricesComponent } from '@pages/ride-prices/ride-prices.component';
 
 export const routes: Routes = [
   {

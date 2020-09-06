@@ -1,0 +1,59 @@
+<div class="display_flex-vertical align-items_center">
+  <h1>Soft Guest Cap</h1>
+  <section id="sgc-text">
+    <p>
+      Calculate how many guests your park can naturally attract before guest spawn rate is reduced by 75%. Works for normal scenarios and scenarios with 
+      Harder Guest Generation (HGG).
+      <img src="assets/info.png" class="tooltip" title="Harder Guest Generation is a scenario option that makes it harder to attract guests by putting a hard limit of 1000 guests on parks that don't have rides that meet the specified requirements." />
+    </p>
+  </section>
+  <h3>Park Settings</h3>
+  <div class="display_flex align-items_center">
+    <input id="harder-gen-input" name="harderGen" type="checkbox" class="large" [formControl]="harderGenForm" [value]="true"/>
+    <label for="harder-gen-input">Harder Guest Generation</label>
+  </div>
+  <div class="display_flex flex-wrap justify-content_center">
+    <div class="card display_flex-vertical">
+      <label for="select-ride-input">Add Ride or Stall to Park</label>
+      <app-ride-dropdown [types]='null' (rideSelected)="addItem($event)"></app-ride-dropdown>
+    </div>
+    <div class="card display_flex-vertical">
+      <strong>Current Soft Guest Cap</strong>
+      <strong>{{softGuestCap}}</strong>
+    </div>
+  </div>
+</div>
+
+<div>
+  <app-park-list-header [disabled]="placedItems.length < 1" (clear)="clear()"></app-park-list-header>
+  <ng-container *ngFor="let item of placedItems; index as i">
+    <app-guest-cap-item [id]="'item' + item.getUniqueId()" [item]="item" [isHGG]="harderGenForm.value" (itemUpdate)="updateItem($event, i)"
+    (itemDelete)="removeItem(i)"></app-guest-cap-item>
+  </ng-container>
+</div>
+
+<!-- <div class="table-scroll">
+  <table>
+    <thead>
+      <tr>
+        <th>Ride/Stall Name</th>
+        <th>Guest Cap Contribution</th>
+        <th *ngIf="harderGenForm.value">Meets HGG Requirements?</th>
+        <th aria-label="Delete Buttons Column"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="placedRides.length <= 0">
+        <td [attr.colspan]="harderGenForm.value ? 4 : 3" class="text-align_center">
+          Select a ride to start calculating the soft guest cap
+        </td>
+      </tr>
+      <tr *ngFor="let ride of placedRides; index as i">
+        <td>{{ride.getName()}}</td>
+        <td class="number">{{rideGuestCap(ride)}}</td>
+        <td *ngIf="harderGenForm.value" class="text-align_center"><input *ngIf="ride.getTracked()" [attr.id]="'ride-' + i" type="checkbox" class="large" (click)="toggleRideHGG(ride, i)" [checked]="ride.passesHarderGen"/></td>
+        <td><button class="danger" (click)="clearRide(i)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div> -->

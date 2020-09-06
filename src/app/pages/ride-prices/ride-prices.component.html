@@ -1,0 +1,36 @@
+<div class="display_flex-vertical align-items_center">
+  <h1>Ride Prices</h1>
+  <section id="rp-text">
+    <p>Calculate how much you can charge for any given ride based on its age, its stats, and certain game settings.</p>
+  </section>
+  <div class="display_flex flex-wrap justify-content_center">
+    <div class="settings-item">
+      <h3>Game Settings</h3>
+      <div class="button-group">
+        <button class="transparent" [ngClass]="isOpenRCT2 ?  'active': ''" (click)="setGame(true)">OpenRCT2</button>
+        <button class="transparent" [ngClass]="isOpenRCT2 ?  '': 'active'" (click)="setGame(false)">RCT1/RCT2/RCT
+          Classic</button>
+      </div>
+    </div>
+    <div class="settings-item">
+      <h3>Park Settings</h3>
+      <div class="display_flex align-items_center">
+        <input id="paid-entry-input" name="paid-entry" type="checkbox" class="large" [formControl]="paidEntryForm"
+          [value]="true" />
+        <label for="paid-entry-input">Charging for Park Entry</label>
+      </div>
+    </div>
+  </div>
+  <div class="card display_flex-vertical">
+    <label for="select-ride-input">Add Ride to Park</label>
+    <app-ride-dropdown [types]="'ride'" (rideSelected)="addRide($event)"></app-ride-dropdown>
+  </div>
+</div>
+
+<div>
+  <app-park-list-header [types]="'ride'" [disabled]="placedRides.length < 1" (clear)="clear()"></app-park-list-header>
+  <ng-container *ngFor="let ride of placedRides; index as i">
+    <app-ride-item [id]="'ride' + ride.getUniqueId()" [ride]="ride" (rideUpdate)="updateRide($event, i)"
+      (rideDelete)="removeRide(i)"></app-ride-item>
+  </ng-container>
+</div>

@@ -24,14 +24,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles/buttons.css",
-              "src/styles/cards.css",
-              "src/styles/collapsible-sections.css",
-              "src/styles/hamburger.css",
-              "src/styles/inputs.css",
-              "src/styles/tables.css",
-              "src/styles.css"
+              "src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/styles"
+              ]
+            },
             "scripts": []
           },
           "configurations": {
@@ -125,6 +124,12 @@
           }
         }
       }
-    }},
-  "defaultProject": "rct-calc"
+    }
+  },
+  "defaultProject": "rct-calc",
+  "schematics": {
+    "@schematics/angular:component": {
+      "style": "scss"
+    }
+  }
 }

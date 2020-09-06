@@ -6,10 +6,10 @@ import { ridesList } from '@assets/ridesList';
 @Component({
   selector: 'app-ride-dropdown',
   templateUrl: './ride-dropdown.component.html',
-  styleUrls: ['./ride-dropdown.component.css']
+  styleUrls: ['./ride-dropdown.component.scss']
 })
 export class RideDropdownComponent implements OnInit, OnDestroy {
-  @Input() rideType = undefined;
+  @Input() types = undefined;
   @Output() rideSelected = new EventEmitter<Ride>();
 
   public rides: Ride[] = [];
@@ -27,7 +27,7 @@ export class RideDropdownComponent implements OnInit, OnDestroy {
     // Create List of Rides/Stalls
     const tempRides = [];
     ridesList.forEach(ride => {
-      if (!this.rideType || (this.rideType && ride['type'] === this.rideType)) {
+      if (!this.types || (this.types && ride['type'] === this.types)) {
         tempRides.push(new Ride(ride));
       }
     });
