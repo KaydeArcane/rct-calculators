@@ -67,7 +67,8 @@ export class GuestCapComponent implements OnInit, OnDestroy {
 
   // Update item, recalculate guest cap, & save list to local storage
   updateItem = (item, idx) => {
-    this.placedItems[idx] = new GuestCap(item);
+    this.placedItems[idx].nickname = item.nickname;
+    this.placedItems[idx].passesHarderGen = item.passesHarderGen;
 
     this.calculateSoftGuestCap();
     this.localStorage.set('guestCapList', this.placedItems);
