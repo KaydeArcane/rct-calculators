@@ -12,6 +12,7 @@ import { GuestCapComponent } from '@pages/guest-cap/guest-cap.component';
 import { GuestCapItemComponent } from '@pages/guest-cap/guest-cap-item/guest-cap-item.component';
 import { RidePricesComponent } from '@pages/ride-prices/ride-prices.component';
 import { RideItemComponent } from '@pages/ride-prices/ride-item/ride-item.component';
+import { ShopPricesComponent } from './pages/shop-prices/shop-prices.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { RideItemComponent } from '@pages/ride-prices/ride-item/ride-item.compon
     GuestCapItemComponent,
     RidePricesComponent,
     RideItemComponent,
+    ShopPricesComponent,
   ],
   imports: [
     BrowserModule,
