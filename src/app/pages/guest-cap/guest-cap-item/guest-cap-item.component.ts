@@ -23,13 +23,15 @@ export class GuestCapItemComponent implements OnInit, OnDestroy {
     // Initialize price form
     this.guestCapForm = this.fb.group({
       'nickname': [this.item.nickname],
-      'passesHarderGen': [this.item.passesHarderGen]
+      'passesHarderGen': [this.item.passesHarderGen],
+      'quantity': [this.item.quantity]
     });
 
     this.guestCapFormSubscription = this.guestCapForm.valueChanges.pipe(debounceTime(100))
       .subscribe(value => {
         this.item.nickname = value.nickname;
         this.item.passesHarderGen = value.passesHarderGen;
+        this.item.quantity = value.quantity;
         this.itemUpdate.emit(this.item);
       }
     );
