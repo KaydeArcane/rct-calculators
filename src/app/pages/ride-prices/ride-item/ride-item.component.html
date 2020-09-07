@@ -1,5 +1,5 @@
 <form [formGroup]="ridePriceForm" class="card left item flex-wrap">
-  <div class="item-overlay quick-flash"></div>
+  <div #itemOverlay class="item-overlay"></div>
   <div class="display_flex name-and-price">
     <strong class="name">{{ride.getName()}}</strong>
     <strong class="value">{{ride.getPrice() | currency}}</strong>
