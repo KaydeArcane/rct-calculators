@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { LocalStorageService } from '@services/local-storage.service';
+import { CommonUtils } from '@common/common.utils';
 import { Ride } from '@models/ride.model';
 import { GuestCap } from '@models/guest-cap.model';
-import { CommonUtils } from '@common/common.utils';
 
 @Component({
   selector: 'app-guest-cap',
@@ -12,7 +12,6 @@ import { CommonUtils } from '@common/common.utils';
 })
 export class GuestCapComponent implements OnInit, OnDestroy {
 
-  private items: object = {};
   public placedItems: GuestCap[] = [];
 
   public harderGenForm = new FormControl(this.localStorage.get('guestCapHGG'));

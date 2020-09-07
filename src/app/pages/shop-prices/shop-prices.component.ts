@@ -1,10 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { LocalStorageService } from '@services/local-storage.service';
-import { ShopItem } from '@models/shop-item.model'
-import { ShopItemPrice } from '@models/shop-item-price.model'
-import { shopItems } from '@assets/shopItemList';
 import { CommonUtils } from '@common/common.utils';
+import { ShopItem } from '@models/shop-item.model';
+import { ShopItemPrice } from '@models/shop-item-price.model';
 
 @Component({
   selector: 'app-shop-prices',
@@ -12,7 +11,7 @@ import { CommonUtils } from '@common/common.utils';
   styleUrls: ['./shop-prices.component.scss']
 })
 export class ShopPricesComponent implements OnInit, OnDestroy {
-  private items: object = {};
+
   public soldItems: ShopItemPrice[] = [];
 
   public weather = {
@@ -37,11 +36,6 @@ export class ShopPricesComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    // Create mapped object of shop items
-    shopItems.forEach(item => {
-      this.items[item.id] = new ShopItem(item);
-    });
-
     // Fetch previous game settings from local storage
     const weather = this.localStorage.get('shopPricesWeather');
     this.weatherForm.get('temperate').setValue(weather['temperate']);
@@ -75,7 +69,7 @@ export class ShopPricesComponent implements OnInit, OnDestroy {
     const found = CommonUtils.checkForDupes(this.soldItems, item);
 
     if (found === null) {
-      this.soldItems.unshift(new ShopItemPrice(this.items[item.getId()]));
+      this.soldItems.unshift(new ShopItemPrice(item));
   
       this.calculateAllShopItemPrices();
     } else {

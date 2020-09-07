@@ -12,7 +12,6 @@ import { Ride } from '@models/ride.model';
 })
 export class RidePricesComponent implements OnInit {
 
-  private rides: object = {};
   public placedRides: RidePrice[] = [];
 
   public isOpenRCT2: boolean = true;
