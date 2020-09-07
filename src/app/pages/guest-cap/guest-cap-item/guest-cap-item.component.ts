@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnDestroy, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
 import { GuestCap } from '@models/guest-cap.model';
@@ -8,7 +8,7 @@ import { GuestCap } from '@models/guest-cap.model';
   templateUrl: './guest-cap-item.component.html',
   styleUrls: ['./guest-cap-item.component.scss']
 })
-export class GuestCapItemComponent implements OnInit, OnChanges, OnDestroy {
+export class GuestCapItemComponent implements OnInit, OnDestroy {
   @Input() item: GuestCap;
   @Input() isHGG: boolean;
   @Output() itemUpdate = new EventEmitter<GuestCap>();
@@ -35,10 +35,6 @@ export class GuestCapItemComponent implements OnInit, OnChanges, OnDestroy {
         this.itemUpdate.emit(this.item);
       }
     );
-  }
-
-  ngOnChanges(): void {
-    console.log(this.item);
   }
 
   ngOnDestroy(): void {

@@ -33,29 +33,3 @@
     </ng-container>
   </div>
 </div>
-
-<!-- <div class="table-scroll">
-  <table>
-    <thead>
-      <tr>
-        <th>Ride/Shop Name</th>
-        <th>Guest Cap Contribution</th>
-        <th *ngIf="harderGenForm.value">Meets HGG Requirements?</th>
-        <th aria-label="Delete Buttons Column"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngIf="placedRides.length <= 0">
-        <td [attr.colspan]="harderGenForm.value ? 4 : 3" class="text-align_center">
-          Select a ride to start calculating the soft guest cap
-        </td>
-      </tr>
-      <tr *ngFor="let ride of placedRides; index as i">
-        <td>{{ride.getName()}}</td>
-        <td class="number">{{rideGuestCap(ride)}}</td>
-        <td *ngIf="harderGenForm.value" class="text-align_center"><input *ngIf="ride.getTracked()" [attr.id]="'ride-' + i" type="checkbox" class="large" (click)="toggleRideHGG(ride, i)" [checked]="ride.passesHarderGen"/></td>
-        <td><button class="danger" (click)="clearRide(i)">Delete</button></td>
-      </tr>
-    </tbody>
-  </table>
-</div> -->
