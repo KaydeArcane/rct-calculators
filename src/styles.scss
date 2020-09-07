@@ -88,7 +88,19 @@ a:hover {
 }
 
 .item {
+  position: relative;
   // margin: 0.5rem 0;
+  > div.item-overlay {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    transition: opacity $transition-duration ease-out;
+    background-color: $primary-color;
+    opacity: 0;
+    pointer-events: none;
+  }
+
   > div:not(.footer) {
     margin-bottom: 0.5rem;
   }
@@ -128,4 +140,29 @@ footer {
   justify-content: center;
   line-height: 20px;
   text-align: center;
+}
+
+@keyframes quickFlash {
+  0% {
+    background-color: $primary-color;
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.quick-flash {
+  -webkit-animation-name: quickFlash;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease;
+  -moz-animation-name: quickFlash;
+  -moz-animation-duration: 1s;
+  -moz-animation-iteration-count: 1;
+  -moz-animation-timing-function: ease;
+  animation-name: quickFlash;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease;
 }
