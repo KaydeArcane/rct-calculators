@@ -48,13 +48,10 @@ export class RidePrice extends Ride {
   calculateRidePrice = (isOpenRCT2: boolean, isPaidEntry: boolean) => {
     // Calculate ride value based on ride stats and ride type rating bonuses
     if (this.e !== undefined && this.e !== null && this.i !== undefined && this.i !== null && this.n !== undefined && this.n !== null) {
-      this.rideValue = 
-        Math.floor(
-          ((this.e * 100 * this.getRatings().getE())
-          + (this.i * 100 * this.getRatings().getI())
-          + (this.n * 100 * this.getRatings().getN()))
-          / 1024
-        );
+      const eVal = Math.floor(this.e * 100 * this.getRatings().getE() / 1024);
+      const iVal = Math.floor(this.i * 100 * this.getRatings().getI() / 1024);
+      const nVal = Math.floor(this.n * 100 * this.getRatings().getN() / 1024);
+      this.rideValue = eVal + iVal + nVal;
   
       let calc = this.rideValue;
       // If not playing on OpenRCT2 and age bonus is addition value, add age bonus
@@ -62,16 +59,14 @@ export class RidePrice extends Ride {
         calc = calc + this.age.getClassicBonus();
       // Else, multiply by age bonus
       } else {
-        calc = calc * this.age.getMultiplier();
+        calc = Math.floor(calc * this.age.getMultiplier());
       }
       // If ride is duplicate, multiply by 0.75 and round down
       calc = Math.floor(calc * (this.isDuplicate ? 0.75 : 1));
       // If park charges for entry, divide by 4 and round down
       calc = Math.floor(calc / (isPaidEntry ? 4 : 1));
-      // Divide by 5 to get max price at which guest will complain about ride price being too high
-      calc = calc / 5;
-      // Subtract 0.1 to get max price guests will pay, fixing to 2 decimal places and setting minimum at 0
-      this.price = Math.max(Number.parseFloat((calc - 0.1).toFixed(2)), 0);
+      // Divide by 5 to get max price a guest will pay for the ride
+      this.price = calc / 5;
     } else {
       this.rideValue = 0;
       this.price = 0;

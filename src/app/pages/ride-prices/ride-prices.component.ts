@@ -37,6 +37,7 @@ export class RidePricesComponent implements OnInit {
     // Fetch previous game settings from local storage
     this.isOpenRCT2 = this.localStorage.get('ridePricesGame');
     this.paidEntryForm.setValue(this.localStorage.get('ridePricesEntry'));
+    this.isPaidEntry = this.paidEntryForm.value;
     // Fetch last created list from local storage
     const lsRides = this.localStorage.get('ridePricesList');
     lsRides.forEach(ride => {
@@ -49,7 +50,7 @@ export class RidePricesComponent implements OnInit {
       this.isPaidEntry = value;
       this.localStorage.set('ridePricesEntry', value);
       this.calculateAllRidePrices();
-    })
+    });
   }
 
   ngOnDestroy(): void {
@@ -114,10 +115,10 @@ export class RidePricesComponent implements OnInit {
     this.placedRides.forEach((pr, idx) => {
       if (pr.getId() === ride.getId()) {
         pr.isDuplicate = dupes;
+        // Recalculate individual ride price
+        pr.calculateRidePrice(this.isOpenRCT2, this.isPaidEntry);
+        this.placedRides[idx] = new RidePrice(pr);
       }
-      // Recalculate individual ride price
-      pr.calculateRidePrice(this.isOpenRCT2, this.isPaidEntry);
-      this.placedRides[idx] = new RidePrice(pr);
     })
 
     // Update rides list in local storage
@@ -135,5 +136,6 @@ export class RidePricesComponent implements OnInit {
   // Clear all rides and reset settings to default values
   clear = () => {
     this.placedRides.splice(0, this.placedRides.length);
+    this.calculateAllRidePrices();
   }
 }

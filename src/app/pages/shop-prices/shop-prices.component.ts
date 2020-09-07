@@ -4,6 +4,7 @@ import { LocalStorageService } from '@services/local-storage.service';
 import { ShopItem } from '@models/shop-item.model'
 import { ShopItemPrice } from '@models/shop-item-price.model'
 import { shopItems } from '@assets/shopItemList';
+import { CommonUtils } from '@common/common.utils';
 
 @Component({
   selector: 'app-shop-prices',
@@ -71,19 +72,14 @@ export class ShopPricesComponent implements OnInit, OnDestroy {
 
   // Push new shop item from shop items dropdown into soldItems list & update duplicates
   addShopItem = (item: ShopItem) => {
-    let found = false;
-    this.soldItems.every(si => {
-      if (si.getId() === item.getId()) {
-        found = true;
-        return false;
-      }
-      return true;
-    });
+    const found = CommonUtils.checkForDupes(this.soldItems, item);
 
-    if (!found) {
+    if (found === null) {
       this.soldItems.unshift(new ShopItemPrice(this.items[item.getId()]));
   
       this.calculateAllShopItemPrices();
+    } else {
+      this.soldItems[found] = new ShopItemPrice(this.soldItems[found]);
     }
   }
 

@@ -27,7 +27,9 @@
 
 <div>
   <app-park-list-header [types]="'Shop Items'" [disabled]="soldItems.length < 1" (clear)="clear()"></app-park-list-header>
+  <div class="display_flex flex-wrap">
   <ng-container *ngFor="let item of soldItems; index as i">
-    <app-shop-item [id]="'item' + item.getId()" [item]="item" (itemDelete)="removeShopItem(i)"></app-shop-item>
+    <app-shop-item class="flex-fill" [id]="'item' + item.getId()" [item]="item" (itemDelete)="removeShopItem(i)"></app-shop-item>
   </ng-container>
+  </div>
 </div>

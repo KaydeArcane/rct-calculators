@@ -1,3 +1,5 @@
+import { endWith } from 'rxjs/operators';
+
 export class CommonUtils {
   static ID = function () {
     // Math.random should be unique because of its seeding algorithm.
@@ -17,11 +19,12 @@ export class CommonUtils {
     }
   }
 
-  static scrollElemToTop = (id) => {
+  static scrollElemIntoView = (id) => {
     setTimeout(function() {
       if (document.getElementById(id)) {
-        const elementScrollTop = document.getElementById(id).offsetTop;
-        window.scrollTo({top: elementScrollTop, behavior: 'smooth'});
+        document.getElementById(id).scrollIntoView({block: 'end', behavior: 'smooth'});
+        // const elementScrollTop = document.getElementById(id).offsetTop + document.getElementById(id).offsetHeight;
+        // window.scrollTo({top: elementScrollTop, behavior: 'smooth'});
       }
     })
   }
@@ -38,5 +41,29 @@ export class CommonUtils {
 
   static capitalize = (str: String) => {
     return str.substring(0,1).toUpperCase() + str.substring(1, str.length);
+  }
+
+  static checkForDupes = (list, newItem) => {
+    let found = null;
+
+    // Iterate thru list looking for duplicates
+    list.every((item, idx) => {
+      if (item.getId() === newItem.getId()) {
+        // If duplicate found, set found to the item idx
+        found = idx;
+        // If item is found, escape loop
+        return false;
+      }
+      return true;
+    });
+
+    return found;
+  }
+
+  static flashItem = (item) => {
+    item.classList.add('quick-flash');
+    item.addEventListener('animationend', () => {
+      item.classList.remove('quick-flash');
+    });
   }
 }
