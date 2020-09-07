@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormControl, FormBuilder } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { LocalStorageService } from '@services/local-storage.service';
 import { ShopItem } from '@models/shop-item.model'
 import { ShopItemPrice } from '@models/shop-item-price.model'
