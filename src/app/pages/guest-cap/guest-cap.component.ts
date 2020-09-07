@@ -3,7 +3,6 @@ import { FormControl } from '@angular/forms';
 import { LocalStorageService } from '@services/local-storage.service';
 import { Ride } from '@models/ride.model';
 import { GuestCap } from '@models/guest-cap.model';
-import { ridesList } from '@assets/ridesList';
 import { CommonUtils } from '@common/common.utils';
 
 @Component({
@@ -28,11 +27,6 @@ export class GuestCapComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    // Create mapped object of items
-    ridesList.forEach(cap => {
-      this.items[cap.id] = new Ride(cap);
-    });
-
     // Fetch last created list from local storage
     const lsItems = this.localStorage.get('guestCapList');
     // Make GuestCap objects for each item fetched from local storage
@@ -66,7 +60,7 @@ export class GuestCapComponent implements OnInit, OnDestroy {
 
     // If there is no duplicate or item is a tracked ride, add to list
     if (idx === null || item.getTracked()) {
-      this.placedItems.unshift(new GuestCap(this.items[item.getId()]));
+      this.placedItems.unshift(new GuestCap(item));
       CommonUtils.scrollAddRideToTop();
     // Otherwise, if there is duplicate, increase quantity
     } else if (idx !== null) {

@@ -962,4 +962,12 @@ export const ridesList = [
   ...thrillList,
   ...waterList,
   ...stallList
-]
+];
+
+export const ridesListObj = {
+  "transport": transportList,
+  "gentle": gentleList,
+  "coasters": coastersList,
+  "thrill": thrillList,
+  "water": waterList
+};
