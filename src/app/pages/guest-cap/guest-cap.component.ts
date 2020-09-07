@@ -61,9 +61,20 @@ export class GuestCapComponent implements OnInit, OnDestroy {
 
   // Push new item from items dropdown into placedItems list & recalculate SGC
   addItem = (item: Ride) => {
-    this.placedItems.unshift(new GuestCap(this.items[item.getId()]));
+    // Check if an item is already in the list
+    const idx = CommonUtils.checkForDupes(this.placedItems, item);
 
-    CommonUtils.scrollAddRideToTop();
+    // If there is no duplicate or item is a tracked ride, add to list
+    if (idx === null || item.getTracked()) {
+      this.placedItems.unshift(new GuestCap(this.items[item.getId()]));
+      CommonUtils.scrollAddRideToTop();
+    // Otherwise, if there is duplicate, increase quantity
+    } else if (idx !== null) {
+      this.placedItems[idx].quantity += 1;
+      this.placedItems[idx] = new GuestCap(this.placedItems[idx]);
+      CommonUtils.scrollElemIntoView('item' + this.placedItems[idx].getUniqueId());
+    }
+
 
     this.calculateSoftGuestCap();
   }
@@ -72,6 +83,7 @@ export class GuestCapComponent implements OnInit, OnDestroy {
   updateItem = (item, idx) => {
     this.placedItems[idx].nickname = item.nickname;
     this.placedItems[idx].passesHarderGen = item.passesHarderGen;
+    this.placedItems[idx].quantity = item.quantity;
 
     this.calculateSoftGuestCap();
     this.localStorage.set('guestCapList', this.placedItems);
@@ -89,7 +101,7 @@ export class GuestCapComponent implements OnInit, OnDestroy {
     let cap = 0;
     // Sums up all individual item contributions to the soft guest cap
     this.placedItems.forEach(item => {
-      cap = cap + item.getGuestCap();
+      cap = cap + (item.getGuestCap() * item.quantity);
     });
     // If HGG is enabled, do additional calculations
     if (this.harderGenForm.value) {

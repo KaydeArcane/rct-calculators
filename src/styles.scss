@@ -1,13 +1,15 @@
 // Imports
 @import "variables";
+@import "flex";
 
 @import "buttons";
 @import "cards";
 @import "collapsible-sections";
 @import "hamburger";
-@import "header";
 @import "inputs";
 @import "tables";
+
+@import "header";
 
 body {
   font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -45,39 +47,6 @@ a:hover {
 
 a:hover {
   color: $primary-dark;
-}
-
-.display_flex {
-  display: flex !important;
-}
-
-.display_flex-vertical {
-  display: flex !important;
-  flex-direction: column !important;
-}
-
-.flex-wrap {
-  flex-wrap: wrap;
-}
-
-.align-items_center {
-  align-items: center !important;
-}
-
-.align-items_baseline {
-  align-items: baseline !important;
-}
-
-.justify-content_center {
-  justify-content: center !important;
-}
-
-.justify-content_space-between {
-  justify-content: space-between;
-}
-
-.flex-fill {
-  flex-grow: 1;
 }
 
 .danger-color {
@@ -119,7 +88,19 @@ a:hover {
 }
 
 .item {
+  position: relative;
   // margin: 0.5rem 0;
+  > div.item-overlay {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    transition: opacity $transition-duration ease-out;
+    background-color: $primary-color;
+    opacity: 0;
+    pointer-events: none;
+  }
+
   > div:not(.footer) {
     margin-bottom: 0.5rem;
   }
@@ -159,4 +140,29 @@ footer {
   justify-content: center;
   line-height: 20px;
   text-align: center;
+}
+
+@keyframes quickFlash {
+  0% {
+    background-color: $primary-color;
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.quick-flash {
+  -webkit-animation-name: quickFlash;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease;
+  -moz-animation-name: quickFlash;
+  -moz-animation-duration: 1s;
+  -moz-animation-iteration-count: 1;
+  -moz-animation-timing-function: ease;
+  animation-name: quickFlash;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease;
 }

@@ -1,19 +1,22 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnDestroy, AfterViewInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
 import { AgeValue } from '@models/age-value.model';
 import { RidePrice } from '@models/ride-price.model';
 import { ageValues } from '@assets/ageValues';
+import { CommonUtils } from '@common/common.utils';
 
 @Component({
   selector: 'app-ride-item',
   templateUrl: './ride-item.component.html',
   styleUrls: ['./ride-item.component.scss']
 })
-export class RideItemComponent implements OnInit, OnDestroy {
+export class RideItemComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() ride: RidePrice;
   @Output() rideUpdate = new EventEmitter<RidePrice>();
   @Output() rideDelete = new EventEmitter();
+
+  @ViewChild('itemOverlay') flashDiv;
 
   public ridePriceForm;
   private ridePriceFormSubscription;
@@ -61,6 +64,10 @@ export class RideItemComponent implements OnInit, OnDestroy {
         this.rideUpdate.emit(this.ride);
       }
     );
+  }
+  
+  ngAfterViewInit(): void {
+    CommonUtils.flashItem(this.flashDiv.nativeElement);
   }
 
   ngOnDestroy(): void {
