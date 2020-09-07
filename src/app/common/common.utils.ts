@@ -59,4 +59,11 @@ export class CommonUtils {
 
     return found;
   }
+
+  static flashItem = (item) => {
+    item.classList.add('quick-flash');
+    item.addEventListener('animationend', () => {
+      item.classList.remove('quick-flash');
+    });
+  }
 }
