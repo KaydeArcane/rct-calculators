@@ -1,3 +1,5 @@
+import { endWith } from 'rxjs/operators';
+
 export class CommonUtils {
   static ID = function () {
     // Math.random should be unique because of its seeding algorithm.
@@ -17,11 +19,12 @@ export class CommonUtils {
     }
   }
 
-  static scrollElemToTop = (id) => {
+  static scrollElemIntoView = (id) => {
     setTimeout(function() {
       if (document.getElementById(id)) {
-        const elementScrollTop = document.getElementById(id).offsetTop;
-        window.scrollTo({top: elementScrollTop, behavior: 'smooth'});
+        document.getElementById(id).scrollIntoView({block: 'end', behavior: 'smooth'});
+        // const elementScrollTop = document.getElementById(id).offsetTop + document.getElementById(id).offsetHeight;
+        // window.scrollTo({top: elementScrollTop, behavior: 'smooth'});
       }
     })
   }
