@@ -10,7 +10,7 @@ const foodItems = [
   },
   {
     "id": "2",
-    "name": "Burger",
+    "name": "Burgers",
     "buyInRain": true,
     "cost": 0.50,
     "baseValue": 1.90,
@@ -19,7 +19,7 @@ const foodItems = [
   },
   {
     "id": "3",
-    "name": "Candyfloss",
+    "name": "Cotton Candy",
     "buyInRain": false,
     "cost": 0.30,
     "baseValue": 0.90,
@@ -28,7 +28,7 @@ const foodItems = [
   },
   {
     "id": "4",
-    "name": "Chicken",
+    "name": "Fried Chicken",
     "buyInRain": true,
     "cost": 0.50,
     "baseValue": 1.90,
@@ -36,17 +36,8 @@ const foodItems = [
     "coldValue": 2.20
   },
   {
-    "id": "5",
-    "name": "Chocolate",
-    "buyInRain": true,
-    "cost": 0.40,
-    "baseValue": 1.30,
-    "hotValue": 1.30,
-    "coldValue": 2.00
-  },
-  {
     "id": "7",
-    "name": "Cookie",
+    "name": "Cookies",
     "buyInRain": true,
     "cost": 0.40,
     "baseValue": 0.80,
@@ -55,7 +46,7 @@ const foodItems = [
   },
   {
     "id": "8",
-    "name": "Donut",
+    "name": "Donuts",
     "buyInRain": true,
     "cost": 0.40,
     "baseValue": 0.80,
@@ -82,7 +73,7 @@ const foodItems = [
   },
   {
     "id": "13",
-    "name": "Funnel Cake",
+    "name": "Funnel Cakes",
     "buyInRain": true,
     "cost": 0.50,
     "baseValue": 1.30,
@@ -91,7 +82,7 @@ const foodItems = [
   },
   {
     "id": "15",
-    "name": "Hot Dog",
+    "name": "Hot Dogs",
     "buyInRain": true,
     "cost": 0.50,
     "baseValue": 1.70,
@@ -136,7 +127,7 @@ const foodItems = [
   },
   {
     "id": "24",
-    "name": "Pretzel",
+    "name": "Pretzels",
     "buyInRain": true,
     "cost": 0.50,
     "baseValue": 1.10,
@@ -145,7 +136,7 @@ const foodItems = [
   },
   {
     "id": "25",
-    "name": "Roast Sausage",
+    "name": "Roast Sausages",
     "buyInRain": true,
     "cost": 0.50,
     "baseValue": 1.60,
@@ -154,7 +145,7 @@ const foodItems = [
   },
   {
     "id": "28",
-    "name": "Sub Sandwich",
+    "name": "Sub Sandwiches",
     "buyInRain": true,
     "cost": 0.50,
     "baseValue": 1.90,
@@ -163,7 +154,7 @@ const foodItems = [
   },
   {
     "id": "30",
-    "name": "Tentacle",
+    "name": "Tentacles",
     "buyInRain": true,
     "cost": 1.10,
     "baseValue": 2.20,
@@ -172,7 +163,7 @@ const foodItems = [
   },
   {
     "id": "31",
-    "name": "Toffee Apple",
+    "name": "Candy Apples",
     "buyInRain": true,
     "cost": 0.40,
     "baseValue": 1.00,
@@ -202,7 +193,7 @@ const drinkItems = [
   },
   {
     "id": "9",
-    "name": "Drink",
+    "name": "Drinks",
     "buyInRain": true,
     "cost": 0.30,
     "baseValue": 1.20,
@@ -217,6 +208,15 @@ const drinkItems = [
     "baseValue": 1.10,
     "hotValue": 1.90,
     "coldValue": 1.10
+  },
+  {
+    "id": "5",
+    "name": "Hot Chocolate",
+    "buyInRain": true,
+    "cost": 0.40,
+    "baseValue": 1.30,
+    "hotValue": 1.30,
+    "coldValue": 2.00
   },
   {
     "id": "17",
@@ -247,7 +247,7 @@ const drinkItems = [
   },
   {
     "id": "27",
-    "name": "Su Jongkwa",
+    "name": "Sujeonggwa",
     "buyInRain": true,
     "cost": 0.30,
     "baseValue": 1.10,
@@ -259,7 +259,7 @@ const drinkItems = [
 const merchItems = [
   {
     "id": "0",
-    "name": "Balloon",
+    "name": "Balloons",
     "buyInRain": false,
     "cost": 0.30,
     "baseValue": 1.40,
@@ -268,7 +268,7 @@ const merchItems = [
   },
   {
     "id": "14",
-    "name": "Hat",
+    "name": "Hats",
     "buyInRain": true,
     "cost": 0.90,
     "baseValue": 2.70,
@@ -277,7 +277,7 @@ const merchItems = [
   },
   {
     "id": "19",
-    "name": "Map",
+    "name": "Park Maps",
     "buyInRain": true,
     "cost": 0.10,
     "baseValue": 0.70,
@@ -304,7 +304,7 @@ const merchItems = [
   },
   {
     "id": "32",
-    "name": "Toy",
+    "name": "Cuddly Toys",
     "buyInRain": true,
     "cost": 1.50,
     "baseValue": 3.00,
@@ -313,7 +313,7 @@ const merchItems = [
   },
   {
     "id": "33",
-    "name": "T-shirt",
+    "name": "T-Shirts",
     "buyInRain": true,
     "cost": 2.00,
     "baseValue": 3.70,
@@ -322,7 +322,7 @@ const merchItems = [
   },
   {
     "id": "34",
-    "name": "Umbrella",
+    "name": "Umbrellas",
     "buyInRain": true,
     "cost": 2.00,
     "baseValue": 3.50,
