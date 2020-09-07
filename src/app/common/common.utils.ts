@@ -39,4 +39,21 @@ export class CommonUtils {
   static capitalize = (str: String) => {
     return str.substring(0,1).toUpperCase() + str.substring(1, str.length);
   }
+
+  static checkForDupes = (list, newItem) => {
+    let found = null;
+
+    // Iterate thru list looking for duplicates
+    list.every((item, idx) => {
+      if (item.getId() === newItem.getId()) {
+        // If duplicate found, set found to the item idx
+        found = idx;
+        // If item is found, escape loop
+        return false;
+      }
+      return true;
+    });
+
+    return found;
+  }
 }

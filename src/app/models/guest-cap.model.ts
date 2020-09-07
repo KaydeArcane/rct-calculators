@@ -10,12 +10,20 @@ export class GuestCap extends Ride {
 
     if (obj) {
       this.passesHarderGen = obj['passesHarderGen'];
-      this.quantity = obj['quantity'];
+      if (!isNaN(obj['quantity'])) {
+        this.quantity = obj['quantity'];
+      }
     }
   }
 
   // Returns an individual item's SGC contribution
   getGuestCapValue = () => {
-    return this.getGuestCap().toString() + (this.passesHarderGen ? ' + ' + this.getGuestCap() * 2 : '');
+    let value = '';
+    if (this.passesHarderGen) {
+      value = this.getGuestCap().toString() + ' + ' + (this.getGuestCap() * 2).toString();
+    } else {
+      value = (this.getGuestCap() * this.quantity).toString();
+    }
+    return value;
   }
 }
