@@ -30,6 +30,9 @@
 <div>
   <app-park-list-header [types]="'rides'" [disabled]="placedRides.length < 1" (clear)="clear()"></app-park-list-header>
   <div class="display_flex flex-wrap justify-content_space-between">
+    <div *ngIf="placedRides.length <= 0" class="text-align_center flex-fill">
+      <h5>No rides added yet - add a ride using the dropdown above!</h5>
+    </div>
     <ng-container *ngFor="let ride of placedRides; index as i">
       <app-ride-item class="flex-fill" [id]="'ride' + ride.getUniqueId()" [ride]="ride" (rideUpdate)="updateRide($event, i)"
         (rideDelete)="removeRide(i)"></app-ride-item>
