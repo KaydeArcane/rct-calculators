@@ -16,7 +16,7 @@ export class ShopItemComponent implements OnInit {
   }
 
   isUmbrella = () => {
-    return this.item.getName() === 'Umbrella';
+    return this.item.getId() === '34';
   }
 
   deleteItem = () => {
