@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from '@common/header/header.component';
 import { ParkListHeaderComponent } from '@common/park-list-header/park-list-header.component';
-import { RideDropdownComponent } from '@common/ride-dropdown/ride-dropdown.component';
+import { AttractionDropdownComponent } from '@common/attraction-dropdown/attraction-dropdown.component';
 import { ShopItemDropdownComponent } from '@common/shop-item-dropdown/shop-item-dropdown.component';
 import { DeleteFooterComponent } from '@common/delete-footer/delete-footer.component';
 import { AboutComponent } from '@pages/about/about.component';
@@ -22,7 +22,7 @@ import { ShopItemComponent } from '@pages/shop-prices/shop-item/shop-item.compon
     AppComponent,
     HeaderComponent,
     ParkListHeaderComponent,
-    RideDropdownComponent,
+    AttractionDropdownComponent,
     AboutComponent,
     GuestCapComponent,
     GuestCapItemComponent,

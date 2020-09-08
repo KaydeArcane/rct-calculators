@@ -13,9 +13,9 @@
     <label for="harder-gen-input">Harder Guest Generation</label>
   </div>
   <div class="display_flex flex-wrap justify-content_center">
-    <div id="select-ride-container" class="card">
-      <label for="select-ride-input">Add Attraction to Park</label>
-      <app-ride-dropdown [types]='null' (rideSelected)="addItem($event)"></app-ride-dropdown>
+    <div id="select-attraction-container" class="card">
+      <label for="select-attraction-input">Add Attraction to Park</label>
+      <app-attraction-dropdown [types]='null' (attractionSelected)="addItem($event)"></app-attraction-dropdown>
     </div>
     <div id="soft-guest-cap-card" class="card item">
       <div #itemOverlay class="item-overlay"></div>

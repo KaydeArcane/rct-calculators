@@ -1,8 +1,8 @@
-<form [formGroup]="ridesDropdown">
+<form [formGroup]="attractionsDropdown">
   <span class="select">
-    <select id="select-ride-input" formControlName="ride" aria-label="Select Ride/Shop Input">
-      <option value="" disabled>Select {{types ? types : 'ride/shop'}}...</option>
-      <ng-container *ngFor="let list of rides | keyvalue: originalOrder">
+    <select id="select-attraction-input" formControlName="attraction" aria-label="Select Attraction Input">
+      <option value="" disabled>Select {{types ? types : 'attraction'}}...</option>
+      <ng-container *ngFor="let list of attractions | keyvalue: originalOrder">
         <optgroup *ngIf="list.value.list.length > 0" [label]="capitalize(list.value.name)">
           <option *ngFor="let item of list.value.list" [ngValue]="item">
             {{item.getName()}}
