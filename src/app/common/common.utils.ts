@@ -61,9 +61,16 @@ export class CommonUtils {
   }
 
   static flashItem = (item) => {
-    item.classList.add('quick-flash');
-    item.addEventListener('animationend', () => {
-      item.classList.remove('quick-flash');
+    const newElem = document.createElement('div');
+    newElem.classList.add('item-overlay', 'quick-flash');
+    const elem = item.querySelector('.item-overlay');
+    if (elem) {
+      item.replaceChild(newElem, elem);
+    } else {
+      item.appendChild(newElem);
+    }
+    newElem.addEventListener('animationend', () => {
+      item.removeChild(newElem);
     });
   }
 }

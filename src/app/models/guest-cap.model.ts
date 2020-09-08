@@ -1,7 +1,6 @@
-import { Ride } from '@models/ride.model';
-import { CommonUtils } from '@common/common.utils';
+import { Attraction } from '@models/attraction.model';
 
-export class GuestCap extends Ride {
+export class GuestCap extends Attraction {
   public passesHarderGen: boolean = false;
   public quantity: number = 1;
 
@@ -17,9 +16,9 @@ export class GuestCap extends Ride {
   }
 
   // Returns an individual item's SGC contribution
-  getGuestCapValue = () => {
+  getGuestCapValue = (isHGG: boolean) => {
     let value = '';
-    if (this.passesHarderGen) {
+    if (this.passesHarderGen && isHGG) {
       value = this.getGuestCap().toString() + ' + ' + (this.getGuestCap() * 2).toString();
     } else {
       value = (this.getGuestCap() * this.quantity).toString();

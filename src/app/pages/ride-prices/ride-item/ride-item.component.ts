@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnDestroy, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnDestroy, AfterViewInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
 import { AgeValue } from '@models/age-value.model';
@@ -15,8 +15,6 @@ export class RideItemComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() ride: RidePrice;
   @Output() rideUpdate = new EventEmitter<RidePrice>();
   @Output() rideDelete = new EventEmitter();
-
-  @ViewChild('itemOverlay') flashDiv;
 
   public ridePriceForm;
   private ridePriceFormSubscription;
@@ -67,13 +65,22 @@ export class RideItemComponent implements OnInit, AfterViewInit, OnDestroy {
   }
   
   ngAfterViewInit(): void {
-    CommonUtils.flashItem(this.flashDiv.nativeElement);
+    CommonUtils.flashItem(document.getElementById('ride-item' + this.ride.getUniqueId()));
   }
 
   ngOnDestroy(): void {
     if (this.ridePriceFormSubscription) {
       this.ridePriceFormSubscription.unsubscribe();
     }
+  }
+
+  duplicatesListText = () => {
+    let text = '';
+    this.ride.duplicatesList.forEach(name => {
+      text = text + name + ', ';
+    })
+    text = text.slice(0, -2);
+    return 'Duplicate of: ' + text;
   }
 
   deleteRide = () => {

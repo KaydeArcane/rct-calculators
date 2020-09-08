@@ -1,12 +1,13 @@
-import { CommonUtils } from '@common/common.utils';
-import { Ride } from '@models/ride.model';
+import { Attraction } from '@models/attraction.model';
 import { AgeValue } from '@models/age-value.model';
 import { ageValues } from '@assets/ageValues';
-export class RidePrice extends Ride {
+
+export class RidePrice extends Attraction {
   public e: number;
   public i: number;
   public n: number;
   public isDuplicate: boolean = false;
+  public duplicatesList: string[] = [];
   private age: AgeValue = new AgeValue(ageValues[0]);
   private rideValue: number = 0;
   private price: number = 0;
@@ -25,6 +26,9 @@ export class RidePrice extends Ride {
         this.n = obj['n'];
       }
       this.isDuplicate = obj['isDuplicate'];
+      if (obj['duplicatesList']) {
+        this.duplicatesList = obj['duplicatesList'];
+      }
       if (obj['age']) {
         this.age = obj['age'];
       }
@@ -44,6 +48,15 @@ export class RidePrice extends Ride {
   getPrice = (): number => this.price;
 
   setAgeValue = (age) => this.age = new AgeValue(age);
+
+  findDuplicates = (list: RidePrice[]) => {
+    this.duplicatesList.splice(0, this.duplicatesList.length);
+    list.forEach(ride => {
+      if (ride.getId() === this.getId() && ride.getUniqueId() !== this.getUniqueId()) {
+        this.duplicatesList.push(ride.nickname);
+      }
+    });
+  }
 
   calculateRidePrice = (isOpenRCT2: boolean, isPaidEntry: boolean) => {
     // Calculate ride value based on ride stats and ride type rating bonuses

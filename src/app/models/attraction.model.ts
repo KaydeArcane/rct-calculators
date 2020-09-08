@@ -2,7 +2,7 @@ import { CommonUtils } from '@common/common.utils';
 import { Ratings } from '@models/ratings.model';
 import { ShopItem } from '@models/shop-item.model';
 
-export class Ride {
+export class Attraction {
   private uniqueId: string = CommonUtils.ID();
   private id: string;
   private name: string;
@@ -25,6 +25,9 @@ export class Ride {
       this.items = obj['items'];
     }
 
+    if (!this.nickname) {
+      this.nickname = this.name + ' 1';
+    }
     if (this.ratings) {
       this.ratings = new Ratings(this.ratings);
     }
@@ -45,4 +48,24 @@ export class Ride {
   getGuestCap = (): number => this.guestCap;
   getRatings = (): Ratings => this.ratings;
   getItems = (): ShopItem[] => this.items;
+
+  setDefaultNickname = (list: Attraction[]) => {
+    let nameCount = 1;
+    let reachedUnusedCount = false;
+
+    // Iterate thru rides checking for all default nicknames for duplicate rides
+    while(!reachedUnusedCount) {
+      reachedUnusedCount = true;
+      list.every((pr) => {
+        if (pr.getName() === this.getName() && pr.nickname === pr.getName() + ' ' + nameCount) {
+          nameCount += 1;
+          reachedUnusedCount = false;
+          return false;
+        }
+        return true;
+      });
+    }
+    // Set default ride nickname to appropriate number
+    this.nickname = this.getName() + ' ' + nameCount;
+  }
 }

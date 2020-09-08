@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { LocalStorageService } from '@services/local-storage.service';
 import { CommonUtils } from '@common/common.utils';
-import { Ride } from '@models/ride.model';
+import { Attraction } from '@models/attraction.model';
 import { ShopItemPrice } from '@models/shop-item-price.model';
 
 @Component({
@@ -65,7 +65,7 @@ export class ShopPricesComponent implements OnInit, OnDestroy {
   }
 
   // Push new shop item from shop items dropdown into soldItems list & update duplicates
-  addShopItem = (item: Ride) => {
+  addShopItem = (item: Attraction) => {
     item.getItems().forEach(shopItem => {
       const found = CommonUtils.checkForDupes(this.soldItems, shopItem);
   
@@ -87,8 +87,12 @@ export class ShopPricesComponent implements OnInit, OnDestroy {
 
   // Recalculate all shop item prices & saves shop items to local storage
   calculateAllShopItemPrices = () => {
-    this.soldItems.forEach(ride => {
-      ride.calculatePrice(this.weather);
+    this.soldItems.forEach((item, idx) => {
+      const itemPrice = item.getPrice();
+      item.calculatePrice(this.weather);
+      if (itemPrice !== item.getPrice()) {
+        this.soldItems[idx] = new ShopItemPrice(item);
+      }
     });
     this.localStorage.set('shopPricesList', this.soldItems);
   }
@@ -96,5 +100,6 @@ export class ShopPricesComponent implements OnInit, OnDestroy {
   // Clear all shop items and reset settings to default values
   clear = () => {
     this.soldItems.splice(0, this.soldItems.length);
+    this.calculateAllShopItemPrices();
   }
 }

@@ -1,27 +1,75 @@
-<div class="display_flex-vertical align-items_center text-align_center">
+<div class="text-align_center">
   <h1>RCT Calculators</h1>
-  <p>A collection of useful calculators for use with OpenRCT2, Roller Coaster Tycoon 1, Roller Coaster Tycoon 2, and Roller Coaster Tycoon Classic.</p>
+</div>
+<div>
+  <p>A collection of useful calculators for use with OpenRCT2, Roller Coaster Tycoon 1, Roller Coaster Tycoon 2, and
+    Roller Coaster Tycoon Classic.</p>
   <p>
     Developed by
     <span>
-      <a aria-label="Dev on twitter" target="_blank" rel="noopener" href="https://twitter.com/KaydeArcane" title="Twitter">
+      <a aria-label="Dev on twitter" target="_blank" rel="noopener" href="https://twitter.com/KaydeArcane"
+        title="Twitter">
         <img id="twitter-logo" src="assets/Twitter_Logo_Blue.svg" />
         <span>@KaydeArcane</span>
       </a>.
     </span>
     Data sourced from
     <a href="https://github.com/OpenRCT2/OpenRCT2" target="_blank" rel="noopener">OpenRCT2 repo</a>.
-    <a href="https://forums.openrct2.org/topic/2737-guide-how-much-can-you-charge-for-your-rides/" target="_blank" rel="noopener">Ride price calculations</a>
-    and
-    <a href="https://forums.openrct2.org/topic/2861-guide-when-and-how-do-guests-spawn/" target="_blank" rel="noopener">soft guest cap calculations</a>
-    based on discoveries by
+    <a href="https://forums.openrct2.org/topic/2737-guide-how-much-can-you-charge-for-your-rides/" target="_blank"
+      rel="noopener">Ride price</a>,
+    <a href="https://forums.openrct2.org/topic/2747-guide-how-much-can-you-charge-for-your-shops/" target="_blank"
+      rel="noopener">shop price</a>, and
+    <a href="https://forums.openrct2.org/topic/2861-guide-when-and-how-do-guests-spawn/" target="_blank"
+      rel="noopener">soft guest cap</a>
+    calculations based on discoveries by
     <a href="https://www.youtube.com/channel/UCcU9si2fIVJ-KoIDX9xYpdw" target="_blank" rel="noopener">Deurklink</a>.
   </p>
   <p>
     Massive shout out to
     <a href="https://www.youtube.com/channel/UCBlXovStrlQkVA2xJEROUNg" target="_blank" rel="noopener">Marcel Vos</a>
-    for covering these mechanics on YouTube and spurring my interest in making this!
+    for covering these mechanics on YouTube and spurring my interest in making these tools!
   </p>
-  <div class="display_flex align-items_center">
+  <div class="text-align_center">
+    <h3>FAQs</h3>
+  </div>
+  <div>
+    <h4>Where is [insert attraction] in the dropdown list?</h4>
+    <p>The dropdown lists should cover every attraction possible to build in OpenRCT2 and RCT Classic. However, some
+      rides are reskins of a base ride type - for example, the "Snow Cups" ride is actually a reskin of the "Twist"
+      ride. The calculations for a reskinned ride is the exact same as the ride it's based on, so if you are using a
+      reskinned ride, add the base ride type instead.</p>
+    <p>If you think an attraction is missing, file a bug report on the <a
+        href="https://github.com/KaydeArcane/rct-calculators/issues" target="_blank" rel="noopener">Github repo</a> with
+      detailed information about the missing ride.</p>
+  </div>
+  <div>
+    <h4>Why did my ride get marked as a duplicate of another ride of a different type?</h4>
+    <p>
+      Some rides are considered the same type for the game's ride value and price calculation mechanics, despite not
+      being exact reskins of other rides. These rides are as follows:</p>
+    <ul>
+      <li>Car Ride / Monster Trucks</li>
+      <li>Classic Mini Roller Coaster / Junior Roller Coaster</li>
+      <li>Steel Wild Mouse / Spinning Wild Mouse</li>
+      <li>Hyper-Twister Coaster / Steel Twister Coaster</li>
+      <li>Corkscrew Roller Coaster / Hypercoaster</li>
+    </ul>
+  </div>
+  <div>
+    <h4>How do I tell how old my ride is? The game only specifies the year it was built in.</h4>
+    <p>This is tricky, because as far as I can find, there is no way in game to see exactly how many months old a ride is. The best way I've found to deal with this is to keep track of guests thoughts to see when they say they won't pay that much to ride a given ride, and increase the age value when they do to get the new admission price.</p>
+  </div>
+  <div>
+    <h4>How can I find out if a scenario I'm playing has harder guest generation enabled?</h4>
+    <p>The official list of scenarios that use harder guest generation is as follows:</p>
+    <ul>
+      <li>Alpine Adventures (RCT2)</li>
+      <li>Frightmare Hills (RCT: Loopy Landscapes)</li>
+      <li>Nevermore Park (RCT: Loopy Landscapes)</li>
+      <li>Southern Sands (RCT: Loopy Landscapes)</li>
+      <li>Stone Age (RCT2: Time Twister)</li>
+      <li>Venus Ponds (RCT: Loopy Landscapes)</li>
+    </ul>
+    <p>If you're playing on OpenRCT2, you can also check by opening the cheats menu and selecting "Scenario options", then looking at the park options tab. If the "Guests are more difficult to attract" setting is checked, the scenario has harder guest generation enabled.</p>
   </div>
 </div>

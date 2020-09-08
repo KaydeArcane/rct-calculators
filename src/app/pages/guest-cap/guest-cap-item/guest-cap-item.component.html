@@ -1,13 +1,12 @@
-<form [formGroup]="guestCapForm" class="card left item flex-wrap flex-fill">
-  <div #itemOverlay class="item-overlay"></div>
+<form [id]="'attraction' + item.getUniqueId()" [formGroup]="guestCapForm" class="card left item flex-wrap flex-fill">
   <div class="display_flex name-and-price">
     <strong class="name">{{item.getName()}}</strong>
-    <strong class="value">{{item.getGuestCapValue()}}</strong>
+    <strong class="value">{{item.getGuestCapValue(isHGG)}}</strong>
   </div>
   <ng-container *ngIf="item.getTracked()">
     <div class="display_flex-vertical">
-      <label [for]="'ride-name' + item.getUniqueId()">Ride Name</label>
-      <input [id]="'ride-name' + item.getUniqueId()" type="text" formControlName="nickname" />
+      <label [for]="'attraction-name' + item.getUniqueId()">Ride Name</label>
+      <input [id]="'attraction-name' + item.getUniqueId()" type="text" formControlName="nickname" />
     </div>
     <div class="display_flex-vertical" *ngIf="isHGG">
       <div class="display_flex align-items_center">
@@ -19,8 +18,8 @@
     </div>
   </ng-container>
   <div class="display_flex-vertical" *ngIf="!item.getTracked()">
-    <label [for]="'ride-name' + item.getUniqueId()">Quantity</label>
-    <input [id]="'quantity' + item.getUniqueId()" type="number" formControlName="quantity" />
+    <label [for]="'attraction-quantity' + item.getUniqueId()">Quantity</label>
+    <input [id]="'quantity' + item.getUniqueId()" type="number" min="1" formControlName="quantity" />
   </div>
   <div class="footer flex-fill">
     <app-delete-footer class="display_flex-vertical justify-content_end" (delete)="deleteItem()"></app-delete-footer>
