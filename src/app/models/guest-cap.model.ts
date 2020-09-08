@@ -1,7 +1,6 @@
-import { Ride } from '@models/ride.model';
-import { CommonUtils } from '@common/common.utils';
+import { Attraction } from '@models/attraction.model';
 
-export class GuestCap extends Ride {
+export class GuestCap extends Attraction {
   public passesHarderGen: boolean = false;
   public quantity: number = 1;
 

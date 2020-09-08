@@ -2,7 +2,7 @@ import { CommonUtils } from '@common/common.utils';
 import { Ratings } from '@models/ratings.model';
 import { ShopItem } from '@models/shop-item.model';
 
-export class Ride {
+export class Attraction {
   private uniqueId: string = CommonUtils.ID();
   private id: string;
   private name: string;

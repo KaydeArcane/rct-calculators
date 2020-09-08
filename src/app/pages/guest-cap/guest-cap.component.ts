@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { LocalStorageService } from '@services/local-storage.service';
 import { CommonUtils } from '@common/common.utils';
-import { Ride } from '@models/ride.model';
+import { Attraction } from '@models/attraction.model';
 import { GuestCap } from '@models/guest-cap.model';
 
 @Component({
@@ -59,7 +59,7 @@ export class GuestCapComponent implements OnInit, OnDestroy {
   }
 
   // Push new item from items dropdown into placedItems list & recalculate SGC
-  addItem = (item: Ride) => {
+  addItem = (item: Attraction) => {
     // Check if an item is already in the list
     const idx = CommonUtils.checkForDupes(this.placedItems, item);
 

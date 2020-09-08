@@ -19,18 +19,18 @@ export class ShopItemDropdownComponent implements OnInit, OnDestroy {
   constructor() { }
 
   ngOnInit(): void {
-    // Create List of Shop Items
+    // Create list of shop items
     const tempItems = [];
     shopItems.forEach(item => {
       tempItems.push(new ShopItem(item));
     });
-    // Store List
+    // Store list
     Object.assign(this.items, tempItems);
-    // Sort by Name
+    // Sort by name
     this.items.sort((a, b) => (a.getName() > b.getName()) ? 1 : -1);
 
     this.dropdownSubscription = this.itemsDropdown.valueChanges.subscribe(value => {
-      // Emit Selected Ride when Dropdown Changes
+      // Emit selected shop item when dropdown changes
       this.itemSelected.emit(value);
       this.itemsDropdown.reset('', {emitEvent: false});
     })

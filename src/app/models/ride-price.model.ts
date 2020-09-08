@@ -1,8 +1,8 @@
-import { CommonUtils } from '@common/common.utils';
-import { Ride } from '@models/ride.model';
+import { Attraction } from '@models/attraction.model';
 import { AgeValue } from '@models/age-value.model';
 import { ageValues } from '@assets/ageValues';
-export class RidePrice extends Ride {
+
+export class RidePrice extends Attraction {
   public e: number;
   public i: number;
   public n: number;

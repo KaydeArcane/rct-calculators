@@ -1,21 +1,21 @@
 import { Component, OnInit, Output, EventEmitter, Input, OnDestroy } from '@angular/core';
 import { KeyValue } from '@angular/common';
 import { FormBuilder } from '@angular/forms';
-import { Ride } from '@models/ride.model';
+import { Attraction } from '@models/attraction.model';
 import { ridesListObj } from '@assets/ridesList';
 import { shopsListObj } from '@assets/shopList';
 import { CommonUtils } from '@common/common.utils';
 
 @Component({
-  selector: 'app-ride-dropdown',
-  templateUrl: './ride-dropdown.component.html',
-  styleUrls: ['./ride-dropdown.component.scss']
+  selector: 'app-attraction-dropdown',
+  templateUrl: './attraction-dropdown.component.html',
+  styleUrls: ['./attraction-dropdown.component.scss']
 })
-export class RideDropdownComponent implements OnInit, OnDestroy {
+export class AttractionDropdownComponent implements OnInit, OnDestroy {
   @Input() types = undefined;
-  @Output() rideSelected = new EventEmitter<Ride>();
+  @Output() attractionSelected = new EventEmitter<Attraction>();
 
-  public rides = {
+  public attractions = {
     transport: {
       name: "Transport Rides",
       list: ridesListObj.transport,
@@ -53,8 +53,8 @@ export class RideDropdownComponent implements OnInit, OnDestroy {
       list: shopsListObj.misc
     },
   };
-  public ridesDropdown = this.fb.group({
-    ride: ['']
+  public attractionsDropdown = this.fb.group({
+    attraction: ['']
   });
 
   private dropdownSubscription;
@@ -64,31 +64,31 @@ export class RideDropdownComponent implements OnInit, OnDestroy {
   ) { }
   
   ngOnInit(): void {
-    // Initialize lists of rides and shops
-    Object.keys(this.rides).forEach(idx => {
-      // For each individual list, iterate through and convert them to Ride classes within a temp list if they match the selected type
+    // Initialize lists of attractions
+    Object.keys(this.attractions).forEach(idx => {
+      // For each individual list, iterate through and convert them to Attraction classes within a temp list if they match the selected type
       const tempList = [];
-      this.rides[idx].list.forEach(item => {
+      this.attractions[idx].list.forEach(item => {
         if (!this.types || (this.types && item['type'] === this.types)) {
-          tempList.push(new Ride(item));
+          tempList.push(new Attraction(item));
         }
       });
       // If temp list has entries, save it back to original list; otherwise clear original list
       if (tempList.length > 0) {
-        Object.assign(this.rides[idx].list, tempList);
+        Object.assign(this.attractions[idx].list, tempList);
       } else {
-        this.rides[idx].list = [];
+        this.attractions[idx].list = [];
       }
       // Sort the individual lists by name
-      if (this.rides[idx].list.length > 1) {
-        this.rides[idx].list.sort((a, b) => (a.getName() > b.getName()) ? 1 : -1);
+      if (this.attractions[idx].list.length > 1) {
+        this.attractions[idx].list.sort((a, b) => (a.getName() > b.getName()) ? 1 : -1);
       }
     })
 
-    this.dropdownSubscription = this.ridesDropdown.controls['ride'].valueChanges.subscribe(value => {
-      // Emit ride/shop when dropdown item is selected
-      this.rideSelected.emit(value);
-      this.ridesDropdown.reset({ride: ''}, {emitEvent: false});
+    this.dropdownSubscription = this.attractionsDropdown.controls['attraction'].valueChanges.subscribe(value => {
+      // Emit attraction when dropdown item is selected
+      this.attractionSelected.emit(value);
+      this.attractionsDropdown.reset({attraction: ''}, {emitEvent: false});
     })
   }
 
@@ -102,7 +102,7 @@ export class RideDropdownComponent implements OnInit, OnDestroy {
     return CommonUtils.capitalize(str);
   }
 
-  // Preserves original property order when displaying ride and shop list
+  // Preserves original property order when displaying attraction list
   originalOrder = (a: KeyValue<number,string>, b: KeyValue<number,string>): number => {
     return 0;
   }
