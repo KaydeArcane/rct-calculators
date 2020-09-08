@@ -1,4 +1,4 @@
-export const foodShopsList = [
+const foodShopsList = [
   {
     "id": "60",
     "name": "Art Deco Food Stall",
@@ -451,8 +451,7 @@ export const foodShopsList = [
     ]
   },
 ];
-
-export const drinkShopsList = [
+const drinkShopsList = [
   {
     "id": "7b",
     "name": "Coffee Shop",
@@ -624,8 +623,7 @@ export const drinkShopsList = [
     ]
   },
 ];
-
-export const merchShopsList = [
+const merchShopsList = [
   {
     "id": "86",
     "name": "Balloon Stall",
@@ -781,24 +779,30 @@ export const merchShopsList = [
     ]
   },
 ];
-
-export const miscShopsList = [
+const miscShopsList = [
   {
     "name": "ATM",
     "id": "2d",
-    "type": "shop",
+    "type": "stall",
     "guestCap": 5
   },
   {
     "name": "First Aid Room",
     "id": "30",
-    "type": "shop",
+    "type": "stall",
     "guestCap": 5
   },
   {
     "name": "Restroom",
     "id": "24",
-    "type": "shop",
+    "type": "stall",
     "guestCap": 5
   },
 ];
+
+export const shopsListObj = {
+  "food": foodShopsList,
+  "drinks": drinkShopsList,
+  "merch": merchShopsList,
+  "misc": miscShopsList
+}

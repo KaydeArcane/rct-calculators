@@ -2,9 +2,13 @@
   <span class="select">
     <select id="select-ride-input" formControlName="ride" aria-label="Select Ride/Shop Input">
       <option value="" disabled>Select {{types ? types : 'ride/shop'}}...</option>
-      <option *ngFor="let ride of rides" [ngValue]="ride">
-        {{ride.getName()}}
-      </option>
+      <ng-container *ngFor="let list of rides | keyvalue: originalOrder">
+        <optgroup *ngIf="list.value.list.length > 0" [label]="capitalize(list.value.name)">
+          <option *ngFor="let item of list.value.list" [ngValue]="item">
+            {{item.getName()}}
+          </option>
+        </optgroup>
+      </ng-container>
     </select>
   </span>
 </form>

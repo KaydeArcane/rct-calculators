@@ -4,7 +4,6 @@ import { LocalStorageService } from '@services/local-storage.service';
 import { CommonUtils } from '@common/common.utils';
 import { RidePrice } from '@models/ride-price.model';
 import { Ride } from '@models/ride.model';
-import { ridesList } from '@assets/ridesList';
 
 @Component({
   selector: 'app-ride-prices',
@@ -13,7 +12,6 @@ import { ridesList } from '@assets/ridesList';
 })
 export class RidePricesComponent implements OnInit {
 
-  private rides: object = {};
   public placedRides: RidePrice[] = [];
 
   public isOpenRCT2: boolean = true;
@@ -29,11 +27,6 @@ export class RidePricesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Create mapped object of rides
-    ridesList.forEach(cap => {
-      this.rides[cap.id] = new Ride(cap);
-    });
-
     // Fetch previous game settings from local storage
     this.isOpenRCT2 = this.localStorage.get('ridePricesGame');
     this.paidEntryForm.setValue(this.localStorage.get('ridePricesEntry'));
@@ -68,7 +61,7 @@ export class RidePricesComponent implements OnInit {
 
   // Push new ride from rides dropdown into placedRides list & update duplicates
   addRide = (ride: Ride) => {
-    this.placedRides.unshift(new RidePrice(this.rides[ride.getId()]));
+    this.placedRides.unshift(new RidePrice(ride));
 
     this.updateDuplicates(ride);
 
