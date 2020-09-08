@@ -65,6 +65,11 @@
     pay that much to ride a given ride, and increase the age value when they do to get the new admission price. If they
     still refuse to pay that much, keep increasing the age value until you get a price that guests will pay.</p>
 </div>
+<div id="umbrella-price" class="card left" [ngClass]="{'highlight-card': fragmentMatch('umbrella-price')}">
+  <h4>Why charge {{20 | currency}} for umbrellas?</h4>
+  <p>Guests will pay any price for umbrellas when it starts raining; as such, it is recommended to charge the maximum amount for umbrellas to maximize profit when it rains. This helps make up for lagging sales in uncovered rides during rain, to help keep income consistent regardless of weather.</p>
+  <p>However, in scenarios that don't experience much rain, it may be more profitable to charge the normal max price for umbrellas.</p>
+</div>
 <div id="harder-guest-generation" class="card left" [ngClass]="{'highlight-card': fragmentMatch('harder-guest-generation')}">
   <h4>What is harder guest generation?</h4>
   <p>Harder guest generation (HGG) is a scenario setting that changes how the soft guest cap of a park is calculated. In essence, it caps the park's soft guest cap at 1000, and only rides that meet a set of requirements are able to boost it past that.</p>
@@ -88,9 +93,4 @@
   <p>If you're playing on OpenRCT2, you can also check by opening the cheats menu and selecting "Scenario options", then
     looking at the park options tab. If the "Guests are more difficult to attract" setting is checked, the scenario has
     harder guest generation enabled.</p>
-</div>
-<div id="umbrella-price" class="card left" [ngClass]="{'highlight-card': fragmentMatch('umbrella-price')}">
-  <h4>Why charge {{20 | currency}} for umbrellas?</h4>
-  <p>Guests will pay any price for umbrellas when it starts raining; as such, it is recommended to charge the maximum amount for umbrellas to maximize profit when it rains. This helps make up for lagging sales in uncovered rides during rain, to help keep income consistent regardless of weather.</p>
-  <p>However, in scenarios that don't experience much rain, it may be more profitable to charge the normal max price for umbrellas.</p>
 </div>
