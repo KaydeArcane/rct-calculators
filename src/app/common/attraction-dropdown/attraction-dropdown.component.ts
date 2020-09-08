@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input, OnDestroy } from '@angular/core';
 import { KeyValue } from '@angular/common';
 import { FormBuilder } from '@angular/forms';
-import { Ride } from '@models/ride.model';
+import { Attraction } from '@models/attraction.model';
 import { ridesListObj } from '@assets/ridesList';
 import { shopsListObj } from '@assets/shopList';
 import { CommonUtils } from '@common/common.utils';
@@ -13,7 +13,7 @@ import { CommonUtils } from '@common/common.utils';
 })
 export class AttractionDropdownComponent implements OnInit, OnDestroy {
   @Input() types = undefined;
-  @Output() attractionSelected = new EventEmitter<Ride>();
+  @Output() attractionSelected = new EventEmitter<Attraction>();
 
   public attractions = {
     transport: {
@@ -66,11 +66,11 @@ export class AttractionDropdownComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     // Initialize lists of attractions
     Object.keys(this.attractions).forEach(idx => {
-      // For each individual list, iterate through and convert them to Ride classes within a temp list if they match the selected type
+      // For each individual list, iterate through and convert them to Attraction classes within a temp list if they match the selected type
       const tempList = [];
       this.attractions[idx].list.forEach(item => {
         if (!this.types || (this.types && item['type'] === this.types)) {
-          tempList.push(new Ride(item));
+          tempList.push(new Attraction(item));
         }
       });
       // If temp list has entries, save it back to original list; otherwise clear original list

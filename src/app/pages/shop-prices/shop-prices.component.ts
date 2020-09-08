@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { LocalStorageService } from '@services/local-storage.service';
 import { CommonUtils } from '@common/common.utils';
-import { Ride } from '@models/ride.model';
+import { Attraction } from '@models/attraction.model';
 import { ShopItemPrice } from '@models/shop-item-price.model';
 
 @Component({
@@ -65,7 +65,7 @@ export class ShopPricesComponent implements OnInit, OnDestroy {
   }
 
   // Push new shop item from shop items dropdown into soldItems list & update duplicates
-  addShopItem = (item: Ride) => {
+  addShopItem = (item: Attraction) => {
     item.getItems().forEach(shopItem => {
       const found = CommonUtils.checkForDupes(this.soldItems, shopItem);
   

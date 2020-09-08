@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { LocalStorageService } from '@services/local-storage.service';
 import { CommonUtils } from '@common/common.utils';
 import { RidePrice } from '@models/ride-price.model';
-import { Ride } from '@models/ride.model';
+import { Attraction } from '@models/attraction.model';
 
 @Component({
   selector: 'app-ride-prices',
@@ -60,7 +60,7 @@ export class RidePricesComponent implements OnInit {
   }
 
   // Push new ride from rides dropdown into placedRides list & update duplicates
-  addRide = (ride: Ride) => {
+  addRide = (ride: Attraction) => {
     this.placedRides.unshift(new RidePrice(ride));
 
     this.updateDuplicates(ride);
