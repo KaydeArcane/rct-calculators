@@ -13,11 +13,12 @@
     <label for="harder-gen-input">Harder Guest Generation</label>
   </div>
   <div class="display_flex flex-wrap justify-content_center">
-    <div id="select-ride-container" class="card display_flex-vertical">
-      <label for="select-ride-input">Add Ride or Shop to Park</label>
+    <div id="select-ride-container" class="card">
+      <label for="select-ride-input">Add Attraction to Park</label>
       <app-ride-dropdown [types]='null' (rideSelected)="addItem($event)"></app-ride-dropdown>
     </div>
-    <div class="card display_flex-vertical">
+    <div id="soft-guest-cap-card" class="card item">
+      <div #itemOverlay class="item-overlay"></div>
       <strong>Current Soft Guest Cap</strong>
       <strong>{{softGuestCap}}</strong>
     </div>
@@ -27,6 +28,9 @@
 <div>
   <app-park-list-header [disabled]="placedItems.length < 1" (clear)="clear()"></app-park-list-header>
   <div class="display_flex flex-wrap">
+    <div *ngIf="placedItems.length <= 0" class="text-align_center flex-fill">
+      <h5>No attractions added yet - add an attraction using the dropdown above!</h5>
+    </div>
     <ng-container *ngFor="let item of placedItems; index as i">
       <app-guest-cap-item class="flex-fill display_flex-vertical" [id]="'item' + item.getUniqueId()" [item]="item" [isHGG]="harderGenForm.value" (itemUpdate)="updateItem($event, i)"
       (itemDelete)="removeItem(i)"></app-guest-cap-item>

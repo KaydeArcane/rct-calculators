@@ -38,6 +38,12 @@ export class GuestCapComponent implements OnInit, OnDestroy {
 
     // Update harder guest generation (HGG) toggle
     this.harderGenFormSubscription = this.harderGenForm.valueChanges.subscribe(value => {
+      // Make all items affected by HGG toggle flash to signal that they've changed
+      this.placedItems.forEach((item, idx) => {
+        if (item.passesHarderGen) {
+          this.placedItems[idx] = new GuestCap(item);
+        }
+      })
       // Recalculate SGC
       this.calculateSoftGuestCap();
       // Store current value of HGG toggle in local storage
@@ -67,7 +73,6 @@ export class GuestCapComponent implements OnInit, OnDestroy {
       this.placedItems[idx] = new GuestCap(this.placedItems[idx]);
       CommonUtils.scrollElemIntoView('item' + this.placedItems[idx].getUniqueId());
     }
-
 
     this.calculateSoftGuestCap();
   }
@@ -108,6 +113,9 @@ export class GuestCapComponent implements OnInit, OnDestroy {
       });
     }
     // Sets soft guest cap and stores list of placedItems in local storage
+    if (this.softGuestCap !== cap) {
+      CommonUtils.flashItem(document.getElementById('soft-guest-cap-card'));
+    }
     this.softGuestCap = cap;
     this.localStorage.set('guestCapList', this.placedItems);
   }

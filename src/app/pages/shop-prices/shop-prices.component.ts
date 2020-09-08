@@ -87,8 +87,12 @@ export class ShopPricesComponent implements OnInit, OnDestroy {
 
   // Recalculate all shop item prices & saves shop items to local storage
   calculateAllShopItemPrices = () => {
-    this.soldItems.forEach(ride => {
-      ride.calculatePrice(this.weather);
+    this.soldItems.forEach((item, idx) => {
+      const itemPrice = item.getPrice();
+      item.calculatePrice(this.weather);
+      if (itemPrice !== item.getPrice()) {
+        this.soldItems[idx] = new ShopItemPrice(item);
+      }
     });
     this.localStorage.set('shopPricesList', this.soldItems);
   }
@@ -96,5 +100,6 @@ export class ShopPricesComponent implements OnInit, OnDestroy {
   // Clear all shop items and reset settings to default values
   clear = () => {
     this.soldItems.splice(0, this.soldItems.length);
+    this.calculateAllShopItemPrices();
   }
 }
