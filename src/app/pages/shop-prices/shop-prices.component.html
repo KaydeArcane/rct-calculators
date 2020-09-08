@@ -19,11 +19,9 @@
       </div>
     </form>
   </div>
-  <div class="card display_flex-vertical">
+  <div class="card">
     <label for="select-ride-input">Add Shop to Park</label>
     <app-ride-dropdown [types]="'shop'" (rideSelected)="addShopItem($event)"></app-ride-dropdown>
-
-    <!-- <app-shop-item-dropdown (itemSelected)="addShopItem($event)"></app-shop-item-dropdown> -->
   </div>
 </div>
 
