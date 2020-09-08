@@ -25,6 +25,9 @@ export class Attraction {
       this.items = obj['items'];
     }
 
+    if (!this.nickname) {
+      this.nickname = this.name + ' 1';
+    }
     if (this.ratings) {
       this.ratings = new Ratings(this.ratings);
     }
@@ -45,4 +48,24 @@ export class Attraction {
   getGuestCap = (): number => this.guestCap;
   getRatings = (): Ratings => this.ratings;
   getItems = (): ShopItem[] => this.items;
+
+  setDefaultNickname = (list) => {
+    let nameCount = 1;
+    let reachedUnusedCount = false;
+
+    // Iterate thru rides checking for all default nicknames for duplicate rides
+    while(!reachedUnusedCount) {
+      reachedUnusedCount = true;
+      list.every((pr) => {
+        if (pr.getName() === this.getName() && pr.nickname === pr.getName() + ' ' + nameCount) {
+          nameCount += 1;
+          reachedUnusedCount = false;
+          return false;
+        }
+        return true;
+      });
+    }
+    // Set default ride nickname to appropriate number
+    this.nickname = this.getName() + ' ' + nameCount;
+  }
 }

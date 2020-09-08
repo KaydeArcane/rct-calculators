@@ -61,6 +61,7 @@ export class RidePricesComponent implements OnInit {
 
   // Push new ride from rides dropdown into placedRides list & update duplicates
   addRide = (ride: Attraction) => {
+    ride.setDefaultNickname(this.placedRides);
     this.placedRides.unshift(new RidePrice(ride));
 
     this.updateDuplicates(ride);

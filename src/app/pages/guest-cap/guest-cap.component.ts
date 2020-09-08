@@ -65,6 +65,7 @@ export class GuestCapComponent implements OnInit, OnDestroy {
 
     // If there is no duplicate or item is a tracked ride, add to list
     if (idx === null || item.getTracked()) {
+      item.setDefaultNickname(this.placedItems);
       this.placedItems.unshift(new GuestCap(item));
       CommonUtils.scrollAddRideToTop();
     // Otherwise, if there is duplicate, increase quantity
