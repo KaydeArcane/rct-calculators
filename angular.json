@@ -5,7 +5,11 @@
   "projects": {
     "rct-calc": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -126,10 +130,5 @@
       }
     }
   },
-  "defaultProject": "rct-calc",
-  "schematics": {
-    "@schematics/angular:component": {
-      "style": "scss"
-    }
-  }
+  "defaultProject": "rct-calc"
 }
