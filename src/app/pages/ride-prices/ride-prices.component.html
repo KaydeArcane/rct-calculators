@@ -28,7 +28,7 @@
 </div>
 
 <div>
-  <app-park-list-header [types]="'ride'" [disabled]="placedRides.length < 1" (clear)="clear()"></app-park-list-header>
+  <app-park-list-header [types]="'rides'" [disabled]="placedRides.length < 1" (clear)="clear()"></app-park-list-header>
   <div class="display_flex flex-wrap justify-content_space-between">
     <ng-container *ngFor="let ride of placedRides; index as i">
       <app-ride-item class="flex-fill" [id]="'ride' + ride.getUniqueId()" [ride]="ride" (rideUpdate)="updateRide($event, i)"
