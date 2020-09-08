@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "prodbuild": "ng build --prod --base-href https://kaydearcane.github.io/rct-calculators/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

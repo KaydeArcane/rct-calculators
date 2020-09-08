@@ -210,7 +210,7 @@ const gentleList = [
   },
   {
     "name": "Monster Trucks",
-    "id": "40",
+    "id": "0b",
     "type": "ride",
     "tracked": true,
     "guestCap": 50,
@@ -353,7 +353,7 @@ const coastersList = [
   },
   {
     "name": "Hypercoaster",
-    "id": "3a",
+    "id": "13",
     "type": "ride",
     "tracked": true,
     "guestCap": 100,
@@ -365,7 +365,7 @@ const coastersList = [
   },
   {
     "name": "Hyper-Twister Coaster",
-    "id": "52",
+    "id": "33",
     "type": "ride",
     "tracked": true,
     "guestCap": 120,
@@ -413,7 +413,7 @@ const coastersList = [
   },
   {
     "name": "Junior Roller Coaster",
-    "id": "55",
+    "id": "04",
     "type": "ride",
     "tracked": true,
     "guestCap": 60,
@@ -557,7 +557,7 @@ const coastersList = [
   },
   {
     "name": "Spinning Wild Mouse",
-    "id": "38",
+    "id": "36",
     "type": "ride",
     "tracked": true,
     "guestCap": 55,
