@@ -65,12 +65,12 @@
     pay that much to ride a given ride, and increase the age value when they do to get the new admission price. If they
     still refuse to pay that much, keep increasing the age value until you get a price that guests will pay.</p>
 </div>
-<div class="card left">
+<div id="harder-guest-generation" class="card left" [ngClass]="{'highlight-card': fragmentMatch('harder-guest-generation')}">
   <h4>What is harder guest generation?</h4>
   <p>Harder guest generation (HGG) is a scenario setting that changes how the soft guest cap of a park is calculated. In essence, it caps the park's soft guest cap at 1000, and only rides that meet a set of requirements are able to boost it past that.</p>
   <p>For a more detailed overview, check out <a href="https://www.youtube.com/watch?v=202b3XhMVW8" target="_blank" rel="noopener">Marcel's video</a> about harder guest generation, which goes much more in depth into how the soft guest cap is calculated and how the harder guest generation setting affects it.</p>
 </div>
-<div class="card left">
+<div id="hgg-ride-requirements" class="card left" [ngClass]="{'highlight-card': fragmentMatch('hgg-ride-requirements')}">
   <h4>What are the requirements that a ride needs to meet to pass the harder guest generation check?</h4>
   <p>In order for a ride to pass the harder guest generation check, it must: be a tracked ride, have an excitement of 6.00 or higher, and have a ride length of at least 1968 feet (600 meters).</p>
 </div>
