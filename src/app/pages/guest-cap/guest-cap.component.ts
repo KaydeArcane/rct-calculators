@@ -113,6 +113,9 @@ export class GuestCapComponent implements OnInit, OnDestroy {
       });
     }
     // Sets soft guest cap and stores list of placedItems in local storage
+    if (this.softGuestCap !== cap) {
+      CommonUtils.flashItem(document.getElementById('soft-guest-cap-card'));
+    }
     this.softGuestCap = cap;
     this.localStorage.set('guestCapList', this.placedItems);
   }

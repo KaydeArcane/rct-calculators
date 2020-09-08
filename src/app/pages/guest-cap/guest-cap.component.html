@@ -17,7 +17,7 @@
       <label for="select-ride-input">Add Attraction to Park</label>
       <app-ride-dropdown [types]='null' (rideSelected)="addItem($event)"></app-ride-dropdown>
     </div>
-    <div class="card item">
+    <div id="soft-guest-cap-card" class="card item">
       <div #itemOverlay class="item-overlay"></div>
       <strong>Current Soft Guest Cap</strong>
       <strong>{{softGuestCap}}</strong>
