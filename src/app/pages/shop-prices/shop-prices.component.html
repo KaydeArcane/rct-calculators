@@ -1,7 +1,8 @@
 <div class="display_flex-vertical align-items_center">
   <h1>Shop Prices</h1>
   <section id="rp-text">
-    <p>Calculate how much you can charge for any given food/drink/merch item being sold in your park based on the typical temperatures your park experiences.</p>
+    <p>Calculate how much you can charge for any given food/drink/merch item being sold in your park based on the
+      typical temperatures your park experiences.</p>
   </section>
   <h3>Park Weather Settings</h3>
   <div class="display_flex flex-wrap justify-content_center">
@@ -26,13 +27,15 @@
 </div>
 
 <div>
-  <app-park-list-header [types]="'Shop Items'" [disabled]="soldItems.length < 1" (clear)="clear()"></app-park-list-header>
+  <app-park-list-header [types]="'Shop Items'" [disabled]="soldItems.length < 1" (clear)="clear()">
+  </app-park-list-header>
   <div class="display_flex flex-wrap">
     <div *ngIf="soldItems.length <= 0" class="text-align_center flex-fill">
       <h5>No shop items added yet - add a shop's items using the dropdown above!</h5>
     </div>
     <ng-container *ngFor="let item of soldItems; index as i">
-      <app-shop-item class="flex-fill" [id]="'item' + item.getId()" [item]="item" (itemDelete)="removeShopItem(i)"></app-shop-item>
+      <app-shop-item class="flex-fill display_flex-vertical" [id]="'item' + item.getId()" [item]="item"
+        (itemDelete)="removeShopItem(i)"></app-shop-item>
     </ng-container>
   </div>
 </div>
