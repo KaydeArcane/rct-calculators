@@ -17,7 +17,9 @@ export class Attraction {
     if (obj) {
       this.id = obj['id'];
       this.name = obj['name'];
-      this.nickname = obj['nickname'];
+      if (obj['nickname']) {
+        this.nickname = obj['nickname'];
+      }
       this.type = obj['type'];
       this.tracked = obj['tracked'];
       this.guestCap = obj['guestCap'];
@@ -25,9 +27,6 @@ export class Attraction {
       this.items = obj['items'];
     }
 
-    if (!this.nickname) {
-      this.nickname = this.name + ' 1';
-    }
     if (this.ratings) {
       this.ratings = new Ratings(this.ratings);
     }

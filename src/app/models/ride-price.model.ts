@@ -53,7 +53,13 @@ export class RidePrice extends Attraction {
     this.duplicatesList.splice(0, this.duplicatesList.length);
     list.forEach(ride => {
       if (ride.getId() === this.getId() && ride.getUniqueId() !== this.getUniqueId()) {
-        this.duplicatesList.push(ride.nickname);
+        let nameToPush = '';
+        if (ride.nickname) {
+          nameToPush = ride.nickname;
+        } else {
+          nameToPush = 'Unnamed ' + ride.getName();
+        }
+        this.duplicatesList.push(nameToPush);
       }
     });
   }
