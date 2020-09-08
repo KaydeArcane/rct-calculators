@@ -43,7 +43,7 @@
       href="https://github.com/KaydeArcane/rct-calculators/issues" target="_blank" rel="noopener">Github repo</a> with
     detailed information about the missing ride.</p>
 </div>
-<div class="card left">
+<div id="ride-duplicates" class="card left" [ngClass]="{'highlight-card': fragmentMatch('ride-duplicates')}">
   <h4>Why did my ride get marked as a duplicate of another ride of a different type?</h4>
   <p>
     Some rides are considered the same type for the game's ride value and price calculation mechanics, despite not

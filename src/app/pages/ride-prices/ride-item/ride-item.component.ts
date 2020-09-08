@@ -19,6 +19,7 @@ export class RideItemComponent implements OnInit, AfterViewInit, OnDestroy {
   public ridePriceForm;
   private ridePriceFormSubscription;
 
+  public showDupes: boolean = false;
   public ageList: AgeValue[] = [];
 
   constructor(private fb: FormBuilder) { }
@@ -74,13 +75,21 @@ export class RideItemComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  duplicatesListText = () => {
-    let text = '';
-    this.ride.duplicatesList.forEach(name => {
-      text = text + name + ', ';
+  checkForUniqueCases = () => {
+    let unique = false;
+    this.ride.duplicatesList.every(dupe => {
+      if (dupe.getUniqueCase()) {
+        unique = true;
+      }
+      return !unique;
     })
-    text = text.slice(0, -2);
-    return 'Duplicate of: ' + text;
+
+    return unique;
+  }
+
+  toggleDupes = () => {
+    this.showDupes = !this.showDupes;
+    document.getElementById('ride-item-dupes-toggle' + this.ride.getUniqueId()).setAttribute('aria-pressed', this.showDupes.toString());
   }
 
   deleteRide = () => {
