@@ -89,6 +89,7 @@ export class AttractionDropdownComponent implements OnInit, OnDestroy {
       // Emit attraction when dropdown item is selected
       this.attractionSelected.emit(value);
       this.attractionsDropdown.reset({attraction: ''}, {emitEvent: false});
+      document.getElementById('select-attraction-input').blur();
     })
   }
 

@@ -74,6 +74,15 @@ export class RideItemComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
+  duplicatesListText = () => {
+    let text = '';
+    this.ride.duplicatesList.forEach(name => {
+      text = text + name + ', ';
+    })
+    text = text.slice(0, -2);
+    return 'Duplicate of: ' + text;
+  }
+
   deleteRide = () => {
     this.rideDelete.emit();
   }
