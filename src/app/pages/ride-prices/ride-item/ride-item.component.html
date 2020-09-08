@@ -12,7 +12,7 @@
       <input [id]="'is-duplicate' + ride.getUniqueId()" name="is-duplicate" type="checkbox" class="large"
         formControlName="isDuplicate" [value]="true" />
       <label [for]="'is-duplicate' + ride.getUniqueId()">Ride Type Duplicate</label>
-      <img src="assets/info.png" class="tooltip" title="Mark this if there is more than one ride of this type in your park. This will be auto-selected if you add another ride of the same type to the list." />
+      <img *ngIf="ride.isDuplicate && ride.duplicatesList.length > 0" src="assets/info.png" class="tooltip" [title]="duplicatesListText()" />
     </div>
   </div>
   <div class="display_flex-vertical">

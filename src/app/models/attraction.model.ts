@@ -49,7 +49,7 @@ export class Attraction {
   getRatings = (): Ratings => this.ratings;
   getItems = (): ShopItem[] => this.items;
 
-  setDefaultNickname = (list) => {
+  setDefaultNickname = (list: Attraction[]) => {
     let nameCount = 1;
     let reachedUnusedCount = false;
 
