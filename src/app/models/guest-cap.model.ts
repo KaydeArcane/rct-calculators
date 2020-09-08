@@ -17,9 +17,9 @@ export class GuestCap extends Ride {
   }
 
   // Returns an individual item's SGC contribution
-  getGuestCapValue = () => {
+  getGuestCapValue = (isHGG: boolean) => {
     let value = '';
-    if (this.passesHarderGen) {
+    if (this.passesHarderGen && isHGG) {
       value = this.getGuestCap().toString() + ' + ' + (this.getGuestCap() * 2).toString();
     } else {
       value = (this.getGuestCap() * this.quantity).toString();

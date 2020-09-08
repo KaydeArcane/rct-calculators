@@ -2,7 +2,7 @@
   <div #itemOverlay class="item-overlay"></div>
   <div class="display_flex name-and-price">
     <strong class="name">{{item.getName()}}</strong>
-    <strong class="value">{{item.getGuestCapValue()}}</strong>
+    <strong class="value">{{item.getGuestCapValue(isHGG)}}</strong>
   </div>
   <ng-container *ngIf="item.getTracked()">
     <div class="display_flex-vertical">

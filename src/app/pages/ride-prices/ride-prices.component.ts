@@ -106,7 +106,7 @@ export class RidePricesComponent implements OnInit {
 
     // Iterate thru rides and set isDuplicate values according to if duplicates were found
     this.placedRides.forEach((pr, idx) => {
-      if (pr.getId() === ride.getId()) {
+      if (pr.getId() === ride.getId() && pr.isDuplicate !== dupes) {
         pr.isDuplicate = dupes;
         // Recalculate individual ride price
         pr.calculateRidePrice(this.isOpenRCT2, this.isPaidEntry);
@@ -120,8 +120,9 @@ export class RidePricesComponent implements OnInit {
 
   // Recalculate all ride prices & saves rides to local storage
   calculateAllRidePrices = () => {
-    this.placedRides.forEach(ride => {
-      ride.calculateRidePrice(this.isOpenRCT2, this.isPaidEntry);
+    this.placedRides.forEach((pr, idx) => {
+      pr.calculateRidePrice(this.isOpenRCT2, this.isPaidEntry);
+      this.placedRides[idx] = new RidePrice(pr);
     });
     this.localStorage.set('ridePricesList', this.placedRides);
   }
