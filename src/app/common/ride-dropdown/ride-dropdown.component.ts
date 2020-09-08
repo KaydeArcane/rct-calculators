@@ -88,7 +88,7 @@ export class RideDropdownComponent implements OnInit, OnDestroy {
     this.dropdownSubscription = this.ridesDropdown.controls['ride'].valueChanges.subscribe(value => {
       // Emit ride/shop when dropdown item is selected
       this.rideSelected.emit(value);
-      this.ridesDropdown.reset('', {emitEvent: false});
+      this.ridesDropdown.reset({ride: ''}, {emitEvent: false});
     })
   }
 
