@@ -34,7 +34,7 @@
       <h5>No rides added yet - add a ride using the dropdown above!</h5>
     </div>
     <ng-container *ngFor="let ride of placedRides; index as i">
-      <app-ride-item class="flex-fill" [id]="'ride' + ride.getUniqueId()" [ride]="ride" (rideUpdate)="updateRide($event, i)"
+      <app-ride-item class="flex-fill display_flex-vertical" [id]="'ride' + ride.getUniqueId()" [ride]="ride" (rideUpdate)="updateRide($event, i)"
         (rideDelete)="removeRide(i)"></app-ride-item>
     </ng-container>
   </div>

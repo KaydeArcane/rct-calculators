@@ -1,4 +1,4 @@
-<form [id]="'ride-item' + ride.getUniqueId()" [formGroup]="ridePriceForm" class="card left item flex-wrap">
+<form [id]="'ride-item' + ride.getUniqueId()" [formGroup]="ridePriceForm" class="card left item flex-wrap flex-fill">
   <div class="display_flex name-and-price">
     <strong class="name">{{ride.getName()}}</strong>
     <strong class="value">{{ride.getPrice() | currency}}</strong>
@@ -12,8 +12,24 @@
       <input [id]="'is-duplicate' + ride.getUniqueId()" name="is-duplicate" type="checkbox" class="large"
         formControlName="isDuplicate" [value]="true" />
       <label [for]="'is-duplicate' + ride.getUniqueId()">Ride Type Duplicate</label>
-      <img *ngIf="ride.isDuplicate && ride.duplicatesList.length > 0" src="assets/info.png" class="tooltip" [title]="duplicatesListText()" />
+      <a routerLink="about" fragment="ride-duplicates" class="tooltip">
+        <img *ngIf="ride.isDuplicate && ride.duplicatesList.length > 0 && checkForUniqueCases()" src="assets/info.png"
+          title="Some rides are considered the same type for the game's ride value and price calculation mechanics, despite not being exact reskins of other rides. See the FAQs on the About page for more info." />
+      </a>
     </div>
+  </div>
+  <div class="display_flex-vertical">
+    <button [id]="'ride-item-dupes-toggle' + ride.getUniqueId()"
+      *ngIf="ride.isDuplicate && ride.duplicatesList.length > 0" class="display_flex-vertical" (click)="toggleDupes()"
+      role="button" aria-pressed="false">
+      {{showDupes ? 'Hide' : 'Show'}} Duplicates
+      <ng-container *ngIf="showDupes">
+        <hr />
+        <span *ngFor="let dupe of ride.duplicatesList">
+          {{dupe.getNickname()}}
+        </span>
+      </ng-container>
+    </button>
   </div>
   <div class="display_flex-vertical">
     <label [for]="'ride-age' + ride.getUniqueId()">Ride Age</label>
@@ -38,7 +54,7 @@
     <label [for]="'ride-nausea' + ride.getUniqueId()">Nausea</label>
     <input [id]="'ride-nausea' + ride.getUniqueId()" type="number" step="0.01" min="0" formControlName="n" />
   </div>
-  <div class="footer">
-    <app-delete-footer (delete)="deleteRide()"></app-delete-footer>
+  <div class="footer flex-fill">
+    <app-delete-footer class="display_flex-vertical justify-content_end" (delete)="deleteRide()"></app-delete-footer>
   </div>
 </form>

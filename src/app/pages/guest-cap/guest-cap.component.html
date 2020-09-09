@@ -2,14 +2,18 @@
   <h1>Soft Guest Cap</h1>
   <section id="sgc-text">
     <p>
-      Calculate how many guests your park can naturally attract before guest spawn rate is reduced by 75%. Works for normal scenarios and scenarios with 
-      Harder Guest Generation (HGG).
-      <img src="assets/info.png" class="tooltip" title="Harder Guest Generation is a scenario option that makes it harder to attract guests by putting a hard limit of 1000 guests on parks that don't have rides that meet the specified requirements." />
+      Calculate how many guests your park can naturally attract before guest spawn rate is reduced to a quarter of the
+      normal rate. Works for normal scenarios and scenarios with Harder Guest Generation (HGG).
+      <a routerLink="about" fragment="harder-guest-generation">
+        <img src="assets/info.png" class="tooltip"
+          title="Harder Guest Generation is a scenario option that makes it harder to attract guests by putting a hard limit of 1000 guests on parks that don't have rides that meet the specified requirements." />
+      </a>
     </p>
   </section>
   <h3>Park Settings</h3>
   <div class="display_flex align-items_center">
-    <input id="harder-gen-input" name="harderGen" type="checkbox" class="large" [formControl]="harderGenForm" [value]="true"/>
+    <input id="harder-gen-input" name="harderGen" type="checkbox" class="large" [formControl]="harderGenForm"
+      [value]="true" />
     <label for="harder-gen-input">Harder Guest Generation</label>
   </div>
   <div class="display_flex flex-wrap justify-content_center">
@@ -20,7 +24,7 @@
     <div id="soft-guest-cap-card" class="card item">
       <div #itemOverlay class="item-overlay"></div>
       <strong>Current Soft Guest Cap</strong>
-      <strong>{{softGuestCap}}</strong>
+      <strong>{{softGuestCap}} guests</strong>
     </div>
   </div>
 </div>
@@ -32,8 +36,9 @@
       <h5>No attractions added yet - add an attraction using the dropdown above!</h5>
     </div>
     <ng-container *ngFor="let item of placedItems; index as i">
-      <app-guest-cap-item class="flex-fill display_flex-vertical" [id]="'item' + item.getUniqueId()" [item]="item" [isHGG]="harderGenForm.value" (itemUpdate)="updateItem($event, i)"
-      (itemDelete)="removeItem(i)"></app-guest-cap-item>
+      <app-guest-cap-item class="flex-fill display_flex-vertical" [id]="'item' + item.getUniqueId()" [item]="item"
+        [isHGG]="harderGenForm.value" (itemUpdate)="updateItem($event, i)" (itemDelete)="removeItem(i)">
+      </app-guest-cap-item>
     </ng-container>
   </div>
 </div>

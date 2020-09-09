@@ -2,12 +2,32 @@ import { Attraction } from '@models/attraction.model';
 import { AgeValue } from '@models/age-value.model';
 import { ageValues } from '@assets/ageValues';
 
+class DuplicateRide {
+  private name: string;
+  private nickname: string;
+  private uniqueCase: boolean = false;
+
+  constructor(obj?) {
+    if (obj) {
+      this.name = obj['name'];
+      this.nickname = obj['nickname'];
+      this.uniqueCase = obj['uniqueCase'];
+    }
+  }
+
+  getName = (): string => this.name;
+  getNickname = (): string => this.nickname;
+  getUniqueCase = (): boolean => this.uniqueCase;
+
+  setUniqueCase = (val): void => this.uniqueCase = val;
+}
+
 export class RidePrice extends Attraction {
   public e: number;
   public i: number;
   public n: number;
   public isDuplicate: boolean = false;
-  public duplicatesList: string[] = [];
+  public duplicatesList: DuplicateRide[] = [];
   private age: AgeValue = new AgeValue(ageValues[0]);
   private rideValue: number = 0;
   private price: number = 0;
@@ -41,6 +61,12 @@ export class RidePrice extends Attraction {
     }
 
     this.age = new AgeValue(this.age);
+
+    const tempList = [];
+    this.duplicatesList.forEach(dupe => {
+      tempList.push(new DuplicateRide(dupe));
+    });
+    Object.assign(this.duplicatesList, tempList);
   }
 
   getAgeValue = (): AgeValue => this.age;
@@ -53,7 +79,17 @@ export class RidePrice extends Attraction {
     this.duplicatesList.splice(0, this.duplicatesList.length);
     list.forEach(ride => {
       if (ride.getId() === this.getId() && ride.getUniqueId() !== this.getUniqueId()) {
-        this.duplicatesList.push(ride.nickname);
+        let rideToPush;
+        if (ride.nickname) {
+          rideToPush = new DuplicateRide(ride);
+        } else {
+          rideToPush = new DuplicateRide({name: ride.getName(), nickname: 'Unnamed ' + ride.getName()});
+        }
+
+        if (ride.getName() !== this.getName()) {
+          rideToPush.setUniqueCase(true);
+        }
+        this.duplicatesList.push(rideToPush);
       }
     });
   }
