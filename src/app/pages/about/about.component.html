@@ -1,7 +1,7 @@
 <div class="text-align_center">
   <h1>RCT Calculators</h1>
 </div>
-<div>
+<div class="display_flex-vertical align-items_center text-align_center">
   <p>A collection of useful calculators for use with OpenRCT2, Roller Coaster Tycoon 1, Roller Coaster Tycoon 2, and
     Roller Coaster Tycoon Classic.</p>
   <p>
@@ -9,7 +9,7 @@
     <span>
       <a aria-label="Dev on twitter" target="_blank" rel="noopener" href="https://twitter.com/KaydeArcane"
         title="Twitter">
-        <img id="twitter-logo" src="assets/Twitter_Logo_Blue.svg" />
+        <img id="twitter-logo" aria-label="Twitter Logo" src="assets/Twitter_Logo_Blue.svg" />
         <span>@KaydeArcane</span>
       </a>.
     </span>
@@ -29,47 +29,68 @@
     <a href="https://www.youtube.com/channel/UCBlXovStrlQkVA2xJEROUNg" target="_blank" rel="noopener">Marcel Vos</a>
     for covering these mechanics on YouTube and spurring my interest in making these tools!
   </p>
-  <div class="text-align_center">
-    <h3>FAQs</h3>
-  </div>
-  <div>
-    <h4>Where is [insert attraction] in the dropdown list?</h4>
-    <p>The dropdown lists should cover every attraction possible to build in OpenRCT2 and RCT Classic. However, some
-      rides are reskins of a base ride type - for example, the "Snow Cups" ride is actually a reskin of the "Twist"
-      ride. The calculations for a reskinned ride is the exact same as the ride it's based on, so if you are using a
-      reskinned ride, add the base ride type instead.</p>
-    <p>If you think an attraction is missing, file a bug report on the <a
-        href="https://github.com/KaydeArcane/rct-calculators/issues" target="_blank" rel="noopener">Github repo</a> with
-      detailed information about the missing ride.</p>
-  </div>
-  <div>
-    <h4>Why did my ride get marked as a duplicate of another ride of a different type?</h4>
-    <p>
-      Some rides are considered the same type for the game's ride value and price calculation mechanics, despite not
-      being exact reskins of other rides. These rides are as follows:</p>
-    <ul>
-      <li>Car Ride / Monster Trucks</li>
-      <li>Classic Mini Roller Coaster / Junior Roller Coaster</li>
-      <li>Steel Wild Mouse / Spinning Wild Mouse</li>
-      <li>Hyper-Twister Coaster / Steel Twister Coaster</li>
-      <li>Corkscrew Roller Coaster / Hypercoaster</li>
-    </ul>
-  </div>
-  <div>
-    <h4>How do I tell how old my ride is? The game only specifies the year it was built in.</h4>
-    <p>This is tricky, because as far as I can find, there is no way in game to see exactly how many months old a ride is. The best way I've found to deal with this is to keep track of guests thoughts to see when they say they won't pay that much to ride a given ride, and increase the age value when they do to get the new admission price.</p>
-  </div>
-  <div>
-    <h4>How can I find out if a scenario I'm playing has harder guest generation enabled?</h4>
-    <p>The official list of scenarios that use harder guest generation is as follows:</p>
-    <ul>
-      <li>Alpine Adventures (RCT2)</li>
-      <li>Frightmare Hills (RCT: Loopy Landscapes)</li>
-      <li>Nevermore Park (RCT: Loopy Landscapes)</li>
-      <li>Southern Sands (RCT: Loopy Landscapes)</li>
-      <li>Stone Age (RCT2: Time Twister)</li>
-      <li>Venus Ponds (RCT: Loopy Landscapes)</li>
-    </ul>
-    <p>If you're playing on OpenRCT2, you can also check by opening the cheats menu and selecting "Scenario options", then looking at the park options tab. If the "Guests are more difficult to attract" setting is checked, the scenario has harder guest generation enabled.</p>
-  </div>
+</div>
+<div class="text-align_center">
+  <h3>FAQs</h3>
+</div>
+<div class="card left">
+  <h4>Where is [insert attraction] in the dropdown list?</h4>
+  <p>The dropdown lists should cover every attraction possible to build in OpenRCT2 and RCT Classic. However, some
+    rides are reskins of a base ride type - for example, the "Snow Cups" ride is actually a reskin of the "Twist"
+    ride. The calculations for a reskinned ride is the exact same as the ride it's based on, so if you are using a
+    reskinned ride, add the base ride type instead.</p>
+  <p>If you think an attraction is missing, file a bug report on the <a
+      href="https://github.com/KaydeArcane/rct-calculators/issues" target="_blank" rel="noopener">Github repo</a> with
+    detailed information about the missing ride.</p>
+</div>
+<div id="ride-duplicates" class="card left" [ngClass]="{'highlight-card': fragmentMatch('ride-duplicates')}">
+  <h4>Why did my ride get marked as a duplicate of another ride of a different type?</h4>
+  <p>
+    Some rides are considered the same type for the game's ride value and price calculation mechanics, despite not
+    being exact reskins of other rides. These rides are as follows:</p>
+  <ul>
+    <li>Car Ride / Monster Trucks</li>
+    <li>Classic Mini Roller Coaster / Junior Roller Coaster</li>
+    <li>Steel Wild Mouse / Spinning Wild Mouse</li>
+    <li>Hyper-Twister Coaster / Steel Twister Coaster</li>
+    <li>Corkscrew Roller Coaster / Hypercoaster</li>
+  </ul>
+</div>
+<div class="card left">
+  <h4>How do I tell how old my ride is? The game only specifies how many years ago it was built.</h4>
+  <p>This is tricky, because as far as I can find, there is no way in game to see exactly how many months old a ride is.
+    You can calculate a rough number of months by taking the number of years ago and multiplying it by 8 (in game years
+    are only 8 months instead of 12). This means that a ride that was built 2 years ago is at least 16 months old.</p>
+  <p>Another easy way I've found to deal with this is to keep track of guests thoughts to see when they say they won't
+    pay that much to ride a given ride, and increase the age value when they do to get the new admission price. If they
+    still refuse to pay that much, keep increasing the age value until you get a price that guests will pay.</p>
+</div>
+<div id="umbrella-price" class="card left" [ngClass]="{'highlight-card': fragmentMatch('umbrella-price')}">
+  <h4>Why charge {{20 | currency}} for umbrellas?</h4>
+  <p>Guests will pay any price for umbrellas when it starts raining; as such, it is recommended to charge the maximum amount for umbrellas to maximize profit when it rains. This helps make up for lagging sales in uncovered rides during rain, to help keep income consistent regardless of weather.</p>
+  <p>However, in scenarios that don't experience much rain, it may be more profitable to charge the normal max price for umbrellas.</p>
+</div>
+<div id="harder-guest-generation" class="card left" [ngClass]="{'highlight-card': fragmentMatch('harder-guest-generation')}">
+  <h4>What is harder guest generation?</h4>
+  <p>Harder guest generation (HGG) is a scenario setting that changes how the soft guest cap of a park is calculated. In essence, it caps the park's soft guest cap at 1000, and only rides that meet a set of requirements are able to boost it past that.</p>
+  <p>For a more detailed overview, check out <a href="https://www.youtube.com/watch?v=202b3XhMVW8" target="_blank" rel="noopener">Marcel's video</a> about harder guest generation, which goes much more in depth into how the soft guest cap is calculated and how the harder guest generation setting affects it.</p>
+</div>
+<div id="hgg-ride-requirements" class="card left" [ngClass]="{'highlight-card': fragmentMatch('hgg-ride-requirements')}">
+  <h4>What are the requirements that a ride needs to meet to pass the harder guest generation check?</h4>
+  <p>In order for a ride to meet the harder guest generation requirements, it must: be a tracked ride, have an excitement of 6.00 or higher, and have a ride length of at least 1968 feet (600 meters).</p>
+</div>
+<div class="card left">
+  <h4>How can I find out if a scenario I'm playing has harder guest generation enabled?</h4>
+  <p>The official list of scenarios that use harder guest generation is as follows:</p>
+  <ul>
+    <li>Alpine Adventures (RCT2)</li>
+    <li>Frightmare Hills (RCT: Loopy Landscapes)</li>
+    <li>Nevermore Park (RCT: Loopy Landscapes)</li>
+    <li>Southern Sands (RCT: Loopy Landscapes)</li>
+    <li>Stone Age (RCT2: Time Twister)</li>
+    <li>Venus Ponds (RCT: Loopy Landscapes)</li>
+  </ul>
+  <p>If you're playing on OpenRCT2, you can also check by opening the cheats menu and selecting "Scenario options", then
+    looking at the park options tab. If the "Guests are more difficult to attract" setting is checked, the scenario has
+    harder guest generation enabled.</p>
 </div>

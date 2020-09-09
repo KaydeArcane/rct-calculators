@@ -13,6 +13,10 @@
   transition: all $transition-duration ease-in-out;
   line-height: 24px;
 
+  > *:last-child {
+    margin-bottom: 0;
+  }
+
   input,
   select {
     box-sizing: border-box;
@@ -21,6 +25,7 @@
 
   &.left {
     justify-content: flex-start;
+    align-items: flex-start;
   }
 
   &.card-small {
@@ -30,7 +35,6 @@
 
   &.highlight-card {
     background-color: $primary-bg;
-    color: $white;
     font-weight: 600;
     border: none;
     width: auto;
