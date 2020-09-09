@@ -19,12 +19,16 @@
   align-items: baseline !important;
 }
 
+.align-items_end {
+  align-items: flex-end !important;
+}
+
 .justify-content_center {
   justify-content: center !important;
 }
 
 .justify-content_end {
-  justify-content: end !important;
+  justify-content: flex-end !important;
 }
 
 .justify-content_space-between {
