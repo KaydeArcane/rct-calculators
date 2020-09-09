@@ -20,7 +20,7 @@
   </div>
   <div class="display_flex-vertical">
     <button [id]="'ride-item-dupes-toggle' + ride.getUniqueId()"
-      *ngIf="ride.isDuplicate && ride.duplicatesList.length > 0" class="display_flex-vertical" (click)="toggleDupes()"
+      *ngIf="ride.isDuplicate && ride.duplicatesList.length > 0" class="display_flex-vertical align-items_center" (click)="toggleDupes()"
       role="button" aria-pressed="false">
       {{showDupes ? 'Hide' : 'Show'}} Duplicates
       <ng-container *ngIf="showDupes">
