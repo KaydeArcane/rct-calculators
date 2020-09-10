@@ -11,13 +11,25 @@
 
 @import "header";
 
+html {
+  scrollbar-color: #cdcdcd #f0f0f0;
+}
+
 body {
   font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: $font-size;
+  background-color: $primary-color;
   color: $text-color;
   box-sizing: border-box;
+  margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 h1,
@@ -79,8 +91,9 @@ a:hover {
 }
 
 .content {
-  margin: 4rem auto 1rem;
-  padding: 0 1rem;
+  padding: 4rem 1rem 1rem;
+  background-color: $white;
+  flex-grow: 1;
 }
 
 .tooltip {
@@ -135,7 +148,8 @@ a:hover {
 }
 
 footer {
-  margin-top: 8px;
+  background-color: $white;
+  padding: 0 1rem 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;

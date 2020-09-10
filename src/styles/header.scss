@@ -1,7 +1,15 @@
 @import "variables";
 
-#logo {
+.header-container {
   position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+#logo {
+  position: absolute;
   top: 0;
   left: 4px;
   z-index: 102;
@@ -14,7 +22,7 @@
 
 button.menu {
   display: none;
-  position: fixed;
+  position: absolute;
   background-color: $primary-color;
   border-radius: 0;
   top: 0;
@@ -26,7 +34,7 @@ button.menu {
 }
 
 .header {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   z-index: 100;
