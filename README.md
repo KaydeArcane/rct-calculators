@@ -1,29 +1,39 @@
-# RctCalc
+# RCT Calculators
 
-A collection of useful calculators for use with OpenRCT2, Roller Coaster Tycoon 1, Roller Coaster Tycoon 2, and Roller Coaster Tycoon Classic. Able to calculate a park's soft guest cap given a list of rides, and calculate an individual ride's recommended max ticket price based on its stats and some park settings.
+A collection of useful calculators for use with OpenRCT2, Roller Coaster Tycoon 1, Roller Coaster Tycoon 2, and Roller Coaster Tycoon Classic. Able to calculate ride max ticket prices, recommended shop item prices, and a park's soft guest cap. Manage your park with this set of tools and you'll be well on your way to mastering finances in any scenario!
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.8.
+[Check out the site](https://kaydearcane.github.io/rct-calculators/) and start maximizing your park's income now!
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- Ride Price Calculator: See the maximum price you can charge for any ride
+  - Comprehensive list of all rides available in all versions of the game
+  - Set custom nicknames so you can distinguish between rides
+  - Auto duplicate detection for rides you add, complete with listing of each ride's duplicates
+- Shop Prices Calculator: Find out how much you can charge for each food, drink, and merchandise item your shops can sell
+  - View both maximum item price and how much profit that item will bring in
+- Soft Guest Cap Calculator: Find the maximum number of guests your park can naturally attract
+  - Works with both standard scenarios and scenarios with harder guest generation
+  - Automatically detects tracked vs flat rides to allow for individual tracked rides to be selected for meeting harder guest generation requirements
+- Local storage keeps your ride lists and settings, even after leaving or closing the site
+- Fully compatible with OpenRCT2, the original RCT and RCT2, and RCT Classic
 
-## Code scaffolding
+## Technology
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+This project is built on [Angular version 10.0.8](https://angular.io/) using [Angular CLI](https://github.com/angular/angular-cli).
 
-## Build
+## License 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
 
-## Running unit tests
+## Development Credits
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Project development by [KaydeArcane](https://twitter.com/KaydeArcane).
 
-## Running end-to-end tests
+## Acknowledgements
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Big props to the following people for helping provide information to make this project possible:
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- [Ted John (aka IntelOrca)](http://intelorca.co.uk/) and all the contributors to the [OpenRCT2 project](https://github.com/OpenRCT2/OpenRCT2) for making [OpenRCT2](https://openrct2.io/)
+- [Deurklink](https://www.youtube.com/channel/UCcU9si2fIVJ-KoIDX9xYpdw) for [all](https://forums.openrct2.org/topic/2737-guide-how-much-can-you-charge-for-your-rides/) [the](https://forums.openrct2.org/topic/2747-guide-how-much-can-you-charge-for-your-shops/) [work](https://forums.openrct2.org/topic/2861-guide-when-and-how-do-guests-spawn/) towards deciphering how RCT's mechanics function
+- [Marcel Vos](https://www.youtube.com/channel/UCBlXovStrlQkVA2xJEROUNg) for the extremely handy and enjoyable videos explaining many of these mechanics
