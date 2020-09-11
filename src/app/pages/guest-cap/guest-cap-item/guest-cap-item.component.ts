@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnDestroy, AfterViewInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
 import { GuestCap } from '@models/guest-cap.model';
 import { CommonUtils } from '@common/common.utils';
@@ -25,14 +25,18 @@ export class GuestCapItemComponent implements OnInit, AfterViewInit, OnDestroy {
     this.guestCapForm = this.fb.group({
       'nickname': [this.item.nickname],
       'passesHarderGen': [this.item.passesHarderGen],
-      'quantity': [this.item.quantity]
+      'quantity': [this.item.quantity, [Validators.required, Validators.min(1)]]
     });
 
     this.guestCapFormSubscription = this.guestCapForm.valueChanges.pipe(debounceTime(250))
       .subscribe(value => {
         this.item.nickname = value.nickname;
         this.item.passesHarderGen = value.passesHarderGen;
-        this.item.quantity = value.quantity;
+        if (this.guestCapForm.get('quantity').valid) {
+          this.item.quantity = value.quantity;
+        } else {
+          this.item.quantity = null;
+        }
         this.itemUpdate.emit(this.item);
       }
     );
@@ -46,6 +50,10 @@ export class GuestCapItemComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.guestCapFormSubscription) {
       this.guestCapFormSubscription.unsubscribe();
     }
+  }
+
+  fieldError = (name) => {
+    return this.guestCapForm.get(name).invalid && this.guestCapForm.get(name).touched;
   }
 
   deleteItem = () => {
