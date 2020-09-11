@@ -12,16 +12,17 @@
       <input [id]="'is-duplicate' + ride.getUniqueId()" name="is-duplicate" type="checkbox" class="large"
         formControlName="isDuplicate" [value]="true" />
       <label [for]="'is-duplicate' + ride.getUniqueId()">Ride Type Duplicate</label>
-      <a routerLink="about" fragment="ride-duplicates" class="tooltip">
-        <img *ngIf="ride.isDuplicate && ride.duplicatesList.length > 0 && checkForUniqueCases()" src="assets/info.png"
+      <a routerLink="about" fragment="ride-duplicates" class="tooltip"
+        *ngIf="ride.isDuplicate && ride.duplicatesList.length > 0 && checkForUniqueCases()">
+        <img src="assets/info.png"
           title="Some rides are considered the same type for the game's ride value and price calculation mechanics, despite not being exact reskins of other rides. See the FAQs on the About page for more info." />
       </a>
     </div>
   </div>
   <div class="display_flex-vertical">
     <button [id]="'ride-item-dupes-toggle' + ride.getUniqueId()"
-      *ngIf="ride.isDuplicate && ride.duplicatesList.length > 0" class="display_flex-vertical align-items_center" (click)="toggleDupes()"
-      role="button" aria-pressed="false">
+      *ngIf="ride.isDuplicate && ride.duplicatesList.length > 0" class="display_flex-vertical align-items_center"
+      (click)="toggleDupes()" role="button" type="button" aria-pressed="false">
       {{showDupes ? 'Hide' : 'Show'}} Duplicates
       <ng-container *ngIf="showDupes">
         <hr />
