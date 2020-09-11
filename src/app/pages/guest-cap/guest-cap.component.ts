@@ -44,7 +44,6 @@ export class GuestCapComponent implements OnInit, OnDestroy {
           this.placedItems[idx] = new GuestCap(item);
         }
       })
-      // Recalculate SGC
       this.calculateSoftGuestCap();
       // Store current value of HGG toggle in local storage
       this.localStorage.set('guestCapHGG', value);
@@ -63,13 +62,13 @@ export class GuestCapComponent implements OnInit, OnDestroy {
     // Check if an item is already in the list
     const idx = CommonUtils.checkForDupes(this.placedItems, item);
 
-    // If there is no duplicate or item is a tracked ride, add to list
     if (idx === null || item.getTracked()) {
+      // If there is no duplicate or item is a tracked ride, add to list
       item.setDefaultNickname(this.placedItems);
       this.placedItems.unshift(new GuestCap(item));
       CommonUtils.scrollAddRideToTop();
-    // Otherwise, if there is duplicate, increase quantity
     } else if (idx !== null) {
+      // Otherwise, if there is duplicate, increase quantity
       this.placedItems[idx].quantity += 1;
       this.placedItems[idx] = new GuestCap(this.placedItems[idx]);
       CommonUtils.scrollElemIntoView('item' + this.placedItems[idx].getUniqueId());
@@ -84,14 +83,15 @@ export class GuestCapComponent implements OnInit, OnDestroy {
     this.placedItems[idx].passesHarderGen = item.passesHarderGen;
     this.placedItems[idx].quantity = item.quantity;
 
+    // Recalculate SGC
     this.calculateSoftGuestCap();
+    // Store guest cap list
     this.localStorage.set('guestCapList', this.placedItems);
   }
 
   // Remove a item from the placedItems list & recalculate SGC
   removeItem = (idx) => {
     this.placedItems.splice(idx, 1);
-
     this.calculateSoftGuestCap();
   }
 
@@ -113,14 +113,16 @@ export class GuestCapComponent implements OnInit, OnDestroy {
         }
       });
     }
-    // Sets soft guest cap and stores list of placedItems in local storage
+    // If the guest cap changed, flash the guest cap card to signify that it updated
     if (this.softGuestCap !== cap) {
       CommonUtils.flashItem(document.getElementById('soft-guest-cap-card'));
     }
+    // Sets soft guest cap and stores list of placedItems in local storage
     this.softGuestCap = cap;
     this.localStorage.set('guestCapList', this.placedItems);
   }
 
+  // Clear all attractions and reset SGC
   clear = () => {
     this.placedItems.splice(0, this.placedItems.length);
     this.calculateSoftGuestCap();

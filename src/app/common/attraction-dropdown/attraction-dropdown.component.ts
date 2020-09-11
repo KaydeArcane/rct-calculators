@@ -93,6 +93,7 @@ export class AttractionDropdownComponent implements OnInit, OnDestroy {
     })
   }
 
+  // Unsubscribe from form value changes when leaving page
   ngOnDestroy(): void {
     if (this.dropdownSubscription) {
       this.dropdownSubscription.unsubscribe();

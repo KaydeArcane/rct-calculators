@@ -76,19 +76,25 @@ export class RidePrice extends Attraction {
   setAgeValue = (age) => this.age = new AgeValue(age);
 
   findDuplicates = (list: RidePrice[]) => {
+    // Clear out current duplicates list
     this.duplicatesList.splice(0, this.duplicatesList.length);
+    // Iterate thru ride list looking for any duplicate rides that are not this ride
     list.forEach(ride => {
       if (ride.getId() === this.getId() && ride.getUniqueId() !== this.getUniqueId()) {
         let rideToPush;
         if (ride.nickname) {
+          // If ride has nickname, create duplicate ride object from it
           rideToPush = new DuplicateRide(ride);
         } else {
+          // Otherwise, create duplicate ride with 'Unnamed Ride' as stand-in nickname
           rideToPush = new DuplicateRide({name: ride.getName(), nickname: 'Unnamed ' + ride.getName()});
         }
 
+        // If the rides are duplicates, but not exact duplicates, mark as unique case (for showing tooltip)
         if (ride.getName() !== this.getName()) {
           rideToPush.setUniqueCase(true);
         }
+        // Push duplicate ride to the duplicates list
         this.duplicatesList.push(rideToPush);
       }
     });
