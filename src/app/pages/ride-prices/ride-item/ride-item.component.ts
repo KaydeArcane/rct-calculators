@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnDestroy, AfterViewInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
 import { AgeValue } from '@models/age-value.model';
 import { RidePrice } from '@models/ride-price.model';
@@ -37,10 +37,10 @@ export class RideItemComponent implements OnInit, AfterViewInit, OnDestroy {
     this.ridePriceForm = this.fb.group({
       'nickname': [this.ride.nickname],
       'isDuplicate': [this.ride.isDuplicate],
-      'e': [this.ride.e],
-      'i': [this.ride.i],
-      'n': [this.ride.n],
-      'age': [null]
+      'e': [this.ride.e, [Validators.required, Validators.min(0)]],
+      'i': [this.ride.i, [Validators.required, Validators.min(0)]],
+      'n': [this.ride.n, [Validators.required, Validators.min(0)]],
+      'age': [null, [Validators.required]]
     });
 
     // Initialize age field
@@ -48,23 +48,36 @@ export class RideItemComponent implements OnInit, AfterViewInit, OnDestroy {
       if (age.getId() === this.ride.getAgeValue().getId()) {
         this.ridePriceForm.get('age').setValue(age);
         return false;
-      } 
+      }
       return true;
     });
-    
+
     this.ridePriceFormSubscription = this.ridePriceForm.valueChanges.pipe(debounceTime(300))
       .subscribe(value => {
         this.ride.nickname = value.nickname;
         this.ride.isDuplicate = value.isDuplicate;
-        this.ride.e = value.e;
-        this.ride.i = value.i;
-        this.ride.n = value.n;
-        this.ride.setAgeValue(value.age);
+        if (this.ridePriceForm.get('e').valid) {
+          this.ride.e = value.e;
+        } else {
+          this.ride.e = null;
+        }
+        if (this.ridePriceForm.get('i').valid) {
+          this.ride.i = value.i;
+        } else {
+          this.ride.i = null;
+        }
+        if (this.ridePriceForm.get('n').valid) {
+          this.ride.n = value.n;
+        } else {
+          this.ride.n = null;
+        }
+        if (this.ridePriceForm.get('age').valid) {
+          this.ride.setAgeValue(value.age);
+        }
         this.rideUpdate.emit(this.ride);
-      }
-    );
+      });
   }
-  
+
   ngAfterViewInit(): void {
     CommonUtils.flashItem(document.getElementById('ride-item' + this.ride.getUniqueId()));
   }
@@ -90,6 +103,10 @@ export class RideItemComponent implements OnInit, AfterViewInit, OnDestroy {
   toggleDupes = () => {
     this.showDupes = !this.showDupes;
     document.getElementById('ride-item-dupes-toggle' + this.ride.getUniqueId()).setAttribute('aria-pressed', this.showDupes.toString());
+  }
+
+  fieldError = (name) => {
+    return this.ridePriceForm.get(name).invalid && this.ridePriceForm.get(name).touched;
   }
 
   deleteRide = () => {
