@@ -5,8 +5,10 @@ label {
 input,
 select {
   background-color:$white;
-  border-radius: 0.25rem;
+  height: 1.75rem;
+  line-height: 1rem;
   border: 2px solid $drk-gray;
+  border-radius: 0.25rem;
   padding: 0.25rem;
   cursor: pointer;
   transition: $transition-duration;
@@ -70,14 +72,14 @@ table input[type="checkbox"].large {
 
   &:after {
     content: '<>';
-    font: 17px "Consolas", monospace;
+    font: 16px "Consolas", monospace;
     color: $text-color;
     -webkit-transform: rotate(90deg);
     -moz-transform: rotate(90deg);
     -ms-transform: rotate(90deg);
     transform: rotate(90deg);
     right: 4px;
-    top: 4px;
+    top: 3px;
     padding: 0 0 2px;
     border-bottom: 1px solid #999;
     position: absolute;
