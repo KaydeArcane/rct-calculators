@@ -25,6 +25,10 @@ select {
       border-color: $drk-gray;
     }
   }
+
+  &.error {
+    border-color: $danger-color;
+  }
 }
 
 option {
