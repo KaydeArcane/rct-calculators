@@ -52,23 +52,30 @@ export class RideItemComponent implements OnInit, AfterViewInit, OnDestroy {
       return true;
     });
 
+    // Update values of the ride any time form input changes
     this.ridePriceFormSubscription = this.ridePriceForm.valueChanges.pipe(debounceTime(300))
       .subscribe(value => {
         this.ride.nickname = value.nickname;
         this.ride.isDuplicate = value.isDuplicate;
         if (this.ridePriceForm.get('e').valid) {
+          // If new excitement is a valid value, set ride excitement
           this.ride.e = value.e;
         } else {
+          // Otherwise, set ride excitement to null
           this.ride.e = null;
         }
         if (this.ridePriceForm.get('i').valid) {
+          // If new intensity is a valid value, set ride intensity
           this.ride.i = value.i;
         } else {
+          // Otherwise, set ride intensity to null
           this.ride.i = null;
         }
         if (this.ridePriceForm.get('n').valid) {
+          // If new nausea is a valid value, set ride nausea
           this.ride.n = value.n;
         } else {
+          // Otherwise, set ride nausea to null
           this.ride.n = null;
         }
         if (this.ridePriceForm.get('age').valid) {
@@ -78,16 +85,19 @@ export class RideItemComponent implements OnInit, AfterViewInit, OnDestroy {
       });
   }
 
+  // Runs flash animation on item whenever card is initialized by outside changes
   ngAfterViewInit(): void {
     CommonUtils.flashItem(document.getElementById('ride-item' + this.ride.getUniqueId()));
   }
 
+  // Unsubscribe from form value changes when leaving page
   ngOnDestroy(): void {
     if (this.ridePriceFormSubscription) {
       this.ridePriceFormSubscription.unsubscribe();
     }
   }
 
+  // Checks to see if ride has unique case duplicates to display info tooltip
   checkForUniqueCases = () => {
     let unique = false;
     this.ride.duplicatesList.every(dupe => {
@@ -100,15 +110,18 @@ export class RideItemComponent implements OnInit, AfterViewInit, OnDestroy {
     return unique;
   }
 
+  // Toggle to open/close duplicates list
   toggleDupes = () => {
     this.showDupes = !this.showDupes;
     document.getElementById('ride-item-dupes-toggle' + this.ride.getUniqueId()).setAttribute('aria-pressed', this.showDupes.toString());
   }
 
+  // Returns true if a form field is invalid and touched
   fieldError = (name) => {
     return this.ridePriceForm.get(name).invalid && this.ridePriceForm.get(name).touched;
   }
-
+  
+  // Emits delete action to parent
   deleteRide = () => {
     this.rideDelete.emit();
   }

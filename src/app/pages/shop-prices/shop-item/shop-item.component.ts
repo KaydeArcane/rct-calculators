@@ -15,10 +15,12 @@ export class ShopItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // Return if item is an umbrella (has ID of 34)
   isUmbrella = () => {
     return this.item.getId() === '34';
   }
 
+  // Emits delete action to parent
   deleteItem = () => {
     this.itemDelete.emit();
   }

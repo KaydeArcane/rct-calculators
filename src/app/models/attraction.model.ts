@@ -52,7 +52,7 @@ export class Attraction {
     let nameCount = 1;
     let reachedUnusedCount = false;
 
-    // Iterate thru rides checking for all default nicknames for duplicate rides
+    // Iterate thru rides checking all exact duplicate rides for nicknames until an unused default nickname count is reached
     while(!reachedUnusedCount) {
       reachedUnusedCount = true;
       list.every((pr) => {
@@ -64,7 +64,7 @@ export class Attraction {
         return true;
       });
     }
-    // Set default ride nickname to appropriate number
+    // Set ride's default nickname to appropriate number
     this.nickname = this.getName() + ' ' + nameCount;
   }
 }

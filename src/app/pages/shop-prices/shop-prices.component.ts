@@ -49,15 +49,16 @@ export class ShopPricesComponent implements OnInit, OnDestroy {
 
     // Update weather values, save to local storage, & recalculate shop item prices
     this.weatherFormSubscription = this.weatherForm.valueChanges.subscribe(value => {
-      // Store current value of HGG toggle in local storage
       this.weather.temperate = value['temperate'];
       this.weather.hot = value['hot'];
       this.weather.cold = value['cold'];
+      // Store current value of weather settings in local storage
       this.localStorage.set('shopPricesWeather', this.weather);
       this.calculateAllShopItemPrices();
     })
   }
 
+  // Unsubscribe from form value changes when leaving page
   ngOnDestroy(): void {
     if (this.weatherFormSubscription) {
       this.weatherFormSubscription.unsubscribe();
@@ -66,20 +67,24 @@ export class ShopPricesComponent implements OnInit, OnDestroy {
 
   // Push new shop item from shop items dropdown into soldItems list & update duplicates
   addShopItem = (item: Attraction) => {
+    // Iterate thru items in each shop
     item.getItems().forEach(shopItem => {
+      // Check if item is already in current list
       const found = CommonUtils.checkForDupes(this.soldItems, shopItem);
   
       if (found === null) {
+        // If not, add item to list and calculate prices
         this.soldItems.unshift(new ShopItemPrice(shopItem));
     
         this.calculateAllShopItemPrices();
       } else {
+        // Otherwise, reinstate existing item to make it play flash animation
         this.soldItems[found] = new ShopItemPrice(this.soldItems[found]);
       }
     })
   }
 
-  // Remove shop item from list & update duplicates
+  // Remove shop item from list
   removeShopItem = (idx) => {
     this.soldItems.splice(idx, 1);
     this.localStorage.set('shopPricesList', this.soldItems);
@@ -91,6 +96,7 @@ export class ShopPricesComponent implements OnInit, OnDestroy {
       const itemPrice = item.getPrice();
       item.calculatePrice(this.weather);
       if (itemPrice !== item.getPrice()) {
+        // If item price changed, reinstate item to make it play flash animation
         this.soldItems[idx] = new ShopItemPrice(item);
       }
     });

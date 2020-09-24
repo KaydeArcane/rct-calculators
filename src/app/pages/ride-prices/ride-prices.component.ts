@@ -27,7 +27,7 @@ export class RidePricesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Fetch previous game settings from local storage
+    // Fetch previous game/park settings from local storage
     this.isOpenRCT2 = this.localStorage.get('ridePricesGame');
     this.paidEntryForm.setValue(this.localStorage.get('ridePricesEntry'));
     this.isPaidEntry = this.paidEntryForm.value;
@@ -39,13 +39,14 @@ export class RidePricesComponent implements OnInit {
 
     // Update paid entry toggle, save to local storage, & recalculate ride prices
     this.paidEntryFormSubscription = this.paidEntryForm.valueChanges.subscribe(value => {
-      // Store current value of HGG toggle in local storage
       this.isPaidEntry = value;
+      // Store current value of paid entry toggle in local storage
       this.localStorage.set('ridePricesEntry', value);
       this.calculateAllRidePrices();
     });
   }
 
+  // Unsubscribe from form value changes when leaving page
   ngOnDestroy(): void {
     if (this.paidEntryFormSubscription) {
       this.paidEntryFormSubscription.unsubscribe();
@@ -65,7 +66,7 @@ export class RidePricesComponent implements OnInit {
     this.placedRides.unshift(new RidePrice(ride));
 
     this.updateDuplicates(ride);
-
+    // Scroll to the add ride dropdown
     CommonUtils.scrollAddRideToTop();
   }
 
@@ -79,6 +80,7 @@ export class RidePricesComponent implements OnInit {
   // Update ride stats, recalculate individual ride price, & save ride to local storage
   updateRide = (ride, idx) => {
     if (ride.isDuplicate) {
+      // If the input ride has duplicates, iterate thru list and call function to update the duplicates list for all matching rides
       this.placedRides.forEach(pr => {
         if (pr.getId() === ride.getId() && pr.getUniqueId() !== ride.getUniqueId()) {
           pr.findDuplicates(this.placedRides);
@@ -115,8 +117,10 @@ export class RidePricesComponent implements OnInit {
     // Iterate thru rides and set isDuplicate values according to if duplicates were found
     this.placedRides.forEach((pr, idx) => {
       if (pr.getId() === ride.getId()) {
+        // IF ride is a duplicate, update its duplicates list
         pr.findDuplicates(this.placedRides);
         if (pr.isDuplicate !== dupes) {
+          // If a ride's 'isDuplicate' value isn't the current value, mark it accordingly
           pr.isDuplicate = dupes;
           // Recalculate individual ride price
           pr.calculateRidePrice(this.isOpenRCT2, this.isPaidEntry);

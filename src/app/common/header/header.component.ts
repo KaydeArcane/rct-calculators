@@ -21,6 +21,7 @@ export class HeaderComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    // Closes nav dropdown menu whenever navigation happens on mobile view
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart && document.getElementById('menu-button') && document.getElementById('menu-button').getAttribute('aria-pressed') === 'true') {
         setTimeout(() => {
@@ -30,6 +31,7 @@ export class HeaderComponent implements OnInit {
     })
   }
 
+  // Toggles the nav dropdown menu whenever a user presses the button to open/close it
   toggleMenu = () => {
     const state = document.getElementById('menu-button').getAttribute('aria-pressed') === 'true' ? 'false' : 'true';
     this.tabindex = state === 'true' ? 0 : -1;

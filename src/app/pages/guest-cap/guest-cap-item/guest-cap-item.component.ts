@@ -28,13 +28,16 @@ export class GuestCapItemComponent implements OnInit, AfterViewInit, OnDestroy {
       'quantity': [this.item.quantity, [Validators.required, Validators.min(1)]]
     });
 
+    // Update values of the item any time form input changes
     this.guestCapFormSubscription = this.guestCapForm.valueChanges.pipe(debounceTime(250))
       .subscribe(value => {
         this.item.nickname = value.nickname;
         this.item.passesHarderGen = value.passesHarderGen;
         if (this.guestCapForm.get('quantity').valid) {
+          // If new quantity is a valid value, set item quantity
           this.item.quantity = value.quantity;
         } else {
+          // Otherwise, set item quantity to null
           this.item.quantity = null;
         }
         this.itemUpdate.emit(this.item);
@@ -42,20 +45,24 @@ export class GuestCapItemComponent implements OnInit, AfterViewInit, OnDestroy {
     );
   }
   
+  // Runs flash animation on item whenever card is initialized by outside changes
   ngAfterViewInit(): void {
     CommonUtils.flashItem(document.getElementById('attraction' + this.item.getUniqueId()));
   }
 
+  // Unsubscribe from form value changes when leaving page
   ngOnDestroy(): void {
     if (this.guestCapFormSubscription) {
       this.guestCapFormSubscription.unsubscribe();
     }
   }
 
+  // Returns true if a form field is invalid and touched
   fieldError = (name) => {
     return this.guestCapForm.get(name).invalid && this.guestCapForm.get(name).touched;
   }
 
+  // Emits delete action to parent
   deleteItem = () => {
     this.itemDelete.emit();
   }
