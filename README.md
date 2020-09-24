@@ -35,5 +35,4 @@ Project development by [KaydeArcane](https://twitter.com/KaydeArcane).
 Big props to the following people for helping provide information to make this project possible:
 
 - [Ted John (aka IntelOrca)](http://intelorca.co.uk/) and all the contributors to the [OpenRCT2 project](https://github.com/OpenRCT2/OpenRCT2) for making [OpenRCT2](https://openrct2.io/)
-- [Deurklink](https://www.youtube.com/channel/UCcU9si2fIVJ-KoIDX9xYpdw) for [all](https://forums.openrct2.org/topic/2737-guide-how-much-can-you-charge-for-your-rides/) [the](https://forums.openrct2.org/topic/2747-guide-how-much-can-you-charge-for-your-shops/) [work](https://forums.openrct2.org/topic/2861-guide-when-and-how-do-guests-spawn/) towards deciphering how RCT's mechanics function
-- [Marcel Vos](https://www.youtube.com/channel/UCBlXovStrlQkVA2xJEROUNg) for the extremely handy and enjoyable videos explaining many of these mechanics
+- [Marcel Vos](https://www.youtube.com/channel/UCBlXovStrlQkVA2xJEROUNg) for the extremely handy videos explaining many of RCT's mechanics
